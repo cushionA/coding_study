@@ -41,4 +41,4 @@ def test_most_common_tag_tie_break_by_name():
 # unique_tags は出現回数1のタグ名だけを昇順で返す
 def test_unique_tags_basic():
     counts = {"焙煎": 2, "浅煎り": 1, "深煎り": 1}
-    assert ex.unique_tags(counts) == ["深煎り", "浅煎り"]
+    assert ex.unique_tags(counts) == ["浅煎り", "深煎り"]

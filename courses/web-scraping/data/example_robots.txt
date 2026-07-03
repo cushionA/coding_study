@@ -1,0 +1,12 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /private/
+Crawl-delay: 2
+
+User-agent: MyScraperBot
+Disallow: /admin/
+Allow: /private/reports/
+Crawl-delay: 1
+
+User-agent: BadBot
+Disallow: /

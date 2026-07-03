@@ -36,6 +36,6 @@ def test_extract_href_list_no_links():
 def test_extract_paragraphs_basic():
     html = _load_simple_page()
     result = ex.extract_paragraphs(html)
-    assert len(result) == 3
+    assert len(result) == 4
     assert result[0] == "営業時間: 8:00-19:00 / 定休日: 水曜"
-    assert result[2] == "お問い合わせ: info@example-cafe.test"
+    assert result[3] == "お問い合わせ: info@example-cafe.test"

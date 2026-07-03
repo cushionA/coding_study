@@ -1,0 +1,165 @@
+{
+  "course": "web-scraping",
+  "started": "2026-07-03",
+  "current": {
+    "unit": "unit01-html-and-python-basics",
+    "phase": "lesson",
+    "exercise": null
+  },
+  "lessons": {},
+  "exercises": {},
+  "skills": {
+    "scraping-pipeline-overview": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "evidence": ""
+    },
+    "html-dom-tree": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "evidence": ""
+    },
+    "python-string-ops": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "evidence": ""
+    },
+    "python-list-comprehension": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "evidence": ""
+    },
+    "python-dict-ops": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "evidence": ""
+    },
+    "beautifulsoup-parse": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "evidence": ""
+    },
+    "find-vs-findall": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "evidence": ""
+    },
+    "extract-text": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "evidence": ""
+    },
+    "extract-attributes": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "evidence": ""
+    },
+    "tree-navigation": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "evidence": ""
+    },
+    "css-selectors": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "evidence": ""
+    },
+    "select-vs-find": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "evidence": ""
+    },
+    "table-extraction": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "evidence": ""
+    },
+    "records-to-list-of-dict": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "evidence": ""
+    },
+    "defensive-access": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "evidence": ""
+    },
+    "http-request-response": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "evidence": ""
+    },
+    "requests-api": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "evidence": ""
+    },
+    "robots-txt-parsing": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "evidence": ""
+    },
+    "user-agent-etiquette": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "evidence": ""
+    },
+    "rate-limiting-and-429": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "evidence": ""
+    },
+    "data-cleaning": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "evidence": ""
+    },
+    "type-coercion": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "evidence": ""
+    },
+    "error-handling-retry": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "evidence": ""
+    },
+    "csv-dictwriter": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "evidence": ""
+    },
+    "output-validation": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "evidence": ""
+    },
+    "multi-page-crawl": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "evidence": ""
+    },
+    "pagination-follow": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "evidence": ""
+    },
+    "robots-aware-fetch": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "evidence": ""
+    },
+    "end-to-end-pipeline": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "evidence": ""
+    },
+    "csv-catalog-output": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "evidence": ""
+    }
+  },
+  "review_queue": [],
+  "milestones": {}
+}
