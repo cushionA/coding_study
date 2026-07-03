@@ -1,0 +1,27 @@
+{
+  "course": "ml-intro",
+  "started": "2026-07-03",
+  "current": { "unit": "unit01-numpy-basics", "phase": "lesson", "exercise": null },
+  "lessons": {},
+  "exercises": {},
+  "skills": {
+    "numpy-vectorize": { "level": 0, "updated": "2026-07-03", "evidence": "" },
+    "numpy-masking": { "level": 0, "updated": "2026-07-03", "evidence": "" },
+    "numpy-broadcasting": { "level": 0, "updated": "2026-07-03", "evidence": "" },
+    "pandas-dataframe": { "level": 0, "updated": "2026-07-03", "evidence": "" },
+    "pandas-select-filter": { "level": 0, "updated": "2026-07-03", "evidence": "" },
+    "pandas-missing": { "level": 0, "updated": "2026-07-03", "evidence": "" },
+    "pandas-groupby": { "level": 0, "updated": "2026-07-03", "evidence": "" },
+    "sklearn-estimator-api": { "level": 0, "updated": "2026-07-03", "evidence": "" },
+    "train-test-split": { "level": 0, "updated": "2026-07-03", "evidence": "" },
+    "regression-metrics": { "level": 0, "updated": "2026-07-03", "evidence": "" },
+    "classification-workflow": { "level": 0, "updated": "2026-07-03", "evidence": "" },
+    "confusion-matrix-metrics": { "level": 0, "updated": "2026-07-03", "evidence": "" },
+    "cross-validation": { "level": 0, "updated": "2026-07-03", "evidence": "" },
+    "preprocessing-impute-scale": { "level": 0, "updated": "2026-07-03", "evidence": "" },
+    "sklearn-pipeline": { "level": 0, "updated": "2026-07-03", "evidence": "" },
+    "end-to-end-workflow": { "level": 0, "updated": "2026-07-03", "evidence": "" }
+  },
+  "review_queue": [],
+  "milestones": {}
+}

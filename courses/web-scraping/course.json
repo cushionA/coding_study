@@ -1,0 +1,72 @@
+{
+  "name": "web-scraping",
+  "title": "Python Webスクレイピング入門",
+  "language": "python",
+  "format": { "lesson": "jupyter", "grading": "pytest", "reason": "実行→観察が数秒で回り、セル単位の即時チェックが可能" },
+  "test_command": "python -m pytest {unit}/tests -q",
+  "goal": "実在サイト相当のHTMLから、取得→解析→整形→CSV出力のスクレイパーを、エラー処理とマナー(robots.txt/レート制限)込みで一人で書ける",
+  "learner_profile": "C# AtCoder茶色、OOP理解あり、Python経験浅い(文字列・辞書・リスト操作の足場を序盤に織り込む)",
+  "created": "2026-07-03",
+  "units": [
+    {
+      "dir": "unit01-html-and-python-basics",
+      "title": "HTMLの構造とPythonの足場",
+      "summary": "スクレイピングの全体像(取得→解析→整形→出力)とHTML/DOMのツリー構造を掴む。同時にPythonの文字列(strip/split/replace/f-string)・リスト内包表記・辞書操作という後続ユニットの土台を固める。C#のstring/List<T>/Dictionary<K,V>/LINQのSelect/WhereとのアナロジーでPython構文を対応づける。演習ではHTTP通信は行わず、ローカルHTMLフィクスチャを文字列として読み込み、素朴な文字列処理とdictでの集計を練習する。フィクスチャ: data/simple_page.html(見出し・段落・リンクを含む最小ページ), data/profile_card.html(名前・職業・タグを含むカード1件)。",
+      "concepts": ["scraping-pipeline-overview", "html-dom-tree", "python-string-ops", "python-list-comprehension", "python-dict-ops"],
+      "exercises": ["ex01_string_extract", "ex02_list_dict", "ex03_html_skim", "ex04_capstone"],
+      "estimated_minutes": 50,
+      "generated": false,
+      "reviewed": false
+    },
+    {
+      "dir": "unit02-beautifulsoup-basics",
+      "title": "BeautifulSoupで解析する",
+      "summary": "BeautifulSoup(html.parser)でHTMLをパースし、find/find_allでタグを探索、.text/.get_text()でテキスト、['href']や.get()で属性を取り出す。tag.name・tag.attrs・親子/兄弟ナビゲーションの基本。C#で言えばXMLをオブジェクトツリーに読み込んでノードを辿る感覚とのアナロジー。生の文字列処理(unit01)がなぜ壊れやすいか→パーサに任せる利点を体感する。演習ではローカルフィクスチャをBeautifulSoup(open(...).read(), 'html.parser')で読み込む。フィクスチャ: data/blog_post.html(記事本文+著者+日付), data/link_list.html(aタグ多数のナビゲーション), data/nested.html(入れ子のdiv/spanで階層探索を要する)。",
+      "concepts": ["beautifulsoup-parse", "find-vs-findall", "extract-text", "extract-attributes", "tree-navigation"],
+      "exercises": ["ex01_find_basic", "ex02_findall_loop", "ex03_attributes", "ex04_capstone"],
+      "estimated_minutes": 55,
+      "generated": false,
+      "reviewed": false
+    },
+    {
+      "dir": "unit03-selectors-and-tables",
+      "title": "セレクタと表・リストの抽出",
+      "summary": "CSSセレクタ(select/select_one)でclass・id・子孫・属性セレクタを使い、複数レコードを一括抽出する。HTMLのtable(thead/tbody/tr/td)を行×列の2次元データに変換し、商品カードやリスト項目の繰り返し構造をlist[dict]に整形する。欠損セル・不揃いな行への防御的アクセス(.get_text(strip=True)、要素が無い場合のNone処理)を学ぶ。C#のLINQでの射影・フィルタとの対応づけ。演習は全てローカルフィクスチャ。フィクスチャ: data/products.html(商品カードのグリッド、価格・名前・在庫), data/table_stats.html(表形式の統計データ), data/messy_list.html(一部セル欠損・class揺れを含む不揃いリスト)。",
+      "concepts": ["css-selectors", "select-vs-find", "table-extraction", "records-to-list-of-dict", "defensive-access"],
+      "exercises": ["ex01_css_select", "ex02_table_parse", "ex03_records_cleanup", "ex04_capstone"],
+      "estimated_minutes": 55,
+      "generated": false,
+      "reviewed": false
+    },
+    {
+      "dir": "unit04-http-and-manners",
+      "title": "HTTP通信とスクレイピングのマナー",
+      "summary": "requestsの使い方(get・status_code・.text・.encoding・headers・timeout・raise_for_status)とレスポンスモデルを概念として学ぶ。そのうえで倫理・法務を独立トピックとして扱う: robots.txtの読み方(urllib.robotparser.RobotFileParserでcan_fetch判定)、利用規約の尊重、適切なUser-Agent(自分を偽らず連絡先を示す)、Crawl-delay/レート制限をtime.sleepで守る、HTTP 429とRetry-Afterの扱い。ネットワーク不使用のため、requests.getの戻り値相当をローカルで再現するダミーResponse(status_code/text/headersを持つ小クラス)とローカルrobots.txtファイルで演習する。フィクスチャ: data/example_robots.txt(User-agent別のDisallow/Crawl-delay), data/response_ok.html(正常応答ボディ), data/fake_responses.py(200/404/429/Retry-Afterを返すダミーResponse生成ヘルパ)。",
+      "concepts": ["http-request-response", "requests-api", "robots-txt-parsing", "user-agent-etiquette", "rate-limiting-and-429"],
+      "exercises": ["ex01_parse_response", "ex02_robots_check", "ex03_rate_limit", "ex04_capstone"],
+      "estimated_minutes": 55,
+      "generated": false,
+      "reviewed": false
+    },
+    {
+      "dir": "unit05-robust-and-csv",
+      "title": "堅牢化とCSV出力",
+      "summary": "実データの汚れに耐える整形とファイル出力を仕上げる。文字列クレンジング(空白正規化・通貨/カンマ除去して数値化・日付文字列の正規化)、欠損や想定外構造での例外処理(try/except、要素None時のフォールバック、スキップとログ)、リトライ(指数バックオフ+ジッタの考え方)、そして標準ライブラリcsv.DictWriterでlist[dict]をUTF-8のCSVに書き出す(ヘッダ・クォート・改行の扱い)。C#のCsvHelper/StreamWriter相当。演習は全てローカルフィクスチャで、抽出済みlist[dictを整形→検証→CSV化する。フィクスチャ: data/dirty_records.html(通貨記号・全角空白・欠損混じりの一覧), data/expected_output.csv(整形後の期待CSV、テスト照合用)。",
+      "concepts": ["data-cleaning", "type-coercion", "error-handling-retry", "csv-dictwriter", "output-validation"],
+      "exercises": ["ex01_clean_fields", "ex02_error_handling", "ex03_write_csv", "ex04_capstone"],
+      "estimated_minutes": 55,
+      "generated": false,
+      "reviewed": false
+    },
+    {
+      "dir": "unit06-capstone-scraper",
+      "title": "キャップストーン: エンドツーエンドのスクレイパー",
+      "summary": "複数ページ相当のローカルフィクスチャ(一覧ページ+ページネーション+詳細ページ)を題材に、取得→解析→整形→CSV出力を一気通貫で実装する。robots.txtをRobotFileParserで尊重してから巡回し、Crawl-delayをtime.sleepで守り、ページ間を1件ずつ礼儀正しく辿る。一覧から各アイテムのリンクを集め、詳細ページから追加フィールドを抽出してlist[dict]に統合、クレンジングと例外処理(欠損/取得失敗はスキップしてログ)を通し、最終的にcsv.DictWriterで1本のCSVを出力する。ネットワークは使わず、URL→ローカルHTMLファイルへ解決するローカルフェッチャ(get関数を差し替え可能な形)で全ページを再現する。フィクスチャ: data/site/robots.txt, data/site/list_page_1.html〜list_page_3.html(ページネーション付き一覧), data/site/item_*.html(詳細ページ群), data/site/expected_catalog.csv(最終出力の期待値)。",
+      "concepts": ["multi-page-crawl", "pagination-follow", "robots-aware-fetch", "end-to-end-pipeline", "csv-catalog-output"],
+      "exercises": ["ex01_collect_links", "ex02_fetch_details", "ex03_pipeline_integrate", "ex04_capstone"],
+      "estimated_minutes": 60,
+      "generated": false,
+      "reviewed": false
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "name": "ml-intro",
+  "title": "機械学習入門",
+  "language": "python",
+  "test_command": "python -m pytest {unit}/tests -q",
+  "goal": "CSVを読み込み、前処理し、scikit-learnでモデルを学習・評価するエンドツーエンドの流れを一人で書ける",
+  "learner_profile": "C# AtCoder茶色、OOP理解あり、Python経験浅い、日本語話者(C#アナロジーが有効)",
+  "created": "2026-07-03",
+  "units": [
+    {
+      "dir": "unit01-numpy-basics",
+      "title": "NumPy配列の基本",
+      "summary": "配列生成・全要素演算・ブールマスク・ブロードキャストを、C#配列やLINQとの対比で習得する。np.array/arange/zeros による生成、ベクトル化演算(C#のforループ相当をLINQ風に一括処理)、ブールマスクによる抽出(Where相当)、shapeの異なる配列同士のブロードキャストを扱う。データは全てコード内で生成(np.arange・np.random.default_rng(seed=0) によるシード固定合成配列)し、外部ネットワーク・ファイル不使用。",
+      "exercises": [
+        "ex01_arrays",
+        "ex02_masking",
+        "ex03_broadcasting",
+        "ex04_capstone"
+      ],
+      "estimated_minutes": 40,
+      "generated": true,
+      "reviewed": true,
+      "concepts": [
+        "numpy-vectorize",
+        "numpy-masking",
+        "numpy-broadcasting"
+      ]
+    },
+    {
+      "dir": "unit02-pandas",
+      "title": "pandasによるデータ操作",
+      "summary": "DataFrame/Seriesの構築・列選択・行フィルタ・欠損処理・groupby集計を習得する。C#の匿名型リストやLINQ GroupByとの対比で、read系ではなく辞書/NumPy配列からのDataFrame生成、loc/ilocによる選択、isna/fillna/dropnaでの欠損処理、groupby().agg()での集計を扱う。データはコード内辞書と np.random.default_rng(seed=0) の合成データ、および欠損を意図的に混ぜたインメモリ表を使用。sklearn付属データセットもDataFrame化して利用(as_frame=True)。外部ネットワーク・CSVファイル不使用。",
+      "exercises": [
+        "ex01_dataframe",
+        "ex02_filter_select",
+        "ex03_missing_groupby",
+        "ex04_capstone"
+      ],
+      "estimated_minutes": 45,
+      "generated": true,
+      "reviewed": true,
+      "concepts": [
+        "pandas-dataframe",
+        "pandas-select-filter",
+        "pandas-missing",
+        "pandas-groupby"
+      ]
+    },
+    {
+      "dir": "unit03-first-model",
+      "title": "はじめての回帰モデル",
+      "summary": "train_test_split / fit / predict / 回帰指標の一連の流れを習得する。scikit-learnの推定器APIは『estimatorオブジェクトを生成→fitで学習→predictで推論』という一貫した形(C#のインターフェース実装のアナロジー)であることを体感する。LinearRegression による学習、random_state固定のtrain_test_split、MAE/MSE/RMSE/R2 の算出と解釈を扱う。データは sklearn.datasets.load_diabetes(組み込み・回帰用)を使用。外部ネットワーク不使用。",
+      "exercises": [
+        "ex01_split_fit_predict",
+        "ex02_metrics",
+        "ex03_linear_regression",
+        "ex04_capstone"
+      ],
+      "estimated_minutes": 45,
+      "generated": true,
+      "reviewed": true,
+      "concepts": [
+        "sklearn-estimator-api",
+        "train-test-split",
+        "regression-metrics"
+      ]
+    },
+    {
+      "dir": "unit04-classification",
+      "title": "分類と評価",
+      "summary": "分類モデルの学習・評価・交差検証を習得する。LogisticRegression による多クラス分類、accuracy/precision/recall、confusion_matrix(混同行列)の読み方、classification_report、cross_val_score によるK分割交差検証を扱う。回帰指標との違い(連続値誤差 vs クラス的中)を対比する。データは sklearn.datasets.load_iris と load_wine(いずれも組み込み・分類用)を使用。外部ネットワーク不使用。",
+      "exercises": [
+        "ex01_train_classifier",
+        "ex02_confusion_matrix",
+        "ex03_cross_validation",
+        "ex04_capstone"
+      ],
+      "estimated_minutes": 45,
+      "generated": true,
+      "reviewed": true,
+      "concepts": [
+        "classification-workflow",
+        "confusion-matrix-metrics",
+        "cross-validation"
+      ]
+    },
+    {
+      "dir": "unit05-capstone-project",
+      "title": "総合ミニプロジェクト",
+      "summary": "前処理→学習→評価を一気通貫で書くミニプロジェクト。欠損補完・特徴量スケーリング(StandardScaler)・train_test_split・モデル学習・指標評価をPipelineとしてまとめ、unit01〜04の内容を統合する。unit01(NumPy)→unit02(pandas前処理)→unit03(回帰)→unit04(分類・評価)の順で小課題を積み上げ、最後のcapstoneで『データ読込(組み込み)→前処理→分割→学習→評価』を一人で完成させる。データは sklearn.datasets の load_wine / load_breast_cancer(いずれも組み込み・ネットワーク不使用)を使用。合成欠損を注入して前処理を練習する。",
+      "exercises": [
+        "ex01_preprocess",
+        "ex02_pipeline",
+        "ex03_train_evaluate",
+        "ex04_capstone"
+      ],
+      "estimated_minutes": 45,
+      "generated": true,
+      "reviewed": true,
+      "concepts": [
+        "preprocessing-impute-scale",
+        "sklearn-pipeline",
+        "end-to-end-workflow"
+      ]
+    }
+  ],
+  "format": {
+    "lesson": "jupyter",
+    "grading": "pytest",
+    "reason": "実行→観察が数秒で回り、セル単位の即時チェックが可能"
+  }
+}
