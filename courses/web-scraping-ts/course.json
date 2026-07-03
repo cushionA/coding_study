@@ -1,0 +1,142 @@
+{
+  "name": "web-scraping-ts",
+  "title": "TypeScript Webスクレイピング入門",
+  "language": "typescript",
+  "format": {
+    "lesson": "script",
+    "grading": "vitest",
+    "reason": "tsxで実行→観察が数秒、check()でブロック単位即時判定、追加セットアップはnpm installのみ"
+  },
+  "test_command": "npx vitest run {unit}/tests",
+  "goal": "実在サイト相当のHTMLから、取得→解析→整形→CSV出力のスクレイパーを、エラー処理とマナー(robots.txt/レート制限)込みで一人で書ける",
+  "learner_profile": "C# AtCoder茶色、OOP理解あり。TSはC#に近い言語(静的型・ジェネリクス・async/await・アロー関数=ラムダ)なのでアナロジーを強く効かせる。TS固有の落とし穴(構造的型付け・null/undefined・ESM import)は序盤で足場を作る",
+  "created": "2026-07-03",
+  "units": [
+    {
+      "dir": "unit01-html-and-ts-basics",
+      "title": "HTMLの構造とTypeScriptの足場",
+      "summary": "スクレイピングの全体像(取得→解析→整形→出力)とHTML/DOMのツリー構造を掴む。同時にTypeScriptの型注釈・文字列操作(trim/split/replace/テンプレートリテラル)・配列メソッド(map/filter/find=LINQのSelect/Where/First)・オブジェクト/Record<K,V>という後続ユニットの土台を固める。C#のstring/List<T>/Dictionary<K,V>/LINQとのアナロジーでTS構文を対応づけつつ、TS固有の落とし穴(null/undefinedとオプショナルチェーン?./??、構造的型付け、ESM import構文)を早めに触る。演習ではHTTP通信は行わず、ローカルHTMLフィクスチャをfs.readFileSyncで文字列として読み込み、素朴な文字列処理とRecordでの集計を練習する。フィクスチャ: data/simple_page.html(見出し・段落・リンクを含む最小ページ), data/profile_card.html(名前・職業・タグを含むカード1件)。",
+      "concepts": [
+        "scraping-pipeline-overview",
+        "html-dom-tree",
+        "ts-string-ops",
+        "ts-array-methods",
+        "ts-object-record"
+      ],
+      "exercises": [
+        "ex01_string_extract",
+        "ex02_array_record",
+        "ex03_html_skim",
+        "ex04_capstone"
+      ],
+      "estimated_minutes": 50,
+      "generated": true,
+      "reviewed": true
+    },
+    {
+      "dir": "unit02-cheerio-basics",
+      "title": "cheerioで解析する",
+      "summary": "cheerio.load(html)でHTMLをパースし、jQuery風の$(selector)でタグを探索、.text()でテキスト、.attr('href')で属性を取り出す。$(...).find()での子孫探索、.each()での反復、.first()/.eq()での要素選択、.parent()/.children()での親子ナビゲーションの基本。C#で言えばXMLをオブジェクトツリーに読み込んでノードを辿る感覚とのアナロジー。生の文字列処理(unit01)がなぜ壊れやすいか→パーサに任せる利点を体感する。cheerioのCheerio<Element>とElementの型、text()が常にstringを返す一方attr()がstring|undefinedを返すというTSの型の違いにも注意を向ける。演習ではローカルフィクスチャをfsで読み込みcheerio.loadする。フィクスチャ: data/blog_post.html(記事本文+著者+日付), data/link_list.html(aタグ多数のナビゲーション), data/nested.html(入れ子のdiv/spanで階層探索を要する)。",
+      "concepts": [
+        "cheerio-load",
+        "selector-query",
+        "extract-text",
+        "extract-attributes",
+        "tree-navigation"
+      ],
+      "exercises": [
+        "ex01_query_basic",
+        "ex02_each_loop",
+        "ex03_attributes",
+        "ex04_capstone"
+      ],
+      "estimated_minutes": 55,
+      "generated": true,
+      "reviewed": true
+    },
+    {
+      "dir": "unit03-selectors-and-tables",
+      "title": "セレクタと表・リストの抽出",
+      "summary": "CSSセレクタ(class・id・子孫・属性セレクタ・:nth-child等)を$()に渡して複数レコードを一括抽出する。HTMLのtable(thead/tbody/tr/td)を行×列の2次元データに変換し、商品カードやリスト項目の繰り返し構造をオブジェクト配列(Array<Record<string,string>>)に整形する。欠損セル・不揃いな行への防御的アクセス(text().trim()、要素が無い場合の.length===0判定やattr()のundefinedを??でフォールバック)を学ぶ。C#のLINQでのSelect射影・Whereフィルタ、mapへの変換との対応づけ。map/filterで抽出パイプラインを組む。演習は全てローカルフィクスチャ。フィクスチャ: data/products.html(商品カードのグリッド、価格・名前・在庫), data/table_stats.html(表形式の統計データ), data/messy_list.html(一部セル欠損・class揺れを含む不揃いリスト)。",
+      "concepts": [
+        "css-selectors",
+        "select-multiple",
+        "table-extraction",
+        "records-to-array-of-object",
+        "defensive-access"
+      ],
+      "exercises": [
+        "ex01_css_select",
+        "ex02_table_parse",
+        "ex03_records_cleanup",
+        "ex04_capstone"
+      ],
+      "estimated_minutes": 55,
+      "generated": true,
+      "reviewed": true
+    },
+    {
+      "dir": "unit04-fetch-and-manners",
+      "title": "fetch通信とスクレイピングのマナー",
+      "summary": "Node標準のfetch(Node v22で組み込み)の使い方(await fetch(url)・response.ok・response.status・await response.text()・response.headers.get()・AbortControllerでのtimeout)とResponseモデルをasync/awaitで概念として学ぶ。そのうえで倫理・法務を独立トピックとして扱う: robots.txtの読み方(Nodeに標準robotparserが無いため、User-agent別のDisallow/Crawl-delay行を解析してcan-fetch判定する自前ミニパーサを書く)、利用規約の尊重、適切なUser-Agentヘッダ(自分を偽らず連絡先を示す)、Crawl-delay/レート制限をsetTimeoutベースのsleep(Promise)で守る、HTTP 429とRetry-Afterヘッダの扱い。ネットワーク不使用のため、fetchの戻り値相当をローカルで再現するダミーResponse(status/ok/text()/headers.get()を持つオブジェクト)とローカルrobots.txtファイルで演習する。フィクスチャ: data/example_robots.txt(User-agent別のDisallow/Crawl-delay), data/response_ok.html(正常応答ボディ), data/fakeResponses.ts(200/404/429/Retry-Afterを返すダミーResponse生成ヘルパ)。",
+      "concepts": [
+        "fetch-async-await",
+        "response-model",
+        "robots-txt-parsing",
+        "user-agent-etiquette",
+        "rate-limiting-and-429"
+      ],
+      "exercises": [
+        "ex01_handle_response",
+        "ex02_robots_parser",
+        "ex03_rate_limit",
+        "ex04_capstone"
+      ],
+      "estimated_minutes": 55,
+      "generated": true,
+      "reviewed": true
+    },
+    {
+      "dir": "unit05-robust-and-csv",
+      "title": "堅牢化とCSV出力",
+      "summary": "実データの汚れに耐える整形とファイル出力を仕上げる。文字列クレンジング(空白/全角空白の正規化・通貨記号やカンマを除去してNumber化・日付文字列の正規化)、欠損や想定外構造での例外処理(try/catch、要素undefined時のフォールバック、スキップとconsole.warnでのログ)、リトライ(指数バックオフ+ジッタの考え方をasync関数で実装)、そしてCSVライブラリが使えないため標準のfs.writeFileSyncでArray<Record>をUTF-8のCSVに書き出す自前ライタ(ヘッダ生成・カンマ/改行/ダブルクォートを含む値のエスケープ)。C#のStreamWriter/CsvHelper相当を標準機能だけで再現する感覚。演習は全てローカルフィクスチャで、抽出済みオブジェクト配列を整形→検証→CSV化する。フィクスチャ: data/dirty_records.html(通貨記号・全角空白・欠損混じりの一覧), data/expected_output.csv(整形後の期待CSV、テスト照合用)。",
+      "concepts": [
+        "data-cleaning",
+        "type-coercion",
+        "error-handling-retry",
+        "csv-writer",
+        "output-validation"
+      ],
+      "exercises": [
+        "ex01_clean_fields",
+        "ex02_error_handling",
+        "ex03_write_csv",
+        "ex04_capstone"
+      ],
+      "estimated_minutes": 55,
+      "generated": true,
+      "reviewed": true
+    },
+    {
+      "dir": "unit06-capstone-scraper",
+      "title": "キャップストーン: エンドツーエンドのスクレイパー",
+      "summary": "複数ページ相当のローカルフィクスチャ(一覧ページ+ページネーション+詳細ページ)を題材に、取得→解析→整形→CSV出力を一気通貫でasync/awaitで実装する。robots.txt自前パーサ(unit04)で巡回可否を判定してから巡回し、Crawl-delayをsleepで守り、ページ間を1件ずつ礼儀正しく辿る。一覧から各アイテムのリンクを集め、次ページリンクを辿ってページネーションを巡回、詳細ページから追加フィールドを抽出してオブジェクト配列に統合、クレンジングと例外処理(欠損/取得失敗はスキップしてログ)を通し、最終的に自前CSVライタで1本のCSVを出力する。ネットワークは使わず、URL→ローカルHTMLファイルへ解決するローカルフェッチャ(async fetch関数と同じシグネチャで差し替え可能な形)で全ページを再現する。フィクスチャ: data/site/robots.txt, data/site/list_page_1.html〜list_page_3.html(ページネーション付き一覧), data/site/item_*.html(詳細ページ群), data/site/expected_catalog.csv(最終出力の期待値)。",
+      "concepts": [
+        "multi-page-crawl",
+        "pagination-follow",
+        "robots-aware-fetch",
+        "end-to-end-pipeline",
+        "csv-catalog-output"
+      ],
+      "exercises": [
+        "ex01_collect_links",
+        "ex02_fetch_details",
+        "ex03_pipeline_integrate",
+        "ex04_capstone"
+      ],
+      "estimated_minutes": 60,
+      "generated": true,
+      "reviewed": true
+    }
+  ]
+}
