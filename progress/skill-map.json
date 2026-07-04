@@ -1,0 +1,841 @@
+{
+  "updated": "2026-07-03",
+  "legend": {
+    "0": "未着手",
+    "1": "解説を読んで理解",
+    "2": "ガイド付きで書けた",
+    "3": "ヒントなしで書けた",
+    "4": "自分の言葉で説明できた"
+  },
+  "note": "概念スラッグはコース固有。create-course は意味で対応付けて既習度を反映する。",
+  "concepts": {
+    "beautifulsoup-parse": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "BeautifulSoupで解析する"
+        }
+      ],
+      "context": "BeautifulSoupで解析する",
+      "level_label": "未着手"
+    },
+    "cheerio-load": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 0,
+          "unit": "cheerioで解析する"
+        }
+      ],
+      "context": "cheerioで解析する",
+      "level_label": "未着手"
+    },
+    "classification-workflow": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "ml-intro",
+          "level": 0,
+          "unit": "分類と評価"
+        }
+      ],
+      "context": "分類と評価",
+      "level_label": "未着手"
+    },
+    "confusion-matrix-metrics": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "ml-intro",
+          "level": 0,
+          "unit": "分類と評価"
+        }
+      ],
+      "context": "分類と評価",
+      "level_label": "未着手"
+    },
+    "cross-validation": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "ml-intro",
+          "level": 0,
+          "unit": "分類と評価"
+        }
+      ],
+      "context": "分類と評価",
+      "level_label": "未着手"
+    },
+    "css-selectors": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 0,
+          "unit": "セレクタと表・リストの抽出"
+        },
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "セレクタと表・リストの抽出"
+        }
+      ],
+      "context": "セレクタと表・リストの抽出",
+      "level_label": "未着手"
+    },
+    "csv-catalog-output": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 0,
+          "unit": "キャップストーン: エンドツーエンドのスクレイパー"
+        },
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "キャップストーン: エンドツーエンドのスクレイパー"
+        }
+      ],
+      "context": "キャップストーン: エンドツーエンドのスクレイパー",
+      "level_label": "未着手"
+    },
+    "csv-dictwriter": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "堅牢化とCSV出力"
+        }
+      ],
+      "context": "堅牢化とCSV出力",
+      "level_label": "未着手"
+    },
+    "csv-writer": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 0,
+          "unit": "堅牢化とCSV出力"
+        }
+      ],
+      "context": "堅牢化とCSV出力",
+      "level_label": "未着手"
+    },
+    "data-cleaning": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 0,
+          "unit": "堅牢化とCSV出力"
+        },
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "堅牢化とCSV出力"
+        }
+      ],
+      "context": "堅牢化とCSV出力",
+      "level_label": "未着手"
+    },
+    "defensive-access": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 0,
+          "unit": "セレクタと表・リストの抽出"
+        },
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "セレクタと表・リストの抽出"
+        }
+      ],
+      "context": "セレクタと表・リストの抽出",
+      "level_label": "未着手"
+    },
+    "end-to-end-pipeline": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 0,
+          "unit": "キャップストーン: エンドツーエンドのスクレイパー"
+        },
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "キャップストーン: エンドツーエンドのスクレイパー"
+        }
+      ],
+      "context": "キャップストーン: エンドツーエンドのスクレイパー",
+      "level_label": "未着手"
+    },
+    "end-to-end-workflow": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "ml-intro",
+          "level": 0,
+          "unit": "総合ミニプロジェクト"
+        }
+      ],
+      "context": "総合ミニプロジェクト",
+      "level_label": "未着手"
+    },
+    "error-handling-retry": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 0,
+          "unit": "堅牢化とCSV出力"
+        },
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "堅牢化とCSV出力"
+        }
+      ],
+      "context": "堅牢化とCSV出力",
+      "level_label": "未着手"
+    },
+    "extract-attributes": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 0,
+          "unit": "cheerioで解析する"
+        },
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "BeautifulSoupで解析する"
+        }
+      ],
+      "context": "cheerioで解析する",
+      "level_label": "未着手"
+    },
+    "extract-text": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 0,
+          "unit": "cheerioで解析する"
+        },
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "BeautifulSoupで解析する"
+        }
+      ],
+      "context": "cheerioで解析する",
+      "level_label": "未着手"
+    },
+    "fetch-async-await": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 0,
+          "unit": "fetch通信とスクレイピングのマナー"
+        }
+      ],
+      "context": "fetch通信とスクレイピングのマナー",
+      "level_label": "未着手"
+    },
+    "find-vs-findall": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "BeautifulSoupで解析する"
+        }
+      ],
+      "context": "BeautifulSoupで解析する",
+      "level_label": "未着手"
+    },
+    "html-dom-tree": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 0,
+          "unit": "HTMLの構造とTypeScriptの足場"
+        },
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "HTMLの構造とPythonの足場"
+        }
+      ],
+      "context": "HTMLの構造とTypeScriptの足場",
+      "level_label": "未着手"
+    },
+    "http-request-response": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "HTTP通信とスクレイピングのマナー"
+        }
+      ],
+      "context": "HTTP通信とスクレイピングのマナー",
+      "level_label": "未着手"
+    },
+    "multi-page-crawl": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 0,
+          "unit": "キャップストーン: エンドツーエンドのスクレイパー"
+        },
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "キャップストーン: エンドツーエンドのスクレイパー"
+        }
+      ],
+      "context": "キャップストーン: エンドツーエンドのスクレイパー",
+      "level_label": "未着手"
+    },
+    "numpy-broadcasting": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "ml-intro",
+          "level": 0,
+          "unit": "NumPy配列の基本"
+        }
+      ],
+      "context": "NumPy配列の基本",
+      "level_label": "未着手"
+    },
+    "numpy-masking": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "ml-intro",
+          "level": 0,
+          "unit": "NumPy配列の基本"
+        }
+      ],
+      "context": "NumPy配列の基本",
+      "level_label": "未着手"
+    },
+    "numpy-vectorize": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "ml-intro",
+          "level": 0,
+          "unit": "NumPy配列の基本"
+        }
+      ],
+      "context": "NumPy配列の基本",
+      "level_label": "未着手"
+    },
+    "output-validation": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 0,
+          "unit": "堅牢化とCSV出力"
+        },
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "堅牢化とCSV出力"
+        }
+      ],
+      "context": "堅牢化とCSV出力",
+      "level_label": "未着手"
+    },
+    "pagination-follow": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 0,
+          "unit": "キャップストーン: エンドツーエンドのスクレイパー"
+        },
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "キャップストーン: エンドツーエンドのスクレイパー"
+        }
+      ],
+      "context": "キャップストーン: エンドツーエンドのスクレイパー",
+      "level_label": "未着手"
+    },
+    "pandas-dataframe": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "ml-intro",
+          "level": 0,
+          "unit": "pandasによるデータ操作"
+        }
+      ],
+      "context": "pandasによるデータ操作",
+      "level_label": "未着手"
+    },
+    "pandas-groupby": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "ml-intro",
+          "level": 0,
+          "unit": "pandasによるデータ操作"
+        }
+      ],
+      "context": "pandasによるデータ操作",
+      "level_label": "未着手"
+    },
+    "pandas-missing": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "ml-intro",
+          "level": 0,
+          "unit": "pandasによるデータ操作"
+        }
+      ],
+      "context": "pandasによるデータ操作",
+      "level_label": "未着手"
+    },
+    "pandas-select-filter": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "ml-intro",
+          "level": 0,
+          "unit": "pandasによるデータ操作"
+        }
+      ],
+      "context": "pandasによるデータ操作",
+      "level_label": "未着手"
+    },
+    "preprocessing-impute-scale": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "ml-intro",
+          "level": 0,
+          "unit": "総合ミニプロジェクト"
+        }
+      ],
+      "context": "総合ミニプロジェクト",
+      "level_label": "未着手"
+    },
+    "python-dict-ops": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "HTMLの構造とPythonの足場"
+        }
+      ],
+      "context": "HTMLの構造とPythonの足場",
+      "level_label": "未着手"
+    },
+    "python-list-comprehension": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "HTMLの構造とPythonの足場"
+        }
+      ],
+      "context": "HTMLの構造とPythonの足場",
+      "level_label": "未着手"
+    },
+    "python-string-ops": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "HTMLの構造とPythonの足場"
+        }
+      ],
+      "context": "HTMLの構造とPythonの足場",
+      "level_label": "未着手"
+    },
+    "rate-limiting-and-429": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 0,
+          "unit": "fetch通信とスクレイピングのマナー"
+        },
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "HTTP通信とスクレイピングのマナー"
+        }
+      ],
+      "context": "fetch通信とスクレイピングのマナー",
+      "level_label": "未着手"
+    },
+    "records-to-array-of-object": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 0,
+          "unit": "セレクタと表・リストの抽出"
+        }
+      ],
+      "context": "セレクタと表・リストの抽出",
+      "level_label": "未着手"
+    },
+    "records-to-list-of-dict": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "セレクタと表・リストの抽出"
+        }
+      ],
+      "context": "セレクタと表・リストの抽出",
+      "level_label": "未着手"
+    },
+    "regression-metrics": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "ml-intro",
+          "level": 0,
+          "unit": "はじめての回帰モデル"
+        }
+      ],
+      "context": "はじめての回帰モデル",
+      "level_label": "未着手"
+    },
+    "requests-api": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "HTTP通信とスクレイピングのマナー"
+        }
+      ],
+      "context": "HTTP通信とスクレイピングのマナー",
+      "level_label": "未着手"
+    },
+    "response-model": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 0,
+          "unit": "fetch通信とスクレイピングのマナー"
+        }
+      ],
+      "context": "fetch通信とスクレイピングのマナー",
+      "level_label": "未着手"
+    },
+    "robots-aware-fetch": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 0,
+          "unit": "キャップストーン: エンドツーエンドのスクレイパー"
+        },
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "キャップストーン: エンドツーエンドのスクレイパー"
+        }
+      ],
+      "context": "キャップストーン: エンドツーエンドのスクレイパー",
+      "level_label": "未着手"
+    },
+    "robots-txt-parsing": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 0,
+          "unit": "fetch通信とスクレイピングのマナー"
+        },
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "HTTP通信とスクレイピングのマナー"
+        }
+      ],
+      "context": "fetch通信とスクレイピングのマナー",
+      "level_label": "未着手"
+    },
+    "scraping-pipeline-overview": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 0,
+          "unit": "HTMLの構造とTypeScriptの足場"
+        },
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "HTMLの構造とPythonの足場"
+        }
+      ],
+      "context": "HTMLの構造とTypeScriptの足場",
+      "level_label": "未着手"
+    },
+    "select-multiple": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 0,
+          "unit": "セレクタと表・リストの抽出"
+        }
+      ],
+      "context": "セレクタと表・リストの抽出",
+      "level_label": "未着手"
+    },
+    "select-vs-find": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "セレクタと表・リストの抽出"
+        }
+      ],
+      "context": "セレクタと表・リストの抽出",
+      "level_label": "未着手"
+    },
+    "selector-query": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 0,
+          "unit": "cheerioで解析する"
+        }
+      ],
+      "context": "cheerioで解析する",
+      "level_label": "未着手"
+    },
+    "sklearn-estimator-api": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "ml-intro",
+          "level": 0,
+          "unit": "はじめての回帰モデル"
+        }
+      ],
+      "context": "はじめての回帰モデル",
+      "level_label": "未着手"
+    },
+    "sklearn-pipeline": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "ml-intro",
+          "level": 0,
+          "unit": "総合ミニプロジェクト"
+        }
+      ],
+      "context": "総合ミニプロジェクト",
+      "level_label": "未着手"
+    },
+    "table-extraction": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 0,
+          "unit": "セレクタと表・リストの抽出"
+        },
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "セレクタと表・リストの抽出"
+        }
+      ],
+      "context": "セレクタと表・リストの抽出",
+      "level_label": "未着手"
+    },
+    "train-test-split": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "ml-intro",
+          "level": 0,
+          "unit": "はじめての回帰モデル"
+        }
+      ],
+      "context": "はじめての回帰モデル",
+      "level_label": "未着手"
+    },
+    "tree-navigation": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 0,
+          "unit": "cheerioで解析する"
+        },
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "BeautifulSoupで解析する"
+        }
+      ],
+      "context": "cheerioで解析する",
+      "level_label": "未着手"
+    },
+    "ts-array-methods": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 0,
+          "unit": "HTMLの構造とTypeScriptの足場"
+        }
+      ],
+      "context": "HTMLの構造とTypeScriptの足場",
+      "level_label": "未着手"
+    },
+    "ts-object-record": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 0,
+          "unit": "HTMLの構造とTypeScriptの足場"
+        }
+      ],
+      "context": "HTMLの構造とTypeScriptの足場",
+      "level_label": "未着手"
+    },
+    "ts-string-ops": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 0,
+          "unit": "HTMLの構造とTypeScriptの足場"
+        }
+      ],
+      "context": "HTMLの構造とTypeScriptの足場",
+      "level_label": "未着手"
+    },
+    "type-coercion": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 0,
+          "unit": "堅牢化とCSV出力"
+        },
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "堅牢化とCSV出力"
+        }
+      ],
+      "context": "堅牢化とCSV出力",
+      "level_label": "未着手"
+    },
+    "user-agent-etiquette": {
+      "level": 0,
+      "updated": "2026-07-03",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 0,
+          "unit": "fetch通信とスクレイピングのマナー"
+        },
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "HTTP通信とスクレイピングのマナー"
+        }
+      ],
+      "context": "fetch通信とスクレイピングのマナー",
+      "level_label": "未着手"
+    }
+  }
+}

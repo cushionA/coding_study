@@ -66,5 +66,6 @@ README と lesson.ipynb 冒頭を素材に、2〜3分ぶんの導入を話す:
    ## 次回の開始地点 / 次の復習予定
    ```
    振り返りセルの記述・attempts/tier実績・会話中の質問を素材にする。
-2. progress とノートを **git commit**: `learn(<course>): セッションノート YYYY-MM-DD`。
-3. 今日の成果・次回の開始地点・復習予定日を口頭で要約して締める。
+2. `python .claude/scripts/build_skill_map.py` を実行し `progress/skill-map.json` を最新化(次コース作成時のパーソナライズ材料になる)。
+3. progress・skill-map・ノートを **git commit**: `learn(<course>): セッションノート YYYY-MM-DD`。
+4. 今日の成果・次回の開始地点・復習予定日を口頭で要約して締める。

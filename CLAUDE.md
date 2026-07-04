@@ -20,6 +20,7 @@ courses/<course>/
   reviews/                  復習バリアント課題
   .solutions/unitNN-.../    完成版(同名ファイル)
 progress/<course>.json      進捗・復習キュー・スキルレベル
+progress/skill-map.json     全コース横断の概念×レベル集約(次コース作成のパーソナライズ材料)
 notes/                      学習ノート(セッションごと)
 ```
 
@@ -49,7 +50,7 @@ notes/                      学習ノート(セッションごと)
 
 `progress/<course>.json` の `skills` に概念キーで記録。5段階:
 - **0** 未着手 / **1** 解説を読んで理解した / **2** ガイド付きで書けた(lesson通過) / **3** ヒントなしで書けた(演習を tier0-1 で合格) / **4** 自分の言葉で説明できた(Feynmanチェック通過)
-更新タイミング: lesson通過→2、演習合格→attempts/tier実績に応じ2〜3、ユニット完了時の「自分の言葉で説明」で4。コース生成時のパーソナライズはこの値を参照する。
+更新タイミング: lesson通過→2、演習合格→attempts/tier実績に応じ2〜3、ユニット完了時の「自分の言葉で説明」で4。セッション終了時に `.claude/scripts/build_skill_map.py` で `progress/skill-map.json` に集約し、コース生成時のパーソナライズ(create-course手順2/5)がこれを参照する。
 
 ## Git規約
 
