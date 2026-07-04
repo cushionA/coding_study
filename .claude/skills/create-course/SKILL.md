@@ -10,7 +10,7 @@ description: 新しい学習コースを生成する。トピックと対象言�
 ## 手順
 
 ### 1. ヒアリング
-不明なら AskUserQuestion で確認: ①トピック ②対象言語 ③目標(「実務参加可能」の具体像)④希望ユニット数(既定5〜8)。学習者プロファイルは CLAUDE.md の記載を使う。
+不明なら AskUserQuestion で確認: ①トピック ②対象言語 ③目標(「実務参加可能」の具体像)④希望ユニット数(既定5〜8)。学習者の既習スキルは手順2の skill-map(`baseline` 出典に C#・OOP 等が入っている)を正本とし、教え方の方針は CLAUDE.md を使う。
 
 ### 2. パーソナライズ材料の収集(スキルマップ連携)
 - `python .claude/scripts/build_skill_map.py` を実行し、`progress/skill-map.json`(全コース横断の概念×レベル集約)を最新化して読む。

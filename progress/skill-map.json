@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-03",
+  "updated": "2026-07-04",
   "legend": {
     "0": {
       "label": "未着手",
@@ -24,6 +24,58 @@
   },
   "note": "スキルレベルの唯一の定義はこの legend。概念スラッグはコース固有なので create-course は意味で対応付けて既習度を反映する。",
   "concepts": {
+    "imperative-basics": {
+      "level": 4,
+      "updated": "2026-07-04",
+      "sources": [
+        {
+          "course": "baseline",
+          "level": 4,
+          "unit": "手続き的プログラミングの基礎(変数・制御構文・関数)"
+        }
+      ],
+      "context": "手続き的プログラミングの基礎(変数・制御構文・関数)",
+      "level_label": "自分の言葉で説明できた"
+    },
+    "algorithms-atcoder-brown": {
+      "level": 3,
+      "updated": "2026-07-04",
+      "sources": [
+        {
+          "course": "baseline",
+          "level": 3,
+          "unit": "基本的なアルゴリズムとデータ構造(AtCoder茶色相当)"
+        }
+      ],
+      "context": "基本的なアルゴリズムとデータ構造(AtCoder茶色相当)",
+      "level_label": "ヒントなしで書けた"
+    },
+    "csharp-language": {
+      "level": 3,
+      "updated": "2026-07-04",
+      "sources": [
+        {
+          "course": "baseline",
+          "level": 3,
+          "unit": "C#の言語機能・文法(メインで使える。細かい仕様はあいまい)"
+        }
+      ],
+      "context": "C#の言語機能・文法(メインで使える。細かい仕様はあいまい)",
+      "level_label": "ヒントなしで書けた"
+    },
+    "oop-fundamentals": {
+      "level": 3,
+      "updated": "2026-07-04",
+      "sources": [
+        {
+          "course": "baseline",
+          "level": 3,
+          "unit": "オブジェクト指向(クラス・継承・インターフェース・カプセル化)"
+        }
+      ],
+      "context": "オブジェクト指向(クラス・継承・インターフェース・カプセル化)",
+      "level_label": "ヒントなしで書けた"
+    },
     "beautifulsoup-parse": {
       "level": 0,
       "updated": "2026-07-03",

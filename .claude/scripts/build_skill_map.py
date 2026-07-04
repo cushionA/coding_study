@@ -48,7 +48,8 @@ def main():
             level = int(info.get("level", 0))
             updated = info.get("updated", "")
             latest = max(latest, updated)
-            ctx = concept_context(courses_dir, course, slug)
+            # エントリに明示的な context があれば優先(baseline 等 course.json を持たない出典用)
+            ctx = info.get("context") or concept_context(courses_dir, course, slug)
             entry = concepts.setdefault(slug, {
                 "level": 0, "updated": "", "sources": [], "context": ctx,
             })

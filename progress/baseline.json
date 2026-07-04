@@ -1,0 +1,31 @@
+{
+  "course": "baseline",
+  "note": "コース学習以前からの前提知識。build_skill_map が他の progress と同様に集約する。level は概算のシード値(実コースの厳密な判定基準ではなく、既習度の目安)。",
+  "started": "2026-07-04",
+  "skills": {
+    "imperative-basics": {
+      "level": 4,
+      "updated": "2026-07-04",
+      "context": "手続き的プログラミングの基礎(変数・制御構文・関数)",
+      "evidence": "AtCoder茶色相当の実装経験"
+    },
+    "csharp-language": {
+      "level": 3,
+      "updated": "2026-07-04",
+      "context": "C#の言語機能・文法(メインで使える。細かい仕様はあいまい)",
+      "evidence": "AtCoder茶色をC#で。細かい仕様はあいまい"
+    },
+    "oop-fundamentals": {
+      "level": 3,
+      "updated": "2026-07-04",
+      "context": "オブジェクト指向(クラス・継承・インターフェース・カプセル化)",
+      "evidence": "それなりに理解している"
+    },
+    "algorithms-atcoder-brown": {
+      "level": 3,
+      "updated": "2026-07-04",
+      "context": "基本的なアルゴリズムとデータ構造(AtCoder茶色相当)",
+      "evidence": "競技プログラミングの基礎"
+    }
+  }
+}
