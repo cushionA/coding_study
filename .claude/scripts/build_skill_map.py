@@ -9,13 +9,16 @@ from pathlib import Path
 
 sys.stdout.reconfigure(encoding="utf-8")
 
-LEVEL_LABELS = {
-    0: "未着手",
-    1: "解説を読んで理解",
-    2: "ガイド付きで書けた",
-    3: "ヒントなしで書けた",
-    4: "自分の言葉で説明できた",
+# スキルレベル(0〜4)の唯一の定義。CLAUDE.md・progress.json.md 等はここを参照する。
+# ラベル=各レベルの意味、判定基準=/study がそのレベルを付与する条件。
+LEVEL_RUBRIC = {
+    0: {"label": "未着手", "criteria": "まだ触れていない"},
+    1: {"label": "解説を読んで理解", "criteria": "lesson の解説を読んで概念を理解した"},
+    2: {"label": "ガイド付きで書けた", "criteria": "lesson を通過した(ガイド付きで書けた)"},
+    3: {"label": "ヒントなしで書けた", "criteria": "演習を tier0-1・attempts<=3 で合格した"},
+    4: {"label": "自分の言葉で説明できた", "criteria": "ユニット完了時の Feynman チェックを通過した"},
 }
+LEVEL_LABELS = {k: v["label"] for k, v in LEVEL_RUBRIC.items()}
 
 def load_json(p):
     return json.loads(Path(p).read_text(encoding="utf-8"))
@@ -66,8 +69,8 @@ def main():
 
     out = {
         "updated": latest,
-        "legend": LEVEL_LABELS,
-        "note": "概念スラッグはコース固有。create-course は意味で対応付けて既習度を反映する。",
+        "legend": LEVEL_RUBRIC,
+        "note": "スキルレベルの唯一の定義はこの legend。概念スラッグはコース固有なので create-course は意味で対応付けて既習度を反映する。",
         "concepts": ordered,
     }
     dest = progress_dir / "skill-map.json"

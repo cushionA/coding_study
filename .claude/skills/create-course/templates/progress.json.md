@@ -30,7 +30,7 @@
   ```json
   { "level": 2, "updated": "2026-07-03", "evidence": "unit01 lesson通過" }
   ```
-  レベル定義: 0=未着手 / 1=解説を読んで理解 / 2=ガイド付きで書けた(lesson通過) / 3=ヒントなしで書けた(演習をtier0-1・attempts<=3で合格) / 4=自分の言葉で説明できた(Feynmanチェック)
+  レベル(0〜4)の定義は `.claude/scripts/build_skill_map.py` の `LEVEL_RUBRIC`(= `progress/skill-map.json` の `legend`)を参照。ここには再掲しない。
 - `review_queue` の要素:
   ```json
   { "source": "unit01/ex03_broadcasting", "due": "2026-07-04", "done": null, "variant_file": null }
