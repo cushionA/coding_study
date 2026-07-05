@@ -20,6 +20,11 @@
       "completed": "2026-07-05",
       "attempts": 4,
       "tier": 3
+    },
+    "unit01-numpy-basics/ex04_capstone": {
+      "completed": "2026-07-05",
+      "attempts": 5,
+      "tier": 1
     }
   },
   "skills": {
@@ -48,7 +53,11 @@
     { "source": "unit01-numpy-basics/ex03_broadcasting", "due": "2026-07-06", "done": null, "variant_file": null },
     { "source": "unit01-numpy-basics/ex03_broadcasting", "due": "2026-07-08", "done": null, "variant_file": null },
     { "source": "unit01-numpy-basics/ex03_broadcasting", "due": "2026-07-12", "done": null, "variant_file": null },
-    { "source": "unit01-numpy-basics/ex03_broadcasting", "due": "2026-07-19", "done": null, "variant_file": null }
+    { "source": "unit01-numpy-basics/ex03_broadcasting", "due": "2026-07-19", "done": null, "variant_file": null },
+    { "source": "unit01-numpy-basics/ex04_capstone", "due": "2026-07-06", "done": null, "variant_file": null },
+    { "source": "unit01-numpy-basics/ex04_capstone", "due": "2026-07-08", "done": null, "variant_file": null },
+    { "source": "unit01-numpy-basics/ex04_capstone", "due": "2026-07-12", "done": null, "variant_file": null },
+    { "source": "unit01-numpy-basics/ex04_capstone", "due": "2026-07-19", "done": null, "variant_file": null }
   ],
   "milestones": {}
 }
