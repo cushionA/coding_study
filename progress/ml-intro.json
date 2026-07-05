@@ -1,13 +1,15 @@
 {
   "course": "ml-intro",
   "started": "2026-07-03",
-  "current": { "unit": "unit01-numpy-basics", "phase": "lesson", "exercise": null },
-  "lessons": {},
+  "current": { "unit": "unit01-numpy-basics", "phase": "exercise", "exercise": "ex01_arrays" },
+  "lessons": {
+    "unit01-numpy-basics": { "completed": "2026-07-05" }
+  },
   "exercises": {},
   "skills": {
-    "numpy-vectorize": { "level": 0, "updated": "2026-07-03", "evidence": "" },
-    "numpy-masking": { "level": 0, "updated": "2026-07-03", "evidence": "" },
-    "numpy-broadcasting": { "level": 0, "updated": "2026-07-03", "evidence": "" },
+    "numpy-vectorize": { "level": 2, "updated": "2026-07-05", "evidence": "unit01 lesson checkpoint passed" },
+    "numpy-masking": { "level": 2, "updated": "2026-07-05", "evidence": "unit01 lesson checkpoint passed" },
+    "numpy-broadcasting": { "level": 2, "updated": "2026-07-05", "evidence": "unit01 lesson checkpoint passed" },
     "pandas-dataframe": { "level": 0, "updated": "2026-07-03", "evidence": "" },
     "pandas-select-filter": { "level": 0, "updated": "2026-07-03", "evidence": "" },
     "pandas-missing": { "level": 0, "updated": "2026-07-03", "evidence": "" },
