@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-04",
+  "updated": "2026-07-05",
   "legend": {
     "0": {
       "label": "未着手",
@@ -37,6 +37,32 @@
       "context": "手続き的プログラミングの基礎(変数・制御構文・関数)",
       "level_label": "自分の言葉で説明できた"
     },
+    "numpy-masking": {
+      "level": 4,
+      "updated": "2026-07-05",
+      "sources": [
+        {
+          "course": "ml-intro",
+          "level": 4,
+          "unit": "NumPy配列の基本"
+        }
+      ],
+      "context": "NumPy配列の基本",
+      "level_label": "自分の言葉で説明できた"
+    },
+    "numpy-vectorize": {
+      "level": 4,
+      "updated": "2026-07-05",
+      "sources": [
+        {
+          "course": "ml-intro",
+          "level": 4,
+          "unit": "NumPy配列の基本"
+        }
+      ],
+      "context": "NumPy配列の基本",
+      "level_label": "自分の言葉で説明できた"
+    },
     "algorithms-atcoder-brown": {
       "level": 3,
       "updated": "2026-07-04",
@@ -61,6 +87,19 @@
         }
       ],
       "context": "C#の言語機能・文法(メインで使える。細かい仕様はあいまい)",
+      "level_label": "ヒントなしで書けた"
+    },
+    "numpy-broadcasting": {
+      "level": 3,
+      "updated": "2026-07-05",
+      "sources": [
+        {
+          "course": "ml-intro",
+          "level": 3,
+          "unit": "NumPy配列の基本"
+        }
+      ],
+      "context": "NumPy配列の基本",
       "level_label": "ヒントなしで書けた"
     },
     "oop-fundamentals": {
@@ -397,45 +436,6 @@
         }
       ],
       "context": "キャップストーン: エンドツーエンドのスクレイパー",
-      "level_label": "未着手"
-    },
-    "numpy-broadcasting": {
-      "level": 0,
-      "updated": "2026-07-03",
-      "sources": [
-        {
-          "course": "ml-intro",
-          "level": 0,
-          "unit": "NumPy配列の基本"
-        }
-      ],
-      "context": "NumPy配列の基本",
-      "level_label": "未着手"
-    },
-    "numpy-masking": {
-      "level": 0,
-      "updated": "2026-07-03",
-      "sources": [
-        {
-          "course": "ml-intro",
-          "level": 0,
-          "unit": "NumPy配列の基本"
-        }
-      ],
-      "context": "NumPy配列の基本",
-      "level_label": "未着手"
-    },
-    "numpy-vectorize": {
-      "level": 0,
-      "updated": "2026-07-03",
-      "sources": [
-        {
-          "course": "ml-intro",
-          "level": 0,
-          "unit": "NumPy配列の基本"
-        }
-      ],
-      "context": "NumPy配列の基本",
       "level_label": "未着手"
     },
     "output-validation": {
