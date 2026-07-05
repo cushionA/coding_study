@@ -1,7 +1,7 @@
 {
   "course": "ml-intro",
   "started": "2026-07-03",
-  "current": { "unit": "unit01-numpy-basics", "phase": "exercise", "exercise": "ex04_capstone" },
+  "current": { "unit": "unit02-pandas", "phase": "lesson", "exercise": null },
   "lessons": {
     "unit01-numpy-basics": { "completed": "2026-07-05" }
   },
@@ -28,9 +28,9 @@
     }
   },
   "skills": {
-    "numpy-vectorize": { "level": 3, "updated": "2026-07-05", "evidence": "unit01/ex01_arrays passed (attempts=1, tier=0)" },
-    "numpy-masking": { "level": 2, "updated": "2026-07-05", "evidence": "unit01/ex02_masking passed (attempts=6, tier=1)" },
-    "numpy-broadcasting": { "level": 2, "updated": "2026-07-05", "evidence": "unit01/ex03_broadcasting passed (attempts=4, tier=3)" },
+    "numpy-vectorize": { "level": 4, "updated": "2026-07-05", "evidence": "unit01 Feynman explanation passed" },
+    "numpy-masking": { "level": 4, "updated": "2026-07-05", "evidence": "unit01 Feynman explanation passed" },
+    "numpy-broadcasting": { "level": 3, "updated": "2026-07-05", "evidence": "unit01 completed; broadcasting and axis clarified with guidance" },
     "pandas-dataframe": { "level": 0, "updated": "2026-07-03", "evidence": "" },
     "pandas-select-filter": { "level": 0, "updated": "2026-07-03", "evidence": "" },
     "pandas-missing": { "level": 0, "updated": "2026-07-03", "evidence": "" },
@@ -57,7 +57,19 @@
     { "source": "unit01-numpy-basics/ex04_capstone", "due": "2026-07-06", "done": null, "variant_file": null },
     { "source": "unit01-numpy-basics/ex04_capstone", "due": "2026-07-08", "done": null, "variant_file": null },
     { "source": "unit01-numpy-basics/ex04_capstone", "due": "2026-07-12", "done": null, "variant_file": null },
-    { "source": "unit01-numpy-basics/ex04_capstone", "due": "2026-07-19", "done": null, "variant_file": null }
+    { "source": "unit01-numpy-basics/ex04_capstone", "due": "2026-07-19", "done": null, "variant_file": null },
+    { "source": "unit01-numpy-basics", "due": "2026-07-12", "done": null, "variant_file": null }
   ],
-  "milestones": {}
+  "milestones": {
+    "unit01-numpy-basics": {
+      "checked": [
+        "vectorized-array-operations",
+        "boolean-mask-filtering",
+        "broadcasting",
+        "axis-explanation"
+      ],
+      "feynman_passed": true,
+      "completed": "2026-07-05"
+    }
+  }
 }
