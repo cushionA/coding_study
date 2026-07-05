@@ -1,13 +1,19 @@
 {
   "course": "ml-intro",
   "started": "2026-07-03",
-  "current": { "unit": "unit01-numpy-basics", "phase": "exercise", "exercise": "ex01_arrays" },
+  "current": { "unit": "unit01-numpy-basics", "phase": "exercise", "exercise": "ex02_masking" },
   "lessons": {
     "unit01-numpy-basics": { "completed": "2026-07-05" }
   },
-  "exercises": {},
+  "exercises": {
+    "unit01-numpy-basics/ex01_arrays": {
+      "completed": "2026-07-05",
+      "attempts": 1,
+      "tier": 0
+    }
+  },
   "skills": {
-    "numpy-vectorize": { "level": 2, "updated": "2026-07-05", "evidence": "unit01 lesson checkpoint passed" },
+    "numpy-vectorize": { "level": 3, "updated": "2026-07-05", "evidence": "unit01/ex01_arrays passed (attempts=1, tier=0)" },
     "numpy-masking": { "level": 2, "updated": "2026-07-05", "evidence": "unit01 lesson checkpoint passed" },
     "numpy-broadcasting": { "level": 2, "updated": "2026-07-05", "evidence": "unit01 lesson checkpoint passed" },
     "pandas-dataframe": { "level": 0, "updated": "2026-07-03", "evidence": "" },
