@@ -1,7 +1,7 @@
 {
   "course": "ml-intro",
   "started": "2026-07-03",
-  "current": { "unit": "unit01-numpy-basics", "phase": "exercise", "exercise": "ex03_broadcasting" },
+  "current": { "unit": "unit01-numpy-basics", "phase": "exercise", "exercise": "ex04_capstone" },
   "lessons": {
     "unit01-numpy-basics": { "completed": "2026-07-05" }
   },
@@ -15,12 +15,17 @@
       "completed": "2026-07-05",
       "attempts": 6,
       "tier": 1
+    },
+    "unit01-numpy-basics/ex03_broadcasting": {
+      "completed": "2026-07-05",
+      "attempts": 4,
+      "tier": 3
     }
   },
   "skills": {
     "numpy-vectorize": { "level": 3, "updated": "2026-07-05", "evidence": "unit01/ex01_arrays passed (attempts=1, tier=0)" },
     "numpy-masking": { "level": 2, "updated": "2026-07-05", "evidence": "unit01/ex02_masking passed (attempts=6, tier=1)" },
-    "numpy-broadcasting": { "level": 2, "updated": "2026-07-05", "evidence": "unit01 lesson checkpoint passed" },
+    "numpy-broadcasting": { "level": 2, "updated": "2026-07-05", "evidence": "unit01/ex03_broadcasting passed (attempts=4, tier=3)" },
     "pandas-dataframe": { "level": 0, "updated": "2026-07-03", "evidence": "" },
     "pandas-select-filter": { "level": 0, "updated": "2026-07-03", "evidence": "" },
     "pandas-missing": { "level": 0, "updated": "2026-07-03", "evidence": "" },
@@ -39,7 +44,11 @@
     { "source": "unit01-numpy-basics/ex02_masking", "due": "2026-07-06", "done": null, "variant_file": null },
     { "source": "unit01-numpy-basics/ex02_masking", "due": "2026-07-08", "done": null, "variant_file": null },
     { "source": "unit01-numpy-basics/ex02_masking", "due": "2026-07-12", "done": null, "variant_file": null },
-    { "source": "unit01-numpy-basics/ex02_masking", "due": "2026-07-19", "done": null, "variant_file": null }
+    { "source": "unit01-numpy-basics/ex02_masking", "due": "2026-07-19", "done": null, "variant_file": null },
+    { "source": "unit01-numpy-basics/ex03_broadcasting", "due": "2026-07-06", "done": null, "variant_file": null },
+    { "source": "unit01-numpy-basics/ex03_broadcasting", "due": "2026-07-08", "done": null, "variant_file": null },
+    { "source": "unit01-numpy-basics/ex03_broadcasting", "due": "2026-07-12", "done": null, "variant_file": null },
+    { "source": "unit01-numpy-basics/ex03_broadcasting", "due": "2026-07-19", "done": null, "variant_file": null }
   ],
   "milestones": {}
 }
