@@ -1,7 +1,7 @@
 {
   "course": "ml-intro",
   "started": "2026-07-03",
-  "current": { "unit": "unit01-numpy-basics", "phase": "exercise", "exercise": "ex02_masking" },
+  "current": { "unit": "unit01-numpy-basics", "phase": "exercise", "exercise": "ex03_broadcasting" },
   "lessons": {
     "unit01-numpy-basics": { "completed": "2026-07-05" }
   },
@@ -10,11 +10,16 @@
       "completed": "2026-07-05",
       "attempts": 1,
       "tier": 0
+    },
+    "unit01-numpy-basics/ex02_masking": {
+      "completed": "2026-07-05",
+      "attempts": 6,
+      "tier": 1
     }
   },
   "skills": {
     "numpy-vectorize": { "level": 3, "updated": "2026-07-05", "evidence": "unit01/ex01_arrays passed (attempts=1, tier=0)" },
-    "numpy-masking": { "level": 2, "updated": "2026-07-05", "evidence": "unit01 lesson checkpoint passed" },
+    "numpy-masking": { "level": 2, "updated": "2026-07-05", "evidence": "unit01/ex02_masking passed (attempts=6, tier=1)" },
     "numpy-broadcasting": { "level": 2, "updated": "2026-07-05", "evidence": "unit01 lesson checkpoint passed" },
     "pandas-dataframe": { "level": 0, "updated": "2026-07-03", "evidence": "" },
     "pandas-select-filter": { "level": 0, "updated": "2026-07-03", "evidence": "" },
@@ -30,6 +35,11 @@
     "sklearn-pipeline": { "level": 0, "updated": "2026-07-03", "evidence": "" },
     "end-to-end-workflow": { "level": 0, "updated": "2026-07-03", "evidence": "" }
   },
-  "review_queue": [],
+  "review_queue": [
+    { "source": "unit01-numpy-basics/ex02_masking", "due": "2026-07-06", "done": null, "variant_file": null },
+    { "source": "unit01-numpy-basics/ex02_masking", "due": "2026-07-08", "done": null, "variant_file": null },
+    { "source": "unit01-numpy-basics/ex02_masking", "due": "2026-07-12", "done": null, "variant_file": null },
+    { "source": "unit01-numpy-basics/ex02_masking", "due": "2026-07-19", "done": null, "variant_file": null }
+  ],
   "milestones": {}
 }

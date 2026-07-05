@@ -9,13 +9,13 @@ import numpy as np
 # (C#: arr.Where(x => x > threshold).ToArray())
 def filter_greater_than(arr, threshold):
     # TODO: 条件式からブールマスクを作り、それで抽出する
-    raise NotImplementedError
+    return arr[arr>threshold]
 
 
 # 配列の偶数要素だけを抽出して返す
 def filter_even(arr):
     # TODO: 「偶数である」という条件をマスクにする
-    raise NotImplementedError
+    return arr[arr % 2 == 0]
 
 
 # 条件を満たす要素を value で置き換えた「新しい」配列を返す(元の配列は変更しない)
@@ -23,10 +23,12 @@ def filter_even(arr):
 def clip_below(arr, threshold, value):
     # TODO: 複製してから条件を満たす要素だけ書き換える
     # (元の配列を直接書き換えると呼び出し元に影響が出る)
-    raise NotImplementedError
+    res = np.copy(arr)
+    res[arr < threshold] = value
+    return res
 
 
 # 条件を満たす要素の「個数」を返す
 def count_matching(arr, threshold):
     # TODO: マスクから個数を数える方法を考える(ループ不要)
-    raise NotImplementedError
+    return np.sum(arr > threshold)
