@@ -54,10 +54,14 @@
     { "source": "unit01-numpy-basics/ex03_broadcasting", "due": "2026-07-08", "done": "2026-07-13", "variant_file": "courses/ml-intro/reviews/2026-07-13_ex03_broadcasting.py" },
     { "source": "unit01-numpy-basics/ex03_broadcasting", "due": "2026-07-12", "done": "2026-07-13", "variant_file": "courses/ml-intro/reviews/2026-07-13_ex03_broadcasting.py" },
     { "source": "unit01-numpy-basics/ex03_broadcasting", "due": "2026-07-19", "done": null, "variant_file": null },
-    { "source": "unit01-numpy-basics/ex04_capstone", "due": "2026-07-06", "done": null, "variant_file": null },
-    { "source": "unit01-numpy-basics/ex04_capstone", "due": "2026-07-08", "done": null, "variant_file": null },
-    { "source": "unit01-numpy-basics/ex04_capstone", "due": "2026-07-12", "done": null, "variant_file": null },
+    { "source": "unit01-numpy-basics/ex04_capstone", "due": "2026-07-06", "done": "2026-07-13", "variant_file": "courses/ml-intro/reviews/2026-07-13_ex04_capstone.py" },
+    { "source": "unit01-numpy-basics/ex04_capstone", "due": "2026-07-08", "done": "2026-07-13", "variant_file": "courses/ml-intro/reviews/2026-07-13_ex04_capstone.py" },
+    { "source": "unit01-numpy-basics/ex04_capstone", "due": "2026-07-12", "done": "2026-07-13", "variant_file": "courses/ml-intro/reviews/2026-07-13_ex04_capstone.py" },
     { "source": "unit01-numpy-basics/ex04_capstone", "due": "2026-07-19", "done": null, "variant_file": null },
+    { "source": "unit01-numpy-basics/ex04_capstone", "due": "2026-07-14", "done": null, "variant_file": null },
+    { "source": "unit01-numpy-basics/ex04_capstone", "due": "2026-07-16", "done": null, "variant_file": null },
+    { "source": "unit01-numpy-basics/ex04_capstone", "due": "2026-07-20", "done": null, "variant_file": null },
+    { "source": "unit01-numpy-basics/ex04_capstone", "due": "2026-07-27", "done": null, "variant_file": null },
     { "source": "unit01-numpy-basics", "due": "2026-07-12", "done": null, "variant_file": null }
   ],
   "milestones": {
