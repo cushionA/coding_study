@@ -4,7 +4,7 @@
   "current": {
     "unit": "unit01-html-and-ts-basics",
     "phase": "exercise",
-    "exercise": "ex03_html_skim"
+    "exercise": "ex04_capstone"
   },
   "lessons": {
     "unit01-html-and-ts-basics": {
@@ -21,6 +21,11 @@
       "completed": "2026-08-01",
       "attempts": 3,
       "tier": 0
+    },
+    "unit01-html-and-ts-basics/ex03_html_skim": {
+      "completed": "2026-08-01",
+      "attempts": 7,
+      "tier": 2
     }
   },
   "skills": {
@@ -32,7 +37,7 @@
     "html-dom-tree": {
       "level": 2,
       "updated": "2026-08-01",
-      "evidence": "unit01 lesson checkpoints passed"
+      "evidence": "unit01/ex03 passed after guided cursor-based extraction"
     },
     "ts-string-ops": {
       "level": 3,
@@ -175,6 +180,31 @@
       "evidence": ""
     }
   },
-  "review_queue": [],
+  "review_queue": [
+    {
+      "source": "unit01-html-and-ts-basics/ex03_html_skim",
+      "due": "2026-08-02",
+      "done": null,
+      "variant_file": null
+    },
+    {
+      "source": "unit01-html-and-ts-basics/ex03_html_skim",
+      "due": "2026-08-04",
+      "done": null,
+      "variant_file": null
+    },
+    {
+      "source": "unit01-html-and-ts-basics/ex03_html_skim",
+      "due": "2026-08-08",
+      "done": null,
+      "variant_file": null
+    },
+    {
+      "source": "unit01-html-and-ts-basics/ex03_html_skim",
+      "due": "2026-08-15",
+      "done": null,
+      "variant_file": null
+    }
+  ],
   "milestones": {}
 }

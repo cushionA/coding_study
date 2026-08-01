@@ -23,7 +23,9 @@ export function readFixture(filename: string): string {
 // タグが見つからない場合は null を返す
 export function extractBetween(html: string, startTag: string, endTag: string): string | null {
   // TODO: startTagの直後からendTagの直前までを取り出す(見つからなければnull)
-  throw new Error("TODO: 未実装");
+  const startIndex = html.indexOf(startTag) + startTag.length;
+  const endIndex = html.indexOf(endTag,startIndex);
+  return startIndex >= startTag.length && endIndex > 0 ? html.slice(startIndex,endIndex) : null;
 }
 
 // HTML文字列中の <a href="..."> のURL部分だけを配列で返す(出現順)
@@ -31,11 +33,51 @@ export function extractBetween(html: string, startTag: string, endTag: string): 
 // ヒント: 1つずつ 'href="' を探して、次の " まで切り出すのをループで繰り返す
 export function extractHrefList(html: string): string[] {
   // TODO: href="..." のURL部分を出現順にすべて集める
-  throw new Error("TODO: 未実装");
+  const startTag = "href=\"";
+  const endTag = "\"";
+  let progress:number = 0;
+  let results:string[]=[];
+  do{
+      let startIndex = html.indexOf(startTag,progress);
+      if(startIndex < 0){
+        break;
+      }
+      else{
+         startIndex += startTag.length;
+      }
+      const endIndex = html.indexOf(endTag,startIndex);
+      if(endIndex < 0){
+        break;
+      }
+      results.push(html.slice(startIndex,endIndex));
+      progress = endIndex + endTag.length;
+  }while(true)
+
+    return results;
 }
 
 // HTML文字列から <p>...</p> の段落テキストをすべて配列で返す(出現順)
 export function extractParagraphs(html: string): string[] {
   // TODO: <p> と </p> のペアを順番に探して中身を配列に集める
-  throw new Error("TODO: 未実装");
+  let results:string[]=[];
+    const startTag = "<p>";
+    let progress:number = 0;
+  const endTag = "</p>";
+  do{
+      let startIndex = html.indexOf(startTag,progress);
+      if(startIndex < 0){
+        break;
+      }
+      else{
+         startIndex += startTag.length;
+      }
+      const endIndex = html.indexOf(endTag,startIndex);
+      if(endIndex < 0){
+        break;
+      }
+      results.push(html.slice(startIndex,endIndex));
+      progress = endIndex + endTag.length;
+  }while(true)
+
+    return results;
 }
