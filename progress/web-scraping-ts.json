@@ -180,31 +180,6 @@
       "evidence": ""
     }
   },
-  "review_queue": [
-    {
-      "source": "unit01-html-and-ts-basics/ex03_html_skim",
-      "due": "2026-08-02",
-      "done": null,
-      "variant_file": null
-    },
-    {
-      "source": "unit01-html-and-ts-basics/ex03_html_skim",
-      "due": "2026-08-04",
-      "done": null,
-      "variant_file": null
-    },
-    {
-      "source": "unit01-html-and-ts-basics/ex03_html_skim",
-      "due": "2026-08-08",
-      "done": null,
-      "variant_file": null
-    },
-    {
-      "source": "unit01-html-and-ts-basics/ex03_html_skim",
-      "due": "2026-08-15",
-      "done": null,
-      "variant_file": null
-    }
-  ],
+  "review_queue": [],
   "milestones": {}
 }
