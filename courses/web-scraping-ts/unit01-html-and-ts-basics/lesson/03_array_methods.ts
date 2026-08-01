@@ -90,6 +90,7 @@ const rawTags = [" 文芸", " 海外文学 ", "新刊 "];
 
 let result3: string[] | null = null;
 // ここに書く(result3 に代入する。map で各要素を trim)
+result3 = rawTags.map((tag) => tag.trim());
 
 check("概念3: map で整形", result3, ["文芸", "海外文学", "新刊"],
   'rawTags.map((t) => t.trim()) の形。filter は不要');

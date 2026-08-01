@@ -104,6 +104,7 @@ console.log('split(":") の結果:', line.split(":"));  // ["営業時間", " 10
 //   (2) 最初の ":" を indexOf で探し、その直後から slice して trim する(予測ブロックと同じ形)
 let result2: string | null = null;
 // ここに書く(result2 に代入する。まず中身を切り出し、次に "名前: " を取り除く)
+result2 = nameLine.split(":")[1].trim();
 
 check("概念2: 値の切り出し", result2, "佐藤 涼太",
   '切り出した文字列に対して、colon = s.indexOf(":") → s.slice(colon + 1).trim() で "名前: " が落ちる');

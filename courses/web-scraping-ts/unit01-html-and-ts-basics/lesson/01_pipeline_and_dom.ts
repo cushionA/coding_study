@@ -133,7 +133,7 @@ console.log("<table> の位置:", SIMPLE_PAGE.indexOf("<table>"), "(無いので
 //       蔵書一覧/読書会/アクセスの3リンク)。
 // ヒント(概念レベル): STEP 4 と同じ「split して length - 1」の形。1行で書けます。
 let result1: number | null = null;
-// ここに書く(result1 に代入する)
+result1 = SIMPLE_PAGE.split(`<a href=`).length -1;
 
 check("概念1: リンクを数える", result1, 3,
   '個数は split("<a href=").length - 1 の形で数える(区切りの数 - 1)');

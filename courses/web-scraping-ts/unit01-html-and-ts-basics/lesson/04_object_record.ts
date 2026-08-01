@@ -95,6 +95,12 @@ const tagLists: string[][] = [["文芸", "新刊"], ["文芸", "海外文学"]];
 
 let result4: Record<string, number> | null = null;
 // ここに書く(result4 に代入する。?? を使ってタグごとの人数を集計)
+result4 = {};
+for(const tags of tagLists){
+  for(const tag of tags){
+    result4[tag] = (result4[tag] ?? 0) + 1;
+  }
+}
 
 check("概念4: Record で集計", result4, { 文芸: 2, 新刊: 1, 海外文学: 1 },
   '外側 for (const list of tagLists)、内側 for (const tag of list)。counts[tag] = (counts[tag] ?? 0) + 1');

@@ -3,36 +3,40 @@
   "started": "2026-07-03",
   "current": {
     "unit": "unit01-html-and-ts-basics",
-    "phase": "lesson",
+    "phase": "exercise",
     "exercise": null
   },
-  "lessons": {},
+  "lessons": {
+    "unit01-html-and-ts-basics": {
+      "completed": "2026-08-01"
+    }
+  },
   "exercises": {},
   "skills": {
     "scraping-pipeline-overview": {
-      "level": 0,
-      "updated": "2026-07-03",
-      "evidence": ""
+      "level": 2,
+      "updated": "2026-08-01",
+      "evidence": "unit01 lesson checkpoints passed"
     },
     "html-dom-tree": {
-      "level": 0,
-      "updated": "2026-07-03",
-      "evidence": ""
+      "level": 2,
+      "updated": "2026-08-01",
+      "evidence": "unit01 lesson checkpoints passed"
     },
     "ts-string-ops": {
-      "level": 0,
-      "updated": "2026-07-03",
-      "evidence": ""
+      "level": 2,
+      "updated": "2026-08-01",
+      "evidence": "unit01 lesson checkpoints passed"
     },
     "ts-array-methods": {
-      "level": 0,
-      "updated": "2026-07-03",
-      "evidence": ""
+      "level": 2,
+      "updated": "2026-08-01",
+      "evidence": "unit01 lesson checkpoints passed"
     },
     "ts-object-record": {
-      "level": 0,
-      "updated": "2026-07-03",
-      "evidence": ""
+      "level": 2,
+      "updated": "2026-08-01",
+      "evidence": "unit01 lesson checkpoints passed"
     },
     "cheerio-load": {
       "level": 0,
