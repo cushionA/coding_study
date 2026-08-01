@@ -7,14 +7,14 @@
 // (C#: text.Trim() に相当)
 export function cleanWhitespace(text: string): string {
   // TODO: 文字列の前後にある空白・改行を取り除く
-  throw new Error("TODO: 未実装");
+  return text.trim();
 }
 
 // カンマ区切りの文字列("文芸, 海外文学, 新刊")を、各要素の前後空白も除いた配列にする
 // (C#: text.Split(',').Select(s => s.Trim()) に相当)
 export function splitTags(text: string): string[] {
   // TODO: カンマで分割し、各要素の前後の空白も取り除く
-  throw new Error("TODO: 未実装");
+  return text.split(",").map((t) => t.trim());
 }
 
 // "営業時間: 10:00-20:00" のような "ラベル: 値" 形式の文字列から値の部分だけ取り出す
@@ -22,12 +22,12 @@ export function splitTags(text: string): string[] {
 //  「残りを切り捨てる」ので、値にコロンが含まれるケースは別の組み立て方が要る)
 export function extractValue(text: string): string {
   // TODO: 最初のコロンで区切り、値側の前後空白を取り除いて返す
-  throw new Error("TODO: 未実装");
+  return text.slice(text.search(":")+1,text.length).trim();
 }
 
 // name と job から "名前: xxx / 職業: yyy" という形式の1行サマリーを作る
 // (C#: $"名前: {name} / 職業: {job}" に相当するテンプレートリテラル)
 export function formatSummary(name: string, job: string): string {
   // TODO: テンプレートリテラルを使って指定フォーマットの文字列を組み立てる
-  throw new Error("TODO: 未実装");
+  return `名前: ${name} / 職業: ${job}`;
 }
