@@ -4,7 +4,7 @@
   "current": {
     "unit": "unit01-html-and-ts-basics",
     "phase": "exercise",
-    "exercise": "ex02_array_record"
+    "exercise": "ex03_html_skim"
   },
   "lessons": {
     "unit01-html-and-ts-basics": {
@@ -15,6 +15,11 @@
     "unit01-html-and-ts-basics/ex01_string_extract": {
       "completed": "2026-08-01",
       "attempts": 2,
+      "tier": 0
+    },
+    "unit01-html-and-ts-basics/ex02_array_record": {
+      "completed": "2026-08-01",
+      "attempts": 3,
       "tier": 0
     }
   },
@@ -35,14 +40,14 @@
       "evidence": "unit01/ex01 passed in 2 attempts without hints"
     },
     "ts-array-methods": {
-      "level": 2,
+      "level": 3,
       "updated": "2026-08-01",
-      "evidence": "unit01 lesson checkpoints passed"
+      "evidence": "unit01/ex02 passed in 3 attempts without hints"
     },
     "ts-object-record": {
-      "level": 2,
+      "level": 3,
       "updated": "2026-08-01",
-      "evidence": "unit01 lesson checkpoints passed"
+      "evidence": "unit01/ex02 passed in 3 attempts without hints"
     },
     "cheerio-load": {
       "level": 0,
