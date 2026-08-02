@@ -79,6 +79,25 @@ $("a").each((index, element) => {
 
 通常の配列APIを使いたいなら `.toArray()` でHTML要素配列へ変換してから `map` / `filter` を使う。
 
+### コラム: `$(element)` は何をしているか
+
+`cheerio.load(html)` が返す `$` はコンストラクタではなく、検索とラップを兼ねる関数。
+
+```ts
+$(".nav-link"); // CSSセレクタでHTML全体から検索する
+$(element);      // 既存の生ElementをCheerio集合として包む
+```
+
+`.each()` が渡す `element` は `tagName`、`attribs`、`children` などを持つ生のDOM要素で、Cheerioの `.text()` や `.attr()` は持たない。`$(element)` はHTMLを再解析・複製せず、既存要素1件を含む `Cheerio<Element>` を作る。C#なら `Cheerio.Wrap(element)` のような静的ファクトリを呼ぶ感覚。
+
+```ts
+$(".nav-link").each((_, element) => {
+  const label = $(element).text();
+});
+```
+
+反復中に `$(".nav-link").eq(index)` と書くと毎回セレクタ検索をやり直す。`.each()` が渡す `element` をそのまま包むほうが自然で、再検索も不要。
+
 ## 編集
 
 読み込んだHTMLはメモリ上で編集できる。
