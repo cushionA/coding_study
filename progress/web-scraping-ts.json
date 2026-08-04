@@ -44,6 +44,11 @@
       "completed": "2026-08-04",
       "attempts": 2,
       "tier": 0
+    },
+    "unit02-cheerio-basics/ex04_capstone": {
+      "completed": "2026-08-04",
+      "attempts": 3,
+      "tier": 0
     }
   },
   "skills": {
@@ -93,9 +98,9 @@
       "evidence": "unit02/ex03 passed in 2 attempts without hints"
     },
     "tree-navigation": {
-      "level": 2,
+      "level": 3,
       "updated": "2026-08-04",
-      "evidence": "unit02 lesson checkpoints passed"
+      "evidence": "unit02/ex04 passed in 3 attempts without hints"
     },
     "css-selectors": {
       "level": 0,

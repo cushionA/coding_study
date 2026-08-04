@@ -34,14 +34,25 @@ export type FloorInfo = {
 export function parseFloors(html: string): FloorInfo[] {
   // TODO: $(".floor") を1件ずつ処理し、floor-nameとsection-nameの配列を
   // FloorInfoにまとめて配列に集める
-  throw new Error("TODO: 未実装");
+  const $ = cheerio.load(html);
+  const result:FloorInfo[] = [];
+  $(".floor").each((_,element)=>
+    {
+      const floorName = $(element).find(".floor-name").text();
+      const sectName:string[] = [];
+      $(element).find(".section-name").each((_,x) =>{sectName.push($(x).text())});
+      result.push( { name: floorName, sections: sectName });
+    }
+);
+return result;
 }
 
 // parseFloors()が返すFloorInfoの配列を受け取り、セクション総数を返す
 // (全フロアのsections配列の長さの合計)
 export function countTotalSections(floors: FloorInfo[]): number {
+  if(floors.length==0){return 0;}
   // TODO: 全floorのsections配列の長さを合計する
-  throw new Error("TODO: 未実装");
+  return floors.length+1;
 }
 
 // 1件のFloorInfoから "1階: 新刊コーナー, 文芸コーナー" という形式の
@@ -49,5 +60,5 @@ export function countTotalSections(floors: FloorInfo[]): number {
 export function formatFloorLine(floor: FloorInfo): string {
   // TODO: floor.name と floor.sections を使って指定フォーマットの文字列を組み立てる
   // (sectionsが空配列の場合は "(なし)" にする)
-  throw new Error("TODO: 未実装");
+  return floor.sections.length == 0 ? `${floor.name}: (なし)` : `${floor.name}: ${floor.sections.join(", ")}`;
 }
