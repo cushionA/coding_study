@@ -9,6 +9,9 @@
   "lessons": {
     "unit01-html-and-ts-basics": {
       "completed": "2026-08-01"
+    },
+    "unit02-cheerio-basics": {
+      "completed": "2026-08-04"
     }
   },
   "exercises": {
@@ -26,6 +29,21 @@
       "completed": "2026-08-01",
       "attempts": 7,
       "tier": 2
+    },
+    "unit02-cheerio-basics/ex01_query_basic": {
+      "completed": "2026-08-04",
+      "attempts": 1,
+      "tier": 0
+    },
+    "unit02-cheerio-basics/ex02_each_loop": {
+      "completed": "2026-08-04",
+      "attempts": 1,
+      "tier": 0
+    },
+    "unit02-cheerio-basics/ex03_attributes": {
+      "completed": "2026-08-04",
+      "attempts": 2,
+      "tier": 0
     }
   },
   "skills": {
@@ -55,29 +73,29 @@
       "evidence": "unit01/ex02 passed in 3 attempts without hints"
     },
     "cheerio-load": {
-      "level": 0,
-      "updated": "2026-07-03",
-      "evidence": ""
+      "level": 3,
+      "updated": "2026-08-04",
+      "evidence": "unit02/ex01 passed in 1 attempt without hints"
     },
     "selector-query": {
-      "level": 0,
-      "updated": "2026-07-03",
-      "evidence": ""
+      "level": 3,
+      "updated": "2026-08-04",
+      "evidence": "unit02/ex01 passed in 1 attempt without hints"
     },
     "extract-text": {
-      "level": 0,
-      "updated": "2026-07-03",
-      "evidence": ""
+      "level": 3,
+      "updated": "2026-08-04",
+      "evidence": "unit02/ex02 passed in 1 attempt without hints"
     },
     "extract-attributes": {
-      "level": 0,
-      "updated": "2026-07-03",
-      "evidence": ""
+      "level": 3,
+      "updated": "2026-08-04",
+      "evidence": "unit02/ex03 passed in 2 attempts without hints"
     },
     "tree-navigation": {
-      "level": 0,
-      "updated": "2026-07-03",
-      "evidence": ""
+      "level": 2,
+      "updated": "2026-08-04",
+      "evidence": "unit02 lesson checkpoints passed"
     },
     "css-selectors": {
       "level": 0,

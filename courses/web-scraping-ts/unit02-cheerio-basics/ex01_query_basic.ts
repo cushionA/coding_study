@@ -21,25 +21,24 @@ export function readFixture(filename: string): string {
 
 // HTML文字列を cheerio.load() に渡し、$(クエリ関数)を返す
 export function loadHtml(html: string): cheerio.CheerioAPI {
-  // TODO: cheerio.load() を呼び出して結果をそのまま返す
-  throw new Error("TODO: 未実装");
+  return cheerio.load(html);
 }
 
 // $ とセレクタ文字列を受け取り、そのセレクタにマッチする要素のテキストを返す
 // (該当なしでも例外にならず空文字列になる点に注意)
 export function getText($: cheerio.CheerioAPI, selector: string): string {
-  // TODO: $(selector) のテキストを取り出して返す
-  throw new Error("TODO: 未実装");
+  return $(selector).text();
 }
 
 // blog_post.html を読み込み、記事タイトル(class="post-title")のテキストを返す
 export function getPostTitle(html: string): string {
+  const $ = cheerio.load(html);
   // TODO: loadHtml と getText を組み合わせて class="post-title" のテキストを返す
-  throw new Error("TODO: 未実装");
+  return $(".post-title").text();
 }
 
 // blog_post.html を読み込み、投稿メタ情報(class="post-meta")のテキストを返す
 export function getPostMeta(html: string): string {
   // TODO: loadHtml と getText を組み合わせて class="post-meta" のテキストを返す
-  throw new Error("TODO: 未実装");
+  return cheerio.load(html)(".post-meta").text();
 }

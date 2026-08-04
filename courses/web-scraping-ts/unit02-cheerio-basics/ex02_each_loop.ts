@@ -23,7 +23,10 @@ export function readFixture(filename: string): string {
 export function collectNavLabels(html: string): string[] {
   // TODO: cheerio.load() で $ を作り、$(".nav-link") を .each() で回して
   // テキストを配列に集める(空配列を用意してpushしていく)
-  throw new Error("TODO: 未実装");
+  const result:string[] = [];
+  const $ =cheerio.load(html);
+  $(".nav-link").each((index,element) => {result.push($(element).text())});
+  return result;
 }
 
 // html文字列を受け取り、class="nav-link" の最初の1件のテキストを返す
@@ -31,12 +34,15 @@ export function collectNavLabels(html: string): string[] {
 export function firstNavLabel(html: string): string | null {
   // TODO: .first() で最初の1件を取り、.length で存在確認してからテキストを返す
   // (存在しなければ null)
-  throw new Error("TODO: 未実装");
+  const $ = cheerio.load(html);
+  const result = $(".nav-link").first().text();
+  return result.length == 0 ? null : result;
 }
 
 // html文字列とインデックス(0始まり)を受け取り、class="nav-link" のn番目の
 // テキストを返す(範囲外なら null)
 export function navLabelAt(html: string, index: number): string | null {
   // TODO: .eq(index) で指定位置の要素を取り、.length で存在確認してからテキストを返す
-  throw new Error("TODO: 未実装");
+  const result = cheerio.load(html)(".nav-link").eq(index).text();
+  return result.length == 0 ? null : result;
 }
