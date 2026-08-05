@@ -3,6 +3,7 @@
 # 「補完→スケーリング→(モデル)」を1つのオブジェクトにまとめて使う。
 # C#で言えば、複数の処理ステップを1つのパイプライン(責務が明確な処理の連結)にまとめる発想。
 
+import numpy as np
 from sklearn.datasets import load_wine
 from sklearn.impute import SimpleImputer
 from sklearn.model_selection import train_test_split
@@ -12,7 +13,7 @@ from sklearn.preprocessing import StandardScaler
 
 # 「欠損補完(平均) → 標準化」の2段階からなるPipelineを作って返す
 # Pipeline は [(名前, transformer), ...] のリストで各ステップを渡す
-def build_preprocess_pipeline():
+def build_preprocess_pipeline() -> Pipeline:
     # TODO: 補完器とスケーラーを2ステップで並べたPipelineを作って返す(ヒント参照)
     raise NotImplementedError
 
@@ -20,7 +21,7 @@ def build_preprocess_pipeline():
 # 特徴量Xと正解ラベルyを、学習用とテスト用に分割して返す
 # 戻り値は train_test_split と同じ順序: (X_train, X_test, y_train, y_test)
 # test_size と random_state を指定して再現性を持たせる
-def split_data(X, y, test_size=0.2, random_state=0):
+def split_data(X: np.ndarray, y: np.ndarray, test_size: float = 0.2, random_state: int = 0) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
     # TODO: 学習用/テスト用への分割を行い、その結果をそのまま返す
     raise NotImplementedError
 
@@ -28,6 +29,6 @@ def split_data(X, y, test_size=0.2, random_state=0):
 # Pipelineを学習データにfitさせ、学習データとテストデータの両方を変換した結果を返す
 # 戻り値は (X_train_transformed, X_test_transformed)
 # 注意: テストデータには fit_transform ではなく transform を使う(学習時の統計量を使い回す)
-def fit_transform_split(pipeline, X_train, X_test):
+def fit_transform_split(pipeline: Pipeline, X_train: np.ndarray, X_test: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
     # TODO: 学習データはfitしながら変換、テストデータは学習済みの統計量で変換する
     raise NotImplementedError

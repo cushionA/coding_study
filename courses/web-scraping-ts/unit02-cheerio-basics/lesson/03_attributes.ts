@@ -93,8 +93,12 @@ console.log("全hrefs(フォールバック込み):", hrefs);
 //       (期待値: ["sns-a", "unknown"])。
 // ヒント(概念レベル): 変えてみるブロックと同じ「.each() + push」の形。
 //   $(el).attr("data-platform") ?? "unknown" を push する。
-let result3: string[] | null = null;
+let result3: string[] | null = [];
 // ここに書く(result3 に代入する)
+
+$(".sns-link").each((index,element) => {
+  result3.push($(element).attr("data-platform")?? "unknown");
+})
 
 check("概念3: data-platformの一覧(フォールバック込み)", result3, ["sns-a", "unknown"],
   '$(".sns-link").each((_i, el) => { 配列.push($(el).attr("data-platform") ?? "unknown"); })');

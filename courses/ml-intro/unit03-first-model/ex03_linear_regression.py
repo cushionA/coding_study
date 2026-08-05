@@ -14,7 +14,7 @@ from sklearn.model_selection import train_test_split
 # 特徴量1つ(feature_index列目)だけを使ってLinearRegressionを学習し、
 # 学習済みモデルと (X_test, y_test) をタプル (model, X_test, y_test) で返す
 # train_test_split は test_size=0.2, random_state=42 で行う
-def fit_single_feature(feature_index):
+def fit_single_feature(feature_index: int) -> tuple[LinearRegression, np.ndarray, np.ndarray]:
     X, y = load_diabetes(return_X_y=True)
     # TODO: 1列だけ取り出す。ただしモデルは2次元の形を要求する点に注意
     # TODO: train_test_split → LinearRegression().fit() の順で学習し、(model, X_test, y_test) を返す
@@ -23,7 +23,7 @@ def fit_single_feature(feature_index):
 
 # 全10特徴量を使ってLinearRegressionを学習し、(model, X_test, y_test) を返す
 # train_test_split は test_size=0.2, random_state=42 で行う
-def fit_all_features():
+def fit_all_features() -> tuple[LinearRegression, np.ndarray, np.ndarray]:
     X, y = load_diabetes(return_X_y=True)
     # TODO: ex01と同じ手順(全特徴量を使う点だけが違う)
     raise NotImplementedError
@@ -31,13 +31,13 @@ def fit_all_features():
 
 # 学習済みモデルの係数(coef_)から、絶対値が最大の特徴量のインデックスを返す
 # 「どの特徴量が予測に最も強く影響しているか」を確認する処理
-def most_influential_feature(model):
+def most_influential_feature(model: LinearRegression) -> int:
     # TODO: 係数の絶対値が最大の位置を探す(ヒント参照)
     raise NotImplementedError
 
 
 # 学習済みモデルと (X_test, y_test) を受け取り、テストデータでのR2スコアを返す
-def score_on_test(model, X_test, y_test):
+def score_on_test(model: LinearRegression, X_test: np.ndarray, y_test: np.ndarray) -> float:
     # TODO: テストデータで予測し、決定係数を計算する
     # (LinearRegressionには model.score(X, y) というR2を直接返すメソッドもあるが、
     #  ここではex02で学んだ指標との繋がりを意識してpredict+評価関数で書く)

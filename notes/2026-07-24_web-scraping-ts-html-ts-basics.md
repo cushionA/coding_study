@@ -45,6 +45,12 @@ HTMLは親子関係を持つツリー構造（DOM）。C#のオブジェクト�
 
 ### URLスキームとブラウザの処理
 
+<a href="#contact">ページ内の位置</a>
+<a href="mailto:info@example.com">メール</a>
+<a href="tel:+8112345678">電話</a>
+<a href="mailto:info@example.com">メールする</a>
+<a href="tel:+8112345678">電話する</a>
+
 - `https:` / `http:` はブラウザがHTTPリクエストしてページを開く。
 - `mailto:` は登録済みのメールアプリやWebメールの作成画面へ渡す。ブラウザ自身がメールを送るわけではない。
 - `tel:` は電話アプリ・通話機能へ渡す。

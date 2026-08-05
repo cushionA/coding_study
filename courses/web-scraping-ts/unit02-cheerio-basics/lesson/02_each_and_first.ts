@@ -93,7 +93,9 @@ console.log(".nav-linkの件数:", $(".nav-link").length);
 //       result2 に入れてください(期待値: ["トップ", "蔵書一覧", "読書会"])。
 // ヒント(概念レベル): STEP 3 と同じ「空配列を用意して .each() の中で push」の形。
 let result2: string[] | null = null;
+result2=[];
 // ここに書く(result2 に代入する)
+$(".nav-link").each((index,element) =>  { result2.push($(element).text())});
 
 check("概念2: ナビリンクのテキスト一覧", result2, ["トップ", "蔵書一覧", "読書会"],
   '空配列を用意し $(".nav-link").each((_i, el) => { 配列.push($(el).text()); })');

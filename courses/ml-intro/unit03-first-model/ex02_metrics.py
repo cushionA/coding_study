@@ -11,13 +11,13 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 
 # 平均絶対誤差(MAE)を返す
-def compute_mae(y_true, y_pred):
+def compute_mae(y_true: np.ndarray, y_pred: np.ndarray) -> float:
     # TODO: 誤差の絶対値の平均を返す専用関数がある(ヒント参照)
     raise NotImplementedError
 
 
 # 平均二乗誤差(MSE)を返す
-def compute_mse(y_true, y_pred):
+def compute_mse(y_true: np.ndarray, y_pred: np.ndarray) -> float:
     # TODO: 誤差の2乗の平均を返す専用関数がある(ヒント参照)
     raise NotImplementedError
 
@@ -25,18 +25,18 @@ def compute_mse(y_true, y_pred):
 # 二乗平均平方根誤差(RMSE)を返す
 # scikit-learnのバージョンによって mean_squared_error に squared 引数が無いこともあるため、
 # ここでは MSE の平方根を自分で計算する
-def compute_rmse(y_true, y_pred):
+def compute_rmse(y_true: np.ndarray, y_pred: np.ndarray) -> float:
     # TODO: compute_mse をそのまま使い、np.sqrt で平方根を取る(関数の再利用)
     raise NotImplementedError
 
 
 # 決定係数(R2)を返す
-def compute_r2(y_true, y_pred):
+def compute_r2(y_true: np.ndarray, y_pred: np.ndarray) -> float:
     # TODO: 決定係数を返す専用関数がある(ヒント参照)
     raise NotImplementedError
 
 
 # 4つの指標をまとめて辞書 {"mae": ..., "mse": ..., "rmse": ..., "r2": ...} で返す
-def evaluate_all(y_true, y_pred):
+def evaluate_all(y_true: np.ndarray, y_pred: np.ndarray) -> dict[str, float]:
     # TODO: 上の4つの関数を呼び出して辞書にまとめる
     raise NotImplementedError

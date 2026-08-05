@@ -104,8 +104,9 @@ console.log("floor.children('.section-name')の件数(直接の子ではない�
 // ヒント(概念レベル): 予測してみようブロックとほぼ同じ形。
 //   floor.find(".section") で.sectionを集め、.each()の中でさらに
 //   $(el).find(".section-name").text() を取って push する。
-let result4: string[] | null = null;
+let result4: string[] | null = [];
 // ここに書く(result4 に代入する)
+$(".section").each((index,element) => {result4.push($(element).find(".section-name").text())})
 
 check("概念4: section名の一覧", result4, ["新刊コーナー", "文芸コーナー"],
   'floor.find(".section").each((_i, el) => { 配列.push($(el).find(".section-name").text()); })');

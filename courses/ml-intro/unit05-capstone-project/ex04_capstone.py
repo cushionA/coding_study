@@ -13,20 +13,20 @@ from sklearn.preprocessing import StandardScaler
 
 
 # load_breast_cancer を読み込み、(X, y) のタプルを返す
-def load_data():
+def load_data() -> tuple[np.ndarray, np.ndarray]:
     # TODO: load_breast_cancerを読み込み、(X, y)をそのまま返す(ヒント参照)
     raise NotImplementedError
 
 
 # 特徴量Xの一部にシード固定の合成欠損を注入して返す(元の配列は変更しない)
 # ex01のinject_missingと同じ考え方: rng.random(X.shape) < missing_rate のセルをnp.nanにする
-def add_synthetic_missing(X, missing_rate=0.05, seed=0):
+def add_synthetic_missing(X: np.ndarray, missing_rate: float = 0.05, seed: int = 0) -> np.ndarray:
     # TODO: 配列を複製し、乱数マスクで一部をnp.nanにする(ヒント参照)
     raise NotImplementedError
 
 
 # 「欠損補完→標準化」のPipelineを構築して返す(ex02と同じ構成)
-def build_pipeline():
+def build_pipeline() -> Pipeline:
     # TODO: 補完器とスケーラーを2ステップで並べたPipelineを作って返す(ヒント参照)
     raise NotImplementedError
 
@@ -35,7 +35,7 @@ def build_pipeline():
 # 1) 学習/テストに分割 2) Pipelineで前処理 3) LogisticRegressionで学習 4) テストデータの正解率を計算
 # して、(学習済みモデル, テスト正解率) のタプルを返す
 # ここまでの関数(load_data, build_pipelineなど)を組み合わせるだけで書ける
-def run_end_to_end(X, y, test_size=0.2, random_state=0):
+def run_end_to_end(X: np.ndarray, y: np.ndarray, test_size: float = 0.2, random_state: int = 0) -> tuple[LogisticRegression, float]:
     # TODO:
     # 1. 学習用/テスト用に分割する
     # 2. Pipelineで前処理を行う(学習データはfit、テストデータはtransformのみ)

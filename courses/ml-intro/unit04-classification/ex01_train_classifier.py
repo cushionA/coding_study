@@ -12,14 +12,14 @@ from sklearn.metrics import accuracy_score
 
 # load_iris() のデータを (X, y) に分割して返す
 # X: 特徴量(花びら・がく片の長さ幅など)、y: 品種ラベル(0,1,2の3クラス)
-def load_data():
+def load_data() -> tuple[np.ndarray, np.ndarray]:
     # TODO: load_iris() を呼び、戻り値の .data を X、.target を y として (X, y) を返す
     raise NotImplementedError
 
 
 # X, y を学習用とテスト用に分割する
 # test_size の割合をテスト用にする。random_state=42 で毎回同じ分割にする(再現性)
-def split_data(X, y, test_size=0.2):
+def split_data(X: np.ndarray, y: np.ndarray, test_size: float = 0.2) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
     # TODO: 学習用・テスト用に分ける専用関数を使う。再現性のための固定シードも忘れずに(ヒント参照)
     # 戻り値は X_train, X_test, y_train, y_test の順
     raise NotImplementedError
@@ -27,13 +27,13 @@ def split_data(X, y, test_size=0.2):
 
 # LogisticRegression を学習させて返す
 # 収束警告が出ないよう max_iter を十分大きくする(デフォルトの100だとirisでも警告が出ることがある)
-def train_classifier(X_train, y_train):
+def train_classifier(X_train: np.ndarray, y_train: np.ndarray) -> LogisticRegression:
     # TODO: 分類モデルをインスタンス化し、訓練データで学習させてから返す(ヒント参照)
     raise NotImplementedError
 
 
 # 学習済みモデルの予測を正解率(accuracy)で評価する
 # accuracy = 予測が正解と一致した割合。回帰のMAE/RMSEと違い「当たったか外れたか」の二値で数える
-def evaluate_accuracy(model, X_test, y_test):
+def evaluate_accuracy(model: LogisticRegression, X_test: np.ndarray, y_test: np.ndarray) -> float:
     # TODO: テストデータへの予測を作り、正解ラベルと比較して正解率を返す(ヒント参照)
     raise NotImplementedError
