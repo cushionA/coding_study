@@ -23,8 +23,10 @@ unit08(画像とパターン認識の基礎)と unit09(転移学習)で同じデ
   【難しさの調整】
     - 背景の明るさがランダムに変わる(前処理での正規化の動機)
     - 背景に散らかり(矩形のノイズ)が入る。実際の出品写真は背景が汚い
-    - 物体の位置・大きさ・回転が大きく振れる(±69度、大きさ0.60〜1.25倍)
-    - 45%の画像で物体の一部が隠れる(手・値札・他商品の写り込み)
+    - 物体の位置・大きさ・回転が振れる(±25度、大きさ0.72〜1.20倍)。
+      回転を±25度に抑えているのは、これ以上振ると回転した bottle が book と同じ
+      横長矩形になり、クラスの区別そのものが壊れるため(実測で確認済み)。
+    - 30%の画像で物体の一部が隠れる(手・値札・他商品の写り込み)
     - 色はクラス間で共有されるため「色だけ」では解けない(形の情報が要る)
 
   【画像形式】
@@ -72,8 +74,8 @@ def _clutter(rng, img):
 
 def _occlude(rng, img):
     """物体の一部を隠す(手・値札・他の商品が写り込む状況)"""
-    if rng.random() < 0.45:
-        h, w = rng.integers(8, 22, 2)
+    if rng.random() < 0.30:
+        h, w = rng.integers(8, 18, 2)
         y0, x0 = rng.integers(10, SIZE - 22, 2)
         img[y0:y0 + h, x0:x0 + w] = rng.uniform(150, 240, 3)
     return img
@@ -84,8 +86,10 @@ def _draw(rng, cls, color):
     img = _clutter(rng, _canvas(rng))
     y, x = _yx()
     cy, cx = rng.uniform(22, 42, 2)
-    s = rng.uniform(0.60, 1.25)
-    th = rng.uniform(-1.2, 1.2)
+    s = rng.uniform(0.72, 1.20)
+    # 回転は ±25度 に留める。これ以上振ると、回転したbottleがbookと同じ横長矩形になり
+    # クラスの区別そのものが壊れる(実測で CNN が HOG を超えられなくなった)。
+    th = rng.uniform(-0.45, 0.45)
     yr = (y - cy) * np.cos(th) - (x - cx) * np.sin(th)
     xr = (y - cy) * np.sin(th) + (x - cx) * np.cos(th)
 
