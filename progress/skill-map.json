@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-05",
+  "updated": "2026-08-04",
   "legend": {
     "0": {
       "label": "未着手",
@@ -76,6 +76,19 @@
       "context": "基本的なアルゴリズムとデータ構造(AtCoder茶色相当)",
       "level_label": "ヒントなしで書けた"
     },
+    "cheerio-load": {
+      "level": 3,
+      "updated": "2026-08-04",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 3,
+          "unit": "cheerioで解析する"
+        }
+      ],
+      "context": "cheerioで解析する",
+      "level_label": "ヒントなしで書けた"
+    },
     "csharp-language": {
       "level": 3,
       "updated": "2026-07-04",
@@ -87,6 +100,42 @@
         }
       ],
       "context": "C#の言語機能・文法(メインで使える。細かい仕様はあいまい)",
+      "level_label": "ヒントなしで書けた"
+    },
+    "extract-attributes": {
+      "level": 3,
+      "updated": "2026-08-04",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 3,
+          "unit": "cheerioで解析する"
+        },
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "BeautifulSoupで解析する"
+        }
+      ],
+      "context": "cheerioで解析する",
+      "level_label": "ヒントなしで書けた"
+    },
+    "extract-text": {
+      "level": 3,
+      "updated": "2026-08-04",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 3,
+          "unit": "cheerioで解析する"
+        },
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "BeautifulSoupで解析する"
+        }
+      ],
+      "context": "cheerioで解析する",
       "level_label": "ヒントなしで書けた"
     },
     "numpy-broadcasting": {
@@ -115,6 +164,112 @@
       "context": "オブジェクト指向(クラス・継承・インターフェース・カプセル化)",
       "level_label": "ヒントなしで書けた"
     },
+    "selector-query": {
+      "level": 3,
+      "updated": "2026-08-04",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 3,
+          "unit": "cheerioで解析する"
+        }
+      ],
+      "context": "cheerioで解析する",
+      "level_label": "ヒントなしで書けた"
+    },
+    "tree-navigation": {
+      "level": 3,
+      "updated": "2026-08-04",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 3,
+          "unit": "cheerioで解析する"
+        },
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "BeautifulSoupで解析する"
+        }
+      ],
+      "context": "cheerioで解析する",
+      "level_label": "ヒントなしで書けた"
+    },
+    "ts-array-methods": {
+      "level": 3,
+      "updated": "2026-08-01",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 3,
+          "unit": "HTMLの構造とTypeScriptの足場"
+        }
+      ],
+      "context": "HTMLの構造とTypeScriptの足場",
+      "level_label": "ヒントなしで書けた"
+    },
+    "ts-object-record": {
+      "level": 3,
+      "updated": "2026-08-01",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 3,
+          "unit": "HTMLの構造とTypeScriptの足場"
+        }
+      ],
+      "context": "HTMLの構造とTypeScriptの足場",
+      "level_label": "ヒントなしで書けた"
+    },
+    "ts-string-ops": {
+      "level": 3,
+      "updated": "2026-08-01",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 3,
+          "unit": "HTMLの構造とTypeScriptの足場"
+        }
+      ],
+      "context": "HTMLの構造とTypeScriptの足場",
+      "level_label": "ヒントなしで書けた"
+    },
+    "html-dom-tree": {
+      "level": 2,
+      "updated": "2026-08-01",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 2,
+          "unit": "HTMLの構造とTypeScriptの足場"
+        },
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "HTMLの構造とPythonの足場"
+        }
+      ],
+      "context": "HTMLの構造とTypeScriptの足場",
+      "level_label": "ガイド付きで書けた"
+    },
+    "scraping-pipeline-overview": {
+      "level": 2,
+      "updated": "2026-08-01",
+      "sources": [
+        {
+          "course": "web-scraping-ts",
+          "level": 2,
+          "unit": "HTMLの構造とTypeScriptの足場"
+        },
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "HTMLの構造とPythonの足場"
+        }
+      ],
+      "context": "HTMLの構造とTypeScriptの足場",
+      "level_label": "ガイド付きで書けた"
+    },
     "beautifulsoup-parse": {
       "level": 0,
       "updated": "2026-07-03",
@@ -126,19 +281,6 @@
         }
       ],
       "context": "BeautifulSoupで解析する",
-      "level_label": "未着手"
-    },
-    "cheerio-load": {
-      "level": 0,
-      "updated": "2026-07-03",
-      "sources": [
-        {
-          "course": "web-scraping-ts",
-          "level": 0,
-          "unit": "cheerioで解析する"
-        }
-      ],
-      "context": "cheerioで解析する",
       "level_label": "未着手"
     },
     "classification-workflow": {
@@ -327,42 +469,6 @@
       "context": "堅牢化とCSV出力",
       "level_label": "未着手"
     },
-    "extract-attributes": {
-      "level": 0,
-      "updated": "2026-07-03",
-      "sources": [
-        {
-          "course": "web-scraping-ts",
-          "level": 0,
-          "unit": "cheerioで解析する"
-        },
-        {
-          "course": "web-scraping",
-          "level": 0,
-          "unit": "BeautifulSoupで解析する"
-        }
-      ],
-      "context": "cheerioで解析する",
-      "level_label": "未着手"
-    },
-    "extract-text": {
-      "level": 0,
-      "updated": "2026-07-03",
-      "sources": [
-        {
-          "course": "web-scraping-ts",
-          "level": 0,
-          "unit": "cheerioで解析する"
-        },
-        {
-          "course": "web-scraping",
-          "level": 0,
-          "unit": "BeautifulSoupで解析する"
-        }
-      ],
-      "context": "cheerioで解析する",
-      "level_label": "未着手"
-    },
     "fetch-async-await": {
       "level": 0,
       "updated": "2026-07-03",
@@ -387,24 +493,6 @@
         }
       ],
       "context": "BeautifulSoupで解析する",
-      "level_label": "未着手"
-    },
-    "html-dom-tree": {
-      "level": 0,
-      "updated": "2026-07-03",
-      "sources": [
-        {
-          "course": "web-scraping-ts",
-          "level": 0,
-          "unit": "HTMLの構造とTypeScriptの足場"
-        },
-        {
-          "course": "web-scraping",
-          "level": 0,
-          "unit": "HTMLの構造とPythonの足場"
-        }
-      ],
-      "context": "HTMLの構造とTypeScriptの足場",
       "level_label": "未着手"
     },
     "http-request-response": {
@@ -697,24 +785,6 @@
       "context": "fetch通信とスクレイピングのマナー",
       "level_label": "未着手"
     },
-    "scraping-pipeline-overview": {
-      "level": 0,
-      "updated": "2026-07-03",
-      "sources": [
-        {
-          "course": "web-scraping-ts",
-          "level": 0,
-          "unit": "HTMLの構造とTypeScriptの足場"
-        },
-        {
-          "course": "web-scraping",
-          "level": 0,
-          "unit": "HTMLの構造とPythonの足場"
-        }
-      ],
-      "context": "HTMLの構造とTypeScriptの足場",
-      "level_label": "未着手"
-    },
     "select-multiple": {
       "level": 0,
       "updated": "2026-07-03",
@@ -739,19 +809,6 @@
         }
       ],
       "context": "セレクタと表・リストの抽出",
-      "level_label": "未着手"
-    },
-    "selector-query": {
-      "level": 0,
-      "updated": "2026-07-03",
-      "sources": [
-        {
-          "course": "web-scraping-ts",
-          "level": 0,
-          "unit": "cheerioで解析する"
-        }
-      ],
-      "context": "cheerioで解析する",
       "level_label": "未着手"
     },
     "sklearn-estimator-api": {
@@ -809,63 +866,6 @@
         }
       ],
       "context": "はじめての回帰モデル",
-      "level_label": "未着手"
-    },
-    "tree-navigation": {
-      "level": 0,
-      "updated": "2026-07-03",
-      "sources": [
-        {
-          "course": "web-scraping-ts",
-          "level": 0,
-          "unit": "cheerioで解析する"
-        },
-        {
-          "course": "web-scraping",
-          "level": 0,
-          "unit": "BeautifulSoupで解析する"
-        }
-      ],
-      "context": "cheerioで解析する",
-      "level_label": "未着手"
-    },
-    "ts-array-methods": {
-      "level": 0,
-      "updated": "2026-07-03",
-      "sources": [
-        {
-          "course": "web-scraping-ts",
-          "level": 0,
-          "unit": "HTMLの構造とTypeScriptの足場"
-        }
-      ],
-      "context": "HTMLの構造とTypeScriptの足場",
-      "level_label": "未着手"
-    },
-    "ts-object-record": {
-      "level": 0,
-      "updated": "2026-07-03",
-      "sources": [
-        {
-          "course": "web-scraping-ts",
-          "level": 0,
-          "unit": "HTMLの構造とTypeScriptの足場"
-        }
-      ],
-      "context": "HTMLの構造とTypeScriptの足場",
-      "level_label": "未着手"
-    },
-    "ts-string-ops": {
-      "level": 0,
-      "updated": "2026-07-03",
-      "sources": [
-        {
-          "course": "web-scraping-ts",
-          "level": 0,
-          "unit": "HTMLの構造とTypeScriptの足場"
-        }
-      ],
-      "context": "HTMLの構造とTypeScriptの足場",
       "level_label": "未着手"
     },
     "type-coercion": {
