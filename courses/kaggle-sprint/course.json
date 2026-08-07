@@ -1,6 +1,6 @@
 {
   "name": "kaggle-sprint",
-  "title": "Kaggleスプリント: 10日で一人前の入り口",
+  "title": "Kaggleスプリント: 収集したWebデータを機械学習で価値に変える10日間",
   "language": "python",
   "format": {
     "lesson": "jupyter",
@@ -8,14 +8,14 @@
     "reason": "データを読み込む→形と分布を見る→モデルを回す、の観察サイクルがセル単位で数秒で回る。表・テキスト・画像のいずれも中間結果(shape/分布/スコア)を目で確認しながら進める必要があり、ノートブックが最適。採点はpytestでテスト駆動"
   },
   "test_command": "python -m pytest {unit}/tests -q",
-  "goal": "テーブル・NLP・画像のいずれの課題でも、リークのないCV設計 → ベースライン → 改善サイクル → 提出ファイル生成 を自力で回せる。かつ同じ流れを実務のクラウド環境にコスト意識(モデルサイズ・バッチ・CPU退避・混合精度のトレードオフ)をもって載せられる",
-  "learner_profile": "C#を高レベルで習得済み(csharp-language 3 / oop-fundamentals 3)、AtCoder茶色到達済み(algorithms-atcoder-brown 3)。C#アナロジー(List<T>/LINQのSelect・Where・GroupBy、インターフェース実装、IDisposable、DIでの差し替え)を全ユニットで積極的に使う。NumPyは習得済み(numpy-vectorize 4 / numpy-masking 4 / numpy-broadcasting 3)なのでNumPy専用ユニットは作らず、必要な場面で「既習のブールマスク/ブロードキャストがそのまま効く」と接続するだけにする。一方 pandas・scikit-learn は全概念 level 0、Python言語そのもの(python-string-ops / python-list-comprehension / python-dict-ops)も level 0。ただし学習者本人の明言として「基礎だけダラダラやるのはモチベが持たない。やりながら調べる」があるため、pandas専用ユニット・sklearn専用ユニット・Python文法専用ユニットは作らない。代わりにコンペを解く文脈の中で、初出のAPIを必ず『何をするものか一文+用途/API/戻り値と注意の表+C#対応表』で丁寧に解説する(表形式のAPI一覧・テキスト図・C#対応表は過去セッションで有効だった説明スタイル)。TypeScriptコースで ts-array-methods / ts-object-record が level 3 なので map/filter/Record の発想自体はある → Pythonの内包表記・dict はそこからの翻訳として1〜2分で導入する。既知のつまずき傾向(notes/2026-07-13): 配列の形(shape)と軸(axis)の取り違え、要素ごとの演算と配列全体の真偽値判定の混同、keepdims の必要性の見落とし。したがって形状が絡む説明・演習では毎回『まず shape を print して確認する』手順を教材に埋め込み、テストにも中間shapeのアサーションを入れる",
+  "goal": "スクレイパーが吐いたCSV・画像を入力として、テーブル・NLP・画像のいずれの課題でも、リークのないCV設計 → ベースライン → 改善サイクル → 提出ファイル生成 を自力で回せる。かつ同じ流れを実務のクラウド環境にコスト意識(LLM API従量課金 vs 自前小型モデルのバッチ推論、モデルサイズ・バッチ・動的パディング・CPU退避・混合精度のトレードオフ)をもって載せられる",
+  "learner_profile": "C#を高レベルで習得済み(csharp-language 3 / oop-fundamentals 3)、AtCoder茶色到達済み(algorithms-atcoder-brown 3)。C#アナロジー(List<T>/LINQのSelect・Where・GroupBy、インターフェース実装、DIでの差し替え)を全ユニットで積極的に使う。NumPyは習得済み(numpy-vectorize 4 / numpy-masking 4 / numpy-broadcasting 3)なのでNumPy専用ユニットは作らず、必要な場面で「既習のブールマスク/ブロードキャストがそのまま効く」と接続するだけにする。競プロのDP実装力は unit06 の編集距離で直接再利用する。勤務先がWebスクレイピングとデータ活用を事業とする会社であり、web-scraping / web-scraping-ts コースを学習済み・学習中(cheerio-load 3 / selector-query 3 / extract-text 3 / extract-attributes 3 / tree-navigation 3、data-cleaning・output-validation・type-coercion は 0)。したがってコース全体の題材を「スクレイパーが吐いたCSV・画像を受け取るところから始まる」一貫した物語に統一し、実務で実際に発生するタスク(商品カテゴリ自動分類・名寄せ/エンティティ解決・商品画像分類と重複検出・価格の時系列予測・収集パイプラインの品質監視)をユニットの主題に据える。一方 pandas・scikit-learn は全概念 level 0、Python言語そのもの(python-string-ops / python-list-comprehension / python-dict-ops)も level 0。ただし学習者本人の明言として「基礎だけダラダラやるのはモチベが持たない。やりながら調べる」があるため、pandas専用ユニット・sklearn専用ユニット・Python文法専用ユニットは作らない。代わりにコンペを解く文脈の中で、初出のAPIを必ず『何をするものか一文+用途/API/戻り値と注意の表+C#対応表』で丁寧に解説する(表形式のAPI一覧・テキスト図・C#対応表は過去セッションで有効だった説明スタイル)。TypeScriptコースで ts-array-methods / ts-object-record が level 3 なので map/filter/Record の発想自体はある → Pythonの内包表記・dict はそこからの翻訳として1〜2分で導入する。既知のつまずき傾向(notes/2026-07-13): 配列の形(shape)と軸(axis)の取り違え、要素ごとの演算と配列全体の真偽値判定の混同、keepdims の必要性の見落とし。したがって形状が絡む説明・演習では毎回『まず shape を print して確認する』手順を教材に埋め込み、テストにも中間shapeのアサーションを入れる",
   "created": "2026-08-07",
   "units": [
     {
-      "dir": "unit01-competition-anatomy",
-      "title": "コンペの解剖と最初の提出",
-      "summary": "初日から submission.csv を作る。Kaggleコンペの構成要素(train.csv / test.csv / sample_submission.csv / 評価指標 / public-private LB)を解剖し、『test には目的変数が無い』『sample_submission が提出フォーマットの唯一の正解』という構造を掴む。ここで pandas を実戦投入して初出APIを丁寧に解説する: pd.read_csv、df.shape / df.dtypes / df.head() / df.info() / df.describe()、列選択 df['col'] と df[['a','b']] の違い(Series vs DataFrame)、行フィルタ df[df['x'] > 0] と df.loc[行条件, 列]、df.isna().sum() による欠損の把握、fillna / dropna、value_counts() での目的変数分布、pd.concat / df.merge、to_csv(index=False)。C#アナロジー: DataFrame は『List<匿名型> に LINQ を生やして列方向にも切れるようにしたもの』、Series は『1列ぶんの T[] + インデックス』、df[mask] は Where、df['col'] は Select。既習の numpy-masking がそのまま df[bool_series] に効くことを明示的に接続する。shape の取り違え対策として、読み込み・結合・フィルタの各ステップで必ず shape を print して行数がどう変わったか確認する手順を lesson とテストの両方に埋める。pandas 3.0 系の注意(Copy-on-Write が既定、chained assignment での代入が効かない、文字列列の既定 dtype が object ではなく str)も実務差分として1枚の表で示す。最初の提出は複雑なモデル不要 — 平均値/最頻値の定数提出 → 数値列だけの単純モデル、と段階を踏み、『提出できる形になっているか』の検証(行数・ID列の一致・列名・欠損ゼロ)を関数化する。データは全てユニット内の固定CSV(合成、seed固定で生成済みのものを data/ に同梱)を使い、外部ネットワーク・Kaggle API は一切使わない。",
+      "dir": "unit01-scraped-data-to-submission",
+      "title": "収集データの解剖と最初の提出",
+      "summary": "物語の出発点: web-scraping コースで作ったスクレイパーが吐いた商品カタログCSV(product_id / shop / title / description / price / category / scraped_at / image_path)を受け取り、初日のうちに submission.csv を出す。課題設定は『数万件の商品にカテゴリを人手で付けられないので、一部だけ人手ラベル済みのデータから残りを推定する』という実務そのものの形にし、train.csv(ラベルあり) / test.csv(ラベルなし) / sample_submission.csv / 評価指標 / public-private LB というコンペの構造を、この文脈で解剖する。『test には目的変数が無い』『sample_submission が提出フォーマットの唯一の正解』を押さえる。ここで pandas を実戦投入して初出APIを丁寧に解説する: pd.read_csv(dtype / parse_dates 指定)、df.shape / df.dtypes / df.head() / df.info() / df.describe()、列選択 df['col'] と df[['a','b']] の違い(Series vs DataFrame)、行フィルタ df[df['price'] > 0] と df.loc[行条件, 列]、df.isna().sum() と df.isna().mean() による欠損率、fillna / dropna、value_counts(normalize=True) でのカテゴリ分布、df.duplicated() / drop_duplicates()、pd.concat / df.merge、to_csv(index=False)。C#アナロジー: DataFrame は『List<匿名型> に LINQ を生やして列方向にも切れるようにしたもの』、Series は『1列ぶんの T[] + インデックス』、df[mask] は Where、df['col'] は Select。既習の numpy-masking がそのまま df[bool_series] に効くことを明示的に接続する。あわせて収集パイプラインの品質監視をこのユニットの裏テーマとして扱う(スクレイピング事業の日常業務): scraped_at 別に欠損率・行数・価格の分布を集計し、『ある日から特定ショップの price が全部 NaN になった = レイアウト変更でセレクタが壊れた』『title の平均文字数が急変した = テンプレート文言が混入した』『価格が10倍/100倍になった = 通貨記号や桁区切りのパース崩れ』といった異常を検知する品質チェック関数を書く。これは web-scraping コースの output-validation の続きであり、機械学習以前に『入力データが壊れていたらモデルの議論は無意味』という順序を体に入れる。shape の取り違え対策として、読み込み・結合・フィルタ・重複削除の各ステップで必ず shape を print して行数がどう変わったか確認する手順を lesson とテストの両方に埋める。pandas 3.0 系の注意(Copy-on-Write が既定、chained assignment での代入が効かない、文字列列の既定 dtype が object ではなく str)も実務差分として1枚の表で示す。最初の提出は複雑なモデル不要 — 最頻カテゴリの定数提出 → 数値列+単純な特徴だけのモデル、と段階を踏み、『提出できる形になっているか』の検証(行数・ID列の一致・列名・欠損ゼロ・未知ラベルの混入なし)を関数化する。データはユニット内の固定CSV(合成した商品カタログ、seed固定で生成済み)を data/ に同梱し、外部ネットワーク・Kaggle API・実サイトへのアクセスは一切行わない。",
       "concepts": [
         "competition-anatomy",
         "pandas-dataframe",
@@ -24,7 +24,7 @@
         "submission-format"
       ],
       "exercises": [
-        "ex01_load_and_profile",
+        "ex01_profile_and_quality_check",
         "ex02_align_and_clean",
         "ex03_holdout_score",
         "ex04_capstone"
@@ -34,9 +34,9 @@
       "reviewed": false
     },
     {
-      "dir": "unit02-validation-and-leakage",
-      "title": "検証設計とリーク",
-      "summary": "Kaggleで最も差がつくのは検証設計。『手元のスコアが信じられないなら改善サイクルは回らない』を体感させる。train_test_split(test_size / random_state / stratify / shuffle)から入り、KFold・StratifiedKFold・GroupKFold・StratifiedGroupKFold・TimeSeriesSplit を『データの生成過程に合わせて選ぶ』ものとして整理する(用途/クラス/リークするケースの表)。OOF(out-of-fold)予測を自分の手でループを書いて作り、oof 配列の shape が (n_train,) になること・各行がちょうど1回だけ埋まることを assert で確認する(既習の numpy-masking / インデックス代入が効く場面)。C#アナロジー: KFold は IEnumerable<(int[] trainIdx, int[] validIdx)> を返すイテレータ、split() は yield return。リークは型で覚える: (a) target leakage(未来情報・目的変数から派生した列)、(b) group leakage(同一ユーザー/同一患者がtrainとvalidに割れる)、(c) 前処理リーク(全データでfitしたスケーラ/エンコーダをvalidに適用)、(d) 時系列リーク(未来で学習して過去を予測)。それぞれ『リークありCVスコアが不自然に高い → 正しい分割にすると落ちる』を数値で再現して見せる。指標もここで固める: MAE / RMSE / RMSLE / R2 を自前実装 → sklearn.metrics と一致確認(mean_squared_error の squared 引数は廃止され root_mean_squared_error を使う点に注意)、指標がCVの選び方にどう効くか、CVとLBの乖離の読み方(分布シフト・public LBの件数が少ない・分割が実態と違う)。データは np.random.default_rng(seed=...) で生成し、グループ構造・時間構造・リーク列を意図的に仕込んだ合成データを使う。完全オフライン、数秒で完走。",
+      "dir": "unit02-validation-and-scraping-leakage",
+      "title": "検証設計とスクレイピング固有のリーク",
+      "summary": "Kaggleで最も差がつくのは検証設計。そしてスクレイピング由来のデータは、業界特有のリークで『CVは良いのにLBが悪い』を量産する。このユニットはその実害を主題にする。題材は日次収集された商品価格データで、タスクは翌日以降の価格予測と、カテゴリ分類の検証設計。まず train_test_split(test_size / random_state / stratify / shuffle)から入り、KFold・StratifiedKFold・GroupKFold・StratifiedGroupKFold・TimeSeriesSplit を『データの生成過程に合わせて選ぶ』ものとして整理する(用途/クラス/リークするケースの表)。OOF(out-of-fold)予測を自分の手でループを書いて作り、oof 配列の shape が (n_train,) になること・各行がちょうど1回だけ埋まることを assert で確認する(既習の numpy-masking / インデックス代入が効く場面)。C#アナロジー: KFold は IEnumerable<(int[] trainIdx, int[] validIdx)> を返すイテレータ、split() は yield return。リークはこの業界で最頻の実害として3つを数値で再現する: (1) 同一商品リーク — 同じ商品を A社サイトと B社サイトの両方から収集した結果、ほぼ同一の行が train と valid に割れて入り、モデルが『覚えた答えを見ている』だけなのにCVが不自然に高くなる。正しい対処は商品の名寄せキー(unit06 で作る)を group として GroupKFold で分けること。ランダム分割とGroupKFoldでスコアがどれだけ違うかを実測して見せる。(2) ショップ偏りとキー選択 — group を product_id にするか shop にするかで意味が変わる。本番で『新しいショップのデータが来る』なら shop を group にすべきで、『既知ショップの新商品』なら product_id を group にすべき。運用時に何が未知なのかからキーを決める、という判断基準を明文化する。(3) 時系列リーク — scraped_at をまたいでランダム分割すると、8月のデータで学習して7月の価格を当てる形になり、実運用(過去で学習して未来を予測)と食い違う。TimeSeriesSplit と、日付での手動 expanding / sliding window 分割を実装する。あわせて (4) 前処理リーク(全データで fit したスケーラ/エンコーダを valid に適用)も型として押さえる。指標もここで固める: MAE / RMSE / RMSLE / R2 を自前実装 → sklearn.metrics と一致確認(mean_squared_error の squared 引数は廃止され root_mean_squared_error を使う点に注意)、価格のような裾の重い分布では RMSLE や log1p 変換が効く理由、指標がCVの選び方にどう効くか、CVとLBの乖離の読み方(分布シフト・public LBの件数が少ない・分割が実態と違う)。データは np.random.default_rng(seed=...) で生成する日次収集データ(同一商品の複数サイト重複・ショップ偏り・日付トレンドを意図的に仕込む)。完全オフライン、数秒で完走。",
       "concepts": [
         "train-test-split",
         "cross-validation",
@@ -46,8 +46,8 @@
       ],
       "exercises": [
         "ex01_manual_oof",
-        "ex02_choose_splitter",
-        "ex03_detect_leakage",
+        "ex02_group_and_time_split",
+        "ex03_detect_duplicate_leak",
         "ex04_capstone"
       ],
       "estimated_minutes": 330,
@@ -57,7 +57,7 @@
     {
       "dir": "unit03-gbdt-main-weapon",
       "title": "勾配ブースティング木を主砲にする",
-      "summary": "テーブルコンペの現実的な主砲である勾配ブースティング決定木(GBDT)を、scikit-learn の estimator API という共通インターフェースの上で使えるようにする。まず sklearn の設計思想を C# アナロジーで押さえる: 全モデルが fit(X, y) / predict(X) / predict_proba(X) / get_params() / set_params() を持つ = 共通インターフェース(IEstimator)を実装したクラス群であり、呼び出し側は具象型を知らずに差し替えられる(DIと同じ)。fit が状態を持ち、末尾アンダースコアの属性(coef_ / feature_importances_ / best_iteration_)が『学習後にだけ存在する』という規約も明示する。LightGBM を主に使い(LGBMClassifier / LGBMRegressor は sklearn 互換)、num_leaves / learning_rate / n_estimators / min_child_samples / feature_fraction / bagging_fraction の効き方を『木の複雑さ × 学習の慎重さ』の2軸で整理する。early stopping は LightGBM 4.x の作法が変わっている点が実務上の落とし穴 — fit(..., eval_set=[(X_valid, y_valid)], eval_metric=..., callbacks=[lgb.early_stopping(50, verbose=False), lgb.log_evaluation(0)]) を使い、旧APIの early_stopping_rounds 引数は存在しないことを明記する。best_iteration_ を取り出して full-data 再学習に使う流れも扱う。feature_importances_ の split/gain の違いと『重要度は因果ではない』という注意、permutation_importance との比較。あわせて前処理の要否を対比で学ぶ: GBDTは欠損をそのまま扱え単調変換にも不変なのでスケーリング不要、一方で線形モデル/SVM/kNNには SimpleImputer + StandardScaler が必須 — なぜ違うかをモデルの決定境界の作り方から説明する(preprocessing-impute-scale はこの対比の文脈で習得する)。XGBoost と HistGradientBoosting も同じインターフェースで差し替えられることを1セルで示す。データは seed 固定の合成テーブル(非線形な相互作用と欠損を含む)。全て CPU・数秒〜十数秒で完走、外部データセット不使用。",
+      "summary": "収集した商品テーブルに対する現実的な主砲、勾配ブースティング決定木(GBDT)を、scikit-learn の estimator API という共通インターフェースの上で使えるようにする。題材は商品カタログからの価格予測(回帰)とカテゴリ分類(多クラス)の両方を同じ道具で回すこと。まず sklearn の設計思想を C# アナロジーで押さえる: 全モデルが fit(X, y) / predict(X) / predict_proba(X) / get_params() / set_params() を持つ = 共通インターフェース(IEstimator)を実装したクラス群であり、呼び出し側は具象型を知らずに差し替えられる(DIと同じ)。fit が状態を持ち、末尾アンダースコアの属性(coef_ / feature_importances_ / best_iteration_)が『学習後にだけ存在する』という規約も明示する。LightGBM を主に使い(LGBMClassifier / LGBMRegressor は sklearn 互換)、num_leaves / learning_rate / n_estimators / min_child_samples / feature_fraction / bagging_fraction の効き方を『木の複雑さ × 学習の慎重さ』の2軸で整理する。early stopping は LightGBM 4.x で作法が変わっている点が実務上の落とし穴 — fit(..., eval_set=[(X_valid, y_valid)], eval_metric=..., callbacks=[lgb.early_stopping(50, verbose=False), lgb.log_evaluation(0)]) を使い、旧APIの early_stopping_rounds 引数は存在しないことを明記する。best_iteration_ を取り出して全データ再学習に使う流れも扱う。feature_importances_ の split/gain の違いと『重要度は因果ではない』という注意、permutation_importance との比較、そしてスクレイピング文脈での実用: 重要度上位に shop が来たら『ショップを覚えているだけ』かもしれない = unit02 のリーク議論に戻る、という読み方を教える。あわせて前処理の要否を対比で学ぶ: GBDTは欠損をそのまま扱え単調変換にも不変なのでスケーリング不要(スクレイピングデータは欠損だらけなのでこれが効く)、一方で線形モデル/SVM/kNNには SimpleImputer + StandardScaler が必須 — なぜ違うかをモデルの決定境界の作り方から説明する(preprocessing-impute-scale はこの対比の文脈で習得する)。XGBoost と HistGradientBoosting も同じインターフェースで差し替えられることを1セルで示す。データは seed 固定の合成商品テーブル(ショップ差・カテゴリ差・欠損・非線形な価格構造を含む)。全て CPU・数秒〜十数秒で完走、外部データセット不使用。",
       "concepts": [
         "sklearn-estimator-api",
         "gbdt-lightgbm",
@@ -77,8 +77,8 @@
     },
     {
       "dir": "unit04-tabular-feature-engineering",
-      "title": "テーブルの特徴量エンジニアリング",
-      "summary": "モデルを変えるより特徴量を作るほうが効く、というテーブルコンペの現実を手を動かして確認する。カテゴリ変数の表現を用途別に整理する(用途/手法/次元の増え方/リーク危険度/相性の良いモデル の表): label encoding、one-hot(OneHotEncoder の handle_unknown='ignore' と train/test の列整合)、count/frequency encoding、LightGBM の categorical_feature 指定、そして target encoding。target encoding は『最も効くが最もリークしやすい』代表例なので、fold の中だけで統計を計算する OOF target encoding を自分で実装してから sklearn.preprocessing.TargetEncoder(内部で交差適合を行う)と結果を突き合わせる。素朴な全データ平均でのエンコードがCVを不自然に押し上げることを数値で再現する(unit02 のリーク検出の実践編)。集約特徴は pandas-groupby を実戦投入して習得する: groupby().agg() で複数統計を一括生成、transform('mean') で元の行数を保ったまま群統計を貼る(shape が (n,) のまま保たれる点を print で確認 — 既習のつまずき対策)、merge で貼り戻す、『自分を含む集計』のリーク、C#の GroupBy + Select(g => new {...}) との対応表を出す。日付特徴は year/month/day/dayofweek/hour への分解、周期性の sin/cos 変換、経過日数・イベントからの差分、dt アクセサの使い方。最後に全部を sklearn の Pipeline / ColumnTransformer に載せる: 『前処理を fit するのは学習foldだけ』をパイプラインが構造的に保証してくれること、cross_val_score にパイプラインごと渡せば前処理リークが自動的に防げること、C#アナロジーではミドルウェアの合成/デコレータパターン。データは seed 固定の合成トランザクション風テーブル(高カーディナリティのカテゴリ列・日時列・ユーザーID群を含む)。完全オフライン。",
+      "title": "収集データの特徴量エンジニアリング",
+      "summary": "モデルを変えるより特徴量を作るほうが効く、というテーブルコンペの現実を、収集データの列(shop / category / price / scraped_at / title の長さ等)で手を動かして確認する。カテゴリ変数の表現を用途別に整理する(用途/手法/次元の増え方/リーク危険度/相性の良いモデル の表): label encoding、one-hot(OneHotEncoder の handle_unknown='ignore' と train/test の列整合 — スクレイピングでは『test に新しいショップが出てくる』ので未知カテゴリ処理が必須)、count/frequency encoding(そのショップが何商品持っているか、は実際に効く)、LightGBM の categorical_feature 指定、そして target encoding。target encoding は『最も効くが最もリークしやすい』代表例なので、fold の中だけで統計を計算する OOF target encoding を自分で実装してから sklearn.preprocessing.TargetEncoder(内部で交差適合を行う)と結果を突き合わせる。素朴な全データ平均でのエンコードがCVを不自然に押し上げることを数値で再現する(unit02 のリーク検出の実践編)。集約特徴は pandas-groupby を実戦投入して習得する: groupby(['shop','category']).agg() で複数統計を一括生成(ショップ内での相対価格、カテゴリ内価格の中央値からの乖離 = 『この商品は同カテゴリ内で高いのか安いのか』という実務で最も効く型)、transform('mean') で元の行数を保ったまま群統計を貼る(shape が (n,) のまま保たれる点を print で確認 — 既習のつまずき対策)、merge で貼り戻す、『自分を含む集計』のリーク、C#の GroupBy + Select(g => new {...}) との対応表を出す。日付特徴は scraped_at からの year/month/day/dayofweek/hour への分解、周期性の sin/cos 変換、初回収集からの経過日数、同一商品の前回収集時との価格差分(diff / shift / lag特徴)とその際に必ずソートとグループ単位の shift が要ること。dt アクセサの使い方。最後に全部を sklearn の Pipeline / ColumnTransformer に載せる: 『前処理を fit するのは学習foldだけ』をパイプラインが構造的に保証してくれること、cross_val_score にパイプラインごと渡せば前処理リークが自動的に防げること、C#アナロジーではミドルウェアの合成/デコレータパターン。データは seed 固定の合成商品×日次収集テーブル(高カーディナリティのショップ列・カテゴリ列・日時列・同一商品の時系列を含む)。完全オフライン。",
       "concepts": [
         "categorical-encoding",
         "target-encoding-oof",
@@ -97,20 +97,20 @@
       "reviewed": false
     },
     {
-      "dir": "unit05-text-classical-nlp",
-      "title": "テキストを数値にする(古典NLP)",
-      "summary": "重点分野NLPの1ユニット目。『機械学習モデルは行列しか食べられない。テキストをどう行列にするか』が唯一の問い、という視点で古典NLPを一気に通す。前処理: Unicode正規化(unicodedata.normalize('NFKC') で全角英数・半角カナを揃える)、小文字化、URL/数値/絵文字の置換、記号除去、これらを『どこまでやるとスコアが上がるか』は指標で決めるという姿勢。ここで python-string-ops も実戦で習得する(str.strip / split / replace / join / f-string / re モジュールの findall・sub、C#の string.Split / Replace / Regex との対応表)。日本語は分かち書きが必要なので janome を使う(純Python・辞書ビルド不要・完全オフライン): Tokenizer().tokenize() で形態素に分割、surface と品詞(part_of_speech)、名詞・動詞だけに絞るフィルタ、Analyzer/CharFilter/TokenFilter の構成。英語は空白分割で足りることの対比。ベクトル化: CountVectorizer と TfidfVectorizer(analyzer / tokenizer 引数に janome の分かち書き関数を差し込む、ngram_range で n-gram、min_df / max_df / max_features で語彙を絞る、sublinear_tf、fit は train のみ・test は transform だけ = 語彙リークの防止)。出力が scipy の疎行列(CSR)であることと、その shape (n_docs, n_vocab) の読み方、疎行列を .toarray() で潰すとメモリが爆発する理由。分類の型もここで固める: LogisticRegression / LinearSVC / SGDClassifier / ComplementNB が線形テキスト分類の定番であること、predict と predict_proba(LinearSVC には predict_proba が無く decision_function を使う)、classification_report の precision/recall/f1/support の読み方、クラス不均衡時の class_weight='balanced'。C#アナロジー: BoW は Dictionary<string,int> の語彙表 + 疎ベクトル、TF-IDF は『よく出るが珍しい語を重く』のスコアリング。データはユニット内の固定テキストファイル(日本語+英語混在のレビュー風合成コーパス、seed固定生成済み)を同梱し、外部コーパスのダウンロードは行わない。数秒で完走。",
+      "dir": "unit05-product-text-classification",
+      "title": "商品テキストの正規化とカテゴリ自動分類",
+      "summary": "重点分野NLPの1ユニット目。主題は実務直結の『商品カテゴリの自動分類』— 何万件もの商品タイトル・説明文に人手でカテゴリを付けられないので、一部の人手ラベルから残りを推定する。『機械学習モデルは行列しか食べられない。テキストをどう行列にするか』が唯一の問い、という視点で古典NLPを一気に通す。前半はスクレイピングしたテキスト特有の汚れを落とす実務レベルの正規化(既習コースの data-cleaning の続き): HTMLタグ・HTMLエンティティの残渣(&amp; / &nbsp; / <br> が本文に混入している)を html.unescape と正規表現で除去、Unicode正規化(unicodedata.normalize('NFKC') で全角英数・半角カナ・全角空白を揃える)、単位・価格表記のゆれの吸収(「1,980円」「¥1980」「1980 円」「1980JPY」を同じ数値トークンに落とす)、繰り返し空白・改行・タブの畳み込み、絵文字と装飾記号(★【】■)の除去、サイトごとのテンプレート文言(『送料無料』『あす楽対応』『★期間限定ポイント10倍★』)の検出と除去 — これは全ショップに共通で出現するため分類に効かないどころか shop を当てる手がかりになってしまうリーク源である、という繋がりで説明する。ここで python-string-ops も実戦で習得する(str.strip / split / replace / join / lower / f-string、re モジュールの findall・sub・compile、C#の string.Split / Replace / Regex との対応表)。日本語は分かち書きが必要なので janome を使う(純Python・辞書ビルド不要・完全オフライン): Tokenizer().tokenize() で形態素に分割、surface と品詞(part_of_speech)、名詞・動詞だけに絞るフィルタ、Analyzer / CharFilter / TokenFilter の構成。英語やブランド名は空白分割で足りることの対比と、型番(『XR-500B』)を壊さない工夫。ベクトル化: CountVectorizer と TfidfVectorizer(analyzer / tokenizer 引数に janome の分かち書き関数を差し込む、ngram_range で n-gram、文字n-gram が型番やブランド表記ゆれに強い理由、min_df / max_df / max_features で語彙を絞る、sublinear_tf、fit は train のみ・test は transform だけ = 語彙リークの防止)。出力が scipy の疎行列(CSR)であることと、その shape (n_docs, n_vocab) の読み方、疎行列を .toarray() で潰すとメモリが爆発する理由。分類の型もここで固める: LogisticRegression / LinearSVC / SGDClassifier / ComplementNB が線形テキスト分類の定番であること、predict と predict_proba(LinearSVC には predict_proba が無く decision_function を使う)、classification_report の precision/recall/f1/support の読み方、カテゴリ分布が激しく偏る(商品カテゴリは実際そうなる)ときの class_weight='balanced' と macro-F1。C#アナロジー: BoW は Dictionary<string,int> の語彙表 + 疎ベクトル、TF-IDF は『よく出るが珍しい語を重く』のスコアリング。データはユニット内に同梱する固定テキストファイル(EC商品タイトル+説明文風の日本語/英語混在の合成コーパス、HTML残渣・表記ゆれ・テンプレート文言を意図的に含む、seed固定生成済み)。外部コーパスのダウンロードも実サイトへのアクセスも行わない。数秒で完走。",
       "concepts": [
+        "data-cleaning",
         "text-normalization",
         "janome-tokenize",
         "tfidf-vectorizer",
-        "linear-text-baseline",
         "classification-workflow"
       ],
       "exercises": [
-        "ex01_normalize_and_tokenize",
-        "ex02_tfidf_features",
-        "ex03_linear_baseline",
+        "ex01_clean_scraped_text",
+        "ex02_tokenize_and_tfidf",
+        "ex03_linear_category_baseline",
         "ex04_capstone"
       ],
       "estimated_minutes": 360,
@@ -118,20 +118,20 @@
       "reviewed": false
     },
     {
-      "dir": "unit06-embeddings-bridge",
-      "title": "埋め込みと事前学習モデルの入口",
-      "summary": "重点分野NLPの2ユニット目。TF-IDFの疎な世界から、事前学習モデルの密なベクトルの世界への橋を架ける。まず TruncatedSVD(LSA)で TF-IDF を密な低次元ベクトルに潰し、『語彙数次元の疎ベクトル → 数百次元の密ベクトル』という圧縮が何を捨てて何を残すかを explained_variance_ratio_ と shape の変化で確認する(疎行列 (n, 20000) → (n, 128) の shape 追跡を print で毎回行う)。次に単語埋め込みと文埋め込みの違いを整理する: 単語埋め込みは『語彙表 → ベクトル』のルックアップ表(C#で言えば Dictionary<string, float[]>、実体は (vocab_size, dim) の行列で、トークンID列でのインデックス参照)、文埋め込みはそれを1本のベクトルに集約したもの。集約(pooling)は mean / max / CLS があり、mean pooling では padding 位置を除外するために attention mask で重み付き平均を取る必要がある — ここが既習のつまずき(shape・axis・keepdims)の山場なので、(batch, seq_len, dim) の埋め込みに (batch, seq_len) のマスクを掛けるには mask[:, :, None] で軸を足す必要があること、分母 mask.sum(axis=1, keepdims=True) が要ることを、shape を1行ずつ print しながら組み立てる。サブワード分割も概念として押さえる: なぜ単語単位でも文字単位でもなくサブワードなのか(未知語ゼロ + 語彙サイズ有限)、BPEのマージ規則の適用アルゴリズム、[CLS]/[SEP]/[PAD]/[UNK] などの特殊トークン、トークンID列と attention_mask の対応。演習ではマージ規則表を与えて BPE風トークナイザを純Pythonで実装させる(辞書ダウンロード不要・python-dict-ops と python-list-comprehension もここで実戦習得)。最後に実務でよく効く型『事前学習モデルを特徴抽出器として使い、出てきた埋め込みを GBDT に食わせる』を体験する。演習ではネットワーク不使用のため、事前学習済み重みの代わりに seed 固定の疑似埋め込み行列(np.random.default_rng で生成した (vocab_size, dim) 行列)を使い、採点対象はあくまで ルックアップ → mask付きpooling → 特徴結合(scipy.sparse.hstack / np.hstack)→ 学習・評価 のロジック側にする。lesson.ipynb では sentence-transformers 相当の実モデルの使い方も解説するが、モデル取得が必要なセルは必ず『オプション(実行しなくても後続セルは動く)』と明記し、既定では疑似埋め込みで進む構成にする。",
+      "dir": "unit06-entity-resolution",
+      "title": "名寄せ / エンティティ解決(古典→深層の橋)",
+      "summary": "重点分野NLPの2ユニット目にして、このコースで最も実務価値の高いユニット。主題は名寄せ(エンティティ解決)— 複数サイトから収集した商品のうち、どれとどれが『同じ物』かを判定する。スクレイピング事業では価格比較・在庫統合・重複排除の全てがこれに依存し、unit02 の同一商品リークを潰す group キーもここで作られる。パターン認識という要求に直球で応え、かつ古典→深層の橋渡しが一本の課題の中で説明できる題材である。定式化: 名寄せは『商品ペアを作り、同一かどうかを当てる二値分類』に落とす。(1) 候補ペア生成(blocking)— n件の全ペアは O(n^2) で数万件では現実的でないため、ブランド名・先頭数文字・価格帯・カテゴリでバケツ化して同じバケツ内だけでペアを作る。再現率(取りこぼし)と計算量のトレードオフ、複数キーの blocking の和集合。C#アナロジー: Dictionary<string, List<int>> でバケツを作り、各バケツ内で二重ループ。(2) 文字列類似度 — ここで既習の algorithms-atcoder-brown(level 3)が直接効く。レーベンシュタイン編集距離を DP テーブルで自力実装し(競プロで書いたことのある2次元DPそのもの)、正規化編集距離、Jaccard 係数(単語集合 / 文字n-gram集合)、共通接頭辞長、数値・型番の一致判定を作る。ライブラリを呼ぶ前に自分で書くことで『類似度とは何を測っているのか』を掴む。(3) TF-IDF コサイン類似度 — unit05 で作った TF-IDF ベクトルの内積が、なぜ『語の重なり具合』を表すのか(正規化された内積 = cos)、疎行列同士の類似度計算、TruncatedSVD(LSA)で密な低次元ベクトルに潰してからのコサイン(疎行列 (n, 20000) → (n, 128) の shape 変化を print で追跡)、SVD が何を捨てて何を残すか。(4) 文埋め込み — 表記が全く違うが意味が同じ商品名(『ワイヤレスイヤホン』と『Bluetoothヘッドホン』)は文字列類似度では捕まらない。ここで埋め込みが必要になる、という動機づけで深層側へ渡る。単語埋め込みは『語彙表 → ベクトル』のルックアップ表(C#で言えば Dictionary<string, float[]>、実体は (vocab_size, dim) の行列とトークンID列でのインデックス参照)、文埋め込みはそれを1本に集約したもの。集約(pooling)は mean / max / CLS があり、mean pooling では padding 位置を除外するため attention mask で重み付き平均を取る必要がある — ここが既習のつまずき(shape・axis・keepdims)の山場なので、(batch, seq_len, dim) の埋め込みに (batch, seq_len) のマスクを掛けるには mask[:, :, None] で軸を足す必要があること、分母が mask.sum(axis=1, keepdims=True) であることを、shape を1行ずつ print しながら組み立てる。(5) 統合 — 上記すべてをペア特徴量ベクトルにして LightGBM で二値分類し、閾値を CV で決め、最後に『同一と判定されたペア』を連結成分(Union-Find / BFS — これも競プロの既習知識がそのまま効く)でクラスタ化して名寄せグループIDを振る。【オフライン制約の実装方針】演習では事前学習済み重みをダウンロードしない。埋め込みは seed 固定の疑似埋め込み行列(np.random.default_rng で生成した (vocab_size, dim) 行列)を使い、採点対象は blocking / 編集距離DP / Jaccard / コサイン類似度 / mask付きpooling / ペア特徴結合 / 閾値決定 / 連結成分クラスタリング というロジック側にする。lesson.ipynb では transformers の実モデル(sentence embedding)を使う例も示すが、モデル取得を伴うセルは必ず『オプション(実行しなくても後続セルは動く)』と明記し、既定では疑似埋め込みで進む構成にする。データは seed 固定で生成した複数サイト分の商品カタログ(同一商品を表記ゆれ・語順違い・型番の有無・価格差ありで複製したもの、正解の名寄せIDつき)。",
       "concepts": [
-        "dimensionality-reduction-svd",
-        "subword-tokenization",
-        "word-embeddings",
-        "sentence-embedding-pooling",
-        "embedding-as-features"
+        "entity-resolution-pairs",
+        "blocking-candidate-generation",
+        "string-similarity",
+        "tfidf-cosine-similarity",
+        "sentence-embedding-pooling"
       ],
       "exercises": [
-        "ex01_svd_dense_features",
-        "ex02_subword_tokenizer",
-        "ex03_masked_mean_pooling",
+        "ex01_blocking_and_pairs",
+        "ex02_string_similarity",
+        "ex03_cosine_and_pooling",
         "ex04_capstone"
       ],
       "estimated_minutes": 390,
@@ -140,18 +140,18 @@
     },
     {
       "dir": "unit07-transformer-finetune",
-      "title": "Transformerのファインチューニング",
-      "summary": "重点分野NLPの3ユニット目にして『古典→深層の橋渡し』の到達点。事前学習済み Transformer を分類タスクに fine-tuning する一連のロジックを、部品ごとに自力で書けるようにする。扱う部品: (1) 可変長のトークンID列をバッチにまとめる collate — max_length の決め方(固定長パディング vs バッチ内動的パディング、後者が無駄計算を減らす)、truncation、padding トークンの ID、attention_mask の生成、labels の整形。(2) attention mask がモデル内部で何をしているか — padding 位置のスコアを -inf(実装上は大きな負値)にして softmax 後に 0 にする仕組みを、(batch, seq) のマスクから (batch, 1, 1, seq) へブロードキャストする形の変換として NumPy で実装する(shape/axis のつまずき対策として毎ステップ shape を print)。(3) 学習率スケジュール — なぜ warmup が要るか、linear decay / cosine decay、ステップ数から学習率を返す関数の実装、torch の LambdaLR / get_scheduler との対応。(4) 学習ループ本体 — optimizer.zero_grad → forward → loss → backward → clip_grad_norm_ → optimizer.step → scheduler.step の順序と、順序を間違えたときに何が壊れるか、model.train() / model.eval() と torch.no_grad() の意味、勾配累積(gradient accumulation)で実効バッチサイズを稼ぐ、AMP(混合精度)の考え方。(5) 過学習の見分け方 — train loss と valid metric の乖離、エポックごとの推移から best epoch を選ぶ、最良重みの保存と復元(state_dict)、early stopping。あわせて推論コストのトレードオフを実感として入れる(unit10 で本格的に設計する前振り): モデルサイズ(層数・hidden・語彙)と 1 サンプルあたりの計算量の関係、max_length を半分にすると attention のコストがどう変わるか、バッチサイズとスループット、GPUを使わずCPUで回す判断基準。【オフライン制約の実装方針】演習は事前学習済み重みを一切ダウンロードしない。collate / attention mask / LRスケジュール は純NumPy・純Pythonで実装して採点する(既習の numpy-broadcasting が直接効く)。学習ループの採点は、config から構築したランダム初期化の極小 Transformer 分類器(層数1〜2・hidden 32〜64・語彙数 200 程度、torch.nn で自前定義)を seed 固定の合成トークン列データで数十ステップ回し、『loss が下がること』『best epoch が正しく選ばれること』『scheduler の学習率系列が期待通りであること』といったロジックを検証する。CPUで数十秒以内に完走する。lesson.ipynb では transformers ライブラリ(AutoTokenizer / AutoModelForSequenceClassification / Trainer)の実際の使い方を解説するが、事前学習済みモデルの取得を伴うセルは必ずオプション扱いにし、飛ばしても後続セルが動くよう既存の極小モデルにフォールバックする構成にする。【要インストール】このユニットは torch(CPU版)が必須。transformers はlesson解説とオプションセルのために入っていることが望ましい(採点は transformers 無しでも通る設計にする)。",
+      "title": "Transformerのファインチューニングでカテゴリ分類を仕上げる",
+      "summary": "重点分野NLPの3ユニット目にして『古典→深層の橋渡し』の到達点。unit05 で TF-IDF + 線形モデルで立てた商品カテゴリ分類のベースラインを、事前学習済み Transformer のファインチューニングで超える。同時に『本当に超えたのか、そのコストに見合うのか』を問い続ける姿勢を作る(unit10 のコスト設計への前振り)。扱う部品: (1) サブワード分割 — なぜ単語単位でも文字単位でもなくサブワードなのか(未知語ゼロ + 語彙サイズ有限)、商品名の型番『XR-500B』やブランド名が未知語だらけになる日本語ECテキストでこれがどう効くか、BPE / WordPiece のマージ規則の適用アルゴリズム、[CLS]/[SEP]/[PAD]/[UNK] の特殊トークン、トークンID列と attention_mask の対応。演習ではマージ規則表を与えて BPE風トークナイザを純Pythonで実装させる(辞書ダウンロード不要・python-dict-ops と python-list-comprehension もここで実戦習得)。(2) collate と動的パディング — 可変長のトークンID列をバッチにまとめる。max_length の決め方(固定長パディング vs バッチ内動的パディング、後者が無駄計算を減らす = そのまま推論コストに効く)、truncation、attention_mask の生成、labels の整形。あわせて attention mask がモデル内部で何をしているか(padding 位置のスコアを大きな負値にして softmax 後に 0 にする)を、(batch, seq) のマスクから (batch, 1, 1, seq) へブロードキャストする形の変換として NumPy で実装する(shape/axis のつまずき対策として毎ステップ shape を print)。(3) 学習率スケジュール — なぜ warmup が要るか、linear decay / cosine decay、ステップ数から学習率を返す関数の実装、torch の LambdaLR / transformers の get_scheduler との対応。(4) 学習ループ本体 — optimizer.zero_grad → forward → loss → backward → clip_grad_norm_ → optimizer.step → scheduler.step の順序と、順序を間違えたときに何が壊れるか、model.train() / model.eval() と torch.no_grad() の意味、勾配累積で実効バッチサイズを稼ぐ、AMP(混合精度)の考え方。(5) 過学習の見分け方 — train loss と valid metric の乖離、エポックごとの推移から best epoch を選ぶ、最良重みの保存と復元(state_dict)、early stopping。ラベル数千件しかない状況でのファインチューニングの現実(層を凍結する / 学習率を小さくする / エポックを絞る)。あわせて推論コストのトレードオフを実感として入れる: モデルサイズ(層数・hidden・語彙)と1サンプルあたり計算量の関係、max_length を半分にすると attention のコストがどう変わるか、バッチサイズとスループット、GPUを使わずCPUで回す判断基準 — 日次数万件を捌く前提での概算を電卓で叩く。【オフライン制約の実装方針】演習は事前学習済み重みを一切ダウンロードしない。サブワードトークナイザ / collate / attention mask / LRスケジュール は純NumPy・純Pythonで実装して採点する(既習の numpy-broadcasting が直接効く)。学習ループの採点は、transformers の config から構築したランダム初期化の極小モデル(BertConfig(num_hidden_layers=2, hidden_size=32, num_attention_heads=2, vocab_size=200 程度)から AutoModelForSequenceClassification.from_config で構築、前向き計算は実測 0.01 秒)を seed 固定の合成トークン列データで数十ステップ回し、『loss が下がること』『best epoch が正しく選ばれること』『scheduler の学習率系列が期待通りであること』『動的パディングで総パディングトークン数が減ること』といったロジックを検証する。CPUで数十秒以内に完走する。lesson.ipynb では transformers の実際の使い方(AutoTokenizer / AutoModelForSequenceClassification / Trainer)を解説するが、事前学習済み重みの取得を伴うセルは必ずオプション扱いにし、飛ばしても後続セルが from_config の極小モデルで動く構成にする。",
       "concepts": [
+        "subword-tokenization",
         "padding-and-collate",
-        "attention-mask",
         "lr-schedule-warmup",
         "transformer-finetune-loop",
         "overfit-diagnosis"
       ],
       "exercises": [
-        "ex01_collate_batch",
-        "ex02_attention_mask",
+        "ex01_subword_tokenizer",
+        "ex02_collate_and_mask",
         "ex03_lr_schedule",
         "ex04_capstone"
       ],
@@ -160,20 +160,20 @@
       "reviewed": false
     },
     {
-      "dir": "unit08-image-and-pattern-basics",
-      "title": "画像とパターン認識の基礎",
-      "summary": "重点分野・画像の1ユニット目。『画像は (高さ, 幅, チャネル) の数値配列にすぎない』を徹底的に体に入れる。既習の NumPy(vectorize 4 / masking 4 / broadcasting 3)がそのまま武器になる領域なので、新しいのは規約と語彙だけ、という接続を明示する。扱う内容: 画像の配列表現 — shape が (H, W, C) か (C, H, W) かでライブラリの流儀が違う(PIL/OpenCV/skimage は HWC、PyTorch は CHW)こと、transpose での相互変換、OpenCV だけチャネル順が BGR であること、dtype が uint8(0-255)か float32(0.0-1.0)かで表示も演算も変わること、uint8 のまま演算するとオーバーフローで巻き戻ること。これは既知のつまずき(shape/axis)の直撃領域なので、全ての変換ステップで img.shape と img.dtype と img.min()/max() を print して確認する手順を lesson・演習・テストに一貫して埋める。前処理 — リサイズ(補間方法の違い、アスペクト比を保つ vs 潰す)、中央/ランダムクロップ、グレースケール化(輝度の重み付き和 = チャネル軸に対する内積)、チャネルごとの平均・標準偏差での正規化((img - mean) / std を (1,1,3) にブロードキャストする、mean は axis=(0,1) で keepdims=True — keepdims の必要性を再確認する場面)。古典特徴とパターン認識 — 生ピクセルをそのまま線形モデルに入れると何が問題か(平行移動・照明に弱い、次元が高すぎる)、そこから輝度ヒストグラム、エッジ(Sobel)、skimage.feature.hog による HOG 特徴(セル・ブロック・勾配方向ヒストグラムの直感とテキスト図)へ。HOG + LinearSVC/LightGBM が深層学習以前の画像分類の定番だったこと、これが今も『小データ・低コスト推論』の選択肢として実務で生きること。データ拡張 — なぜ効くのか(モデルに『この変換をしても正解は変わらない』という不変性を教える = ラベル保存変換)、反転/回転/明度変化/ノイズ付加、ラベルを壊す拡張の例(数字の6を180度回転する等)、拡張は学習foldにだけ掛けて検証foldには掛けないこと。データは np.random.default_rng(seed=...) で生成する合成画像データセット(図形の種類・位置・色・ノイズをパラメータ化した小さな分類問題、32x32 程度・数百枚)を使い、外部データセットのダウンロードは一切行わない。numpy / pillow / scikit-image / opencv-python-headless のみで完結し、torch は不要。CPUで数秒〜十数秒で完走。",
+      "dir": "unit08-product-image-basics",
+      "title": "商品画像の基礎と重複画像検出",
+      "summary": "重点分野・画像の1ユニット目。スクレイパーが image_path 列とともに落としてきた商品画像を扱う。『画像は (高さ, 幅, チャネル) の数値配列にすぎない』を徹底的に体に入れる。既習の NumPy(vectorize 4 / masking 4 / broadcasting 3)がそのまま武器になる領域なので、新しいのは規約と語彙だけ、という接続を明示する。扱う内容: 画像の配列表現 — shape が (H, W, C) か (C, H, W) かでライブラリの流儀が違う(PIL/OpenCV/skimage は HWC、PyTorch は CHW)こと、transpose での相互変換、OpenCV だけチャネル順が BGR であること、dtype が uint8(0-255)か float32(0.0-1.0)かで表示も演算も変わること、uint8 のまま演算するとオーバーフローで巻き戻ること、RGBA の透過チャネル(EC画像では珍しくない)を落とす処理。これは既知のつまずき(shape/axis)の直撃領域なので、全ての変換ステップで img.shape と img.dtype と img.min()/max() を print して確認する手順を lesson・演習・テストに一貫して埋める。前処理 — リサイズ(補間方法の違い、アスペクト比を保つ vs 潰す、EC画像はサイトごとに縦横比がばらばら)、余白(白背景パディング)のトリミング、中央/ランダムクロップ、グレースケール化(輝度の重み付き和 = チャネル軸に対する内積)、チャネルごとの平均・標準偏差での正規化((img - mean) / std を (1,1,3) にブロードキャストする、mean は axis=(0,1) で keepdims=True — keepdims の必要性を再確認する場面)。重複画像検出(このユニットの実務主題)— 同じ商品の画像が複数サイトで微妙に違う(リサイズされている・ショップのロゴが焼き込まれている・余白が違う・JPEG圧縮率が違う)という、スクレイピング実務そのものの設定。ピクセル完全一致(ハッシュ)がなぜ役に立たないかを実演してから、知覚ハッシュ(average hash / difference hash: グレースケール化 → 8x8 に縮小 → 平均や隣接差分で 64bit のビット列に落とす)を自力実装し、ハミング距離で近さを測る。ここでも既習のブールマスクとビット演算が効く。ヒストグラム類似度との比較、ロゴ焼き込みや余白差にどれが強いか。unit06 のテキスト名寄せと同じ『ペアを作って同一判定する』枠組みであることを明示的に接続する。古典特徴とパターン認識 — 生ピクセルをそのまま線形モデルに入れると何が問題か(平行移動・照明に弱い、次元が高すぎる)、そこから輝度ヒストグラム、エッジ(Sobel)、skimage.feature.hog による HOG 特徴(セル・ブロック・勾配方向ヒストグラムの直感とテキスト図)へ。HOG + LinearSVC/LightGBM が深層学習以前の画像分類の定番だったこと、これが今も『小データ・低コスト推論』の選択肢として実務で生きること。データ拡張 — なぜ効くのか(『この変換をしても正解は変わらない』という不変性をモデルに教える = ラベル保存変換)、反転/回転/明度変化/ノイズ付加/JPEG劣化、ラベルを壊す拡張の例、拡張は学習foldにだけ掛けて検証foldには掛けないこと。データは np.random.default_rng(seed=...) で生成する合成商品画像データセット(図形と色でカテゴリを表現した 32x32〜64x64 の数百枚に、リサイズ・ロゴ焼き込み・余白付与・ノイズを掛けた重複バリアントを含める)。外部データセットのダウンロードは一切行わない。numpy / pillow / scikit-image / opencv-python-headless のみで完結し、torch は不要。CPUで数秒〜十数秒で完走。",
       "concepts": [
         "image-array-representation",
         "image-preprocessing-resize-normalize",
+        "image-duplicate-detection",
         "classical-image-features",
-        "data-augmentation",
-        "pattern-recognition-baseline"
+        "data-augmentation"
       ],
       "exercises": [
         "ex01_image_array_ops",
         "ex02_resize_and_normalize",
-        "ex03_classical_features",
+        "ex03_perceptual_hash_dedup",
         "ex04_capstone"
       ],
       "estimated_minutes": 330,
@@ -182,8 +182,8 @@
     },
     {
       "dir": "unit09-transfer-learning-vision",
-      "title": "転移学習で画像分類",
-      "summary": "重点分野・画像の2ユニット目にして『古典→深層の橋渡し』の到達点。少ないデータでもまともな精度を出す標準手法、転移学習を回せるようにする。扱う内容: PyTorch のデータ供給層 — torch.utils.data.Dataset を継承して __len__ と __getitem__ を実装する(C#アナロジー: IReadOnlyList<T> を実装するのと同じ、DataLoader は IEnumerable<T[]> を返すバッチャ)、transform をコンストラクタ注入で差し替える設計(学習用は拡張あり・検証用は拡張なし、というのが典型的なバグの温床)、DataLoader の batch_size / shuffle / num_workers / drop_last、collate_fn が既定で何をするか、返るテンソルの shape が (B, C, H, W) であることの確認。転移学習の骨格 — 事前学習モデルは『汎用の特徴抽出器 + タスク固有のヘッド』に分解できること、ヘッド(最終全結合層)を出力クラス数に差し替える方法(model.fc / model.classifier の付け替え)、requires_grad=False での凍結、optimizer に渡すパラメータを filter(lambda p: p.requires_grad, model.parameters()) で絞る必要があること(ここを忘れるのが定番のバグ)、学習対象パラメータ数を数えて意図通り凍結できたか検証する習慣。凍結 vs 全層学習 vs 段階的解凍(warmupでヘッドだけ学習 → 低い学習率で全層解凍)の使い分けを、データ量・ドメインの近さ・計算予算の3軸で整理する。層ごとに異なる学習率(discriminative learning rate)。評価 — 画像分類は多クラスなので confusion_matrix でクラス別に見る(全体accuracyでは見えない『どのクラスとどのクラスを取り違えているか』)、per-class recall / precision、macro平均 vs micro平均 vs weighted平均の違いと、コンペの指標がどれかを必ず確認すること。TTA(Test Time Augmentation)— 推論時に反転などの変換を掛けた複数予測を平均する、なぜ効くか、推論コストが変換数ぶん倍になるトレードオフ。【オフライン制約の実装方針】演習では事前学習済み重み(torchvision の pretrained weights)を一切ダウンロードしない。転移学習の構造は、seed固定でランダム初期化した極小 CNN(Conv 2〜3層 + ヘッド、torchvision.models.resnet18(weights=None) を縮小した自前定義でも可)を『事前学習済みモデルの代役』として使い、ヘッド差し替え・凍結・学習対象パラメータ数・段階的解凍・学習ループ・混同行列・TTA といったロジック側を採点対象にする。画像は unit08 と同じ方式の合成データセット(seed固定、32x32、数百枚)を使う。CPUで数十秒以内に完走する。lesson.ipynb では torchvision.models の重み付きロード(ResNet18 等)の実際の使い方とファインチューニング結果を解説するが、重みのダウンロードを伴うセルは必ずオプション扱いにし、飛ばしても後続セルがランダム初期化モデルで動く構成にする。【要インストール】torch(CPU版)と torchvision が必須。",
+      "title": "転移学習で商品画像を分類する",
+      "summary": "重点分野・画像の2ユニット目にして『古典→深層の橋渡し』の到達点。少ないラベルでもまともな精度を出す標準手法、転移学習を回せるようにする。題材は unit08 と同じ商品画像で、タスクは (a) 画像からの商品カテゴリ分類(タイトルが空・説明文が薄い商品が実際に大量にあるため、画像から補完する需要は本物)と (b) 学習した特徴ベクトルによる重複画像検出の高度化(unit08 の知覚ハッシュでは捕まらない、アングル違い・背景違いの同一商品)。扱う内容: PyTorch のデータ供給層 — torch.utils.data.Dataset を継承して __len__ と __getitem__ を実装する(C#アナロジー: IReadOnlyList<T> を実装するのと同じ、DataLoader は IEnumerable<T[]> を返すバッチャ)、transform をコンストラクタ注入で差し替える設計(学習用は拡張あり・検証用は拡張なし、というのが典型的なバグの温床)、DataLoader の batch_size / shuffle / num_workers / drop_last、collate_fn が既定で何をするか、返るテンソルの shape が (B, C, H, W) であることの確認、破損画像・欠損 image_path を __getitem__ 内でスキップ/代替する防御(スクレイピングデータでは必発)。転移学習の骨格 — 事前学習モデルは『汎用の特徴抽出器 + タスク固有のヘッド』に分解できること、ヘッド(最終全結合層)を出力クラス数に差し替える方法(model.fc / model.classifier の付け替え)、requires_grad=False での凍結、optimizer に渡すパラメータを filter(lambda p: p.requires_grad, model.parameters()) で絞る必要があること(ここを忘れるのが定番のバグ)、学習対象パラメータ数を数えて意図通り凍結できたか検証する習慣。凍結 vs 全層学習 vs 段階的解凍(warmupでヘッドだけ学習 → 低い学習率で全層解凍)の使い分けを、データ量・ドメインの近さ・計算予算の3軸で整理する。層ごとに異なる学習率(discriminative learning rate)。中間層出力を特徴ベクトルとして取り出して重複検出やクラスタリングに使う型(unit06 の文埋め込みと同じ発想の画像版)。評価 — 商品カテゴリは多クラスかつ分布が激しく偏るので confusion_matrix でクラス別に見る(全体accuracyでは見えない『どのクラスとどのクラスを取り違えているか』)、per-class recall / precision、macro平均 vs micro平均 vs weighted平均の違いと、コンペの指標がどれかを必ず確認すること。TTA(Test Time Augmentation)— 推論時に反転などの変換を掛けた複数予測を平均する、なぜ効くか、推論コストが変換数ぶん倍になるトレードオフ(unit10 のコスト設計に直結)。【オフライン制約の実装方針】演習では torchvision の事前学習済み重みをダウンロードしない。転移学習の構造は、seed固定でランダム初期化した小型 CNN(torchvision.models.resnet18(weights=None)、実測 0.18 秒/前向き、または Conv 2〜3層の自前定義)を『事前学習済みモデルの代役』として使い、ヘッド差し替え・凍結・学習対象パラメータ数・段階的解凍・学習ループ・特徴抽出・混同行列・TTA といったロジック側を採点対象にする。画像は unit08 と同じ方式の合成データセット(seed固定、32x32〜64x64、数百枚)。CPUで数十秒以内に完走する。lesson.ipynb では torchvision.models の重み付きロード(ResNet18 等)の実際の使い方とファインチューニング結果を解説するが、重みのダウンロードを伴うセルは必ずオプション扱いにし、飛ばしても後続セルが weights=None のモデルで動く構成にする。",
       "concepts": [
         "torch-dataset-dataloader",
         "torchvision-transfer-learning",
@@ -203,8 +203,8 @@
     },
     {
       "dir": "unit10-capstone-ensemble-and-serving",
-      "title": "キャップストーン: アンサンブルと提出・推論パイプライン",
-      "summary": "10日間の全てを1本に束ねる最終ユニット。コース目標そのもの(リークのないCV設計 → ベースライン → 改善サイクル → 提出ファイル生成 + クラウド推論のコスト設計)をエンドツーエンドで実行する。前半はスコアを詰める技術: OOFブレンド — unit02 で作れるようになった OOF 予測を横に並べた行列 (n_train, n_models) を作り、重みをCVで最適化する(単純平均 → 重み付き平均を scipy.optimize や制約付き探索で決める → 順位平均 rank averaging が指標によっては強い理由)、『重みを test の結果を見て決めてはいけない』という原則。スタッキング — OOF を特徴量としてメタモデル(多くは弱い線形モデル)を学習する、メタモデルの学習も交差検証の中で行わないとリークすること、スタッキングがブレンドに勝つ条件と過学習しやすさ。シード平均 — 学習の乱数だけを変えた複数モデルの平均が『ばらつきぶんの誤差』を消す仕組み、費用対効果。相関の低いモデルを混ぜるほど効くこと(予測同士の相関行列を見る)。後半は実務に載せる技術: 学習と推論の分離 — 学習スクリプトが出力すべき成果物(モデル本体、エンコーダ/ベクトライザ等の fit 済み前処理器、特徴量定義、学習時の列順、しきい値、メタデータとしての seed とライブラリバージョン)を artifacts として保存し、推論スクリプトはそれを読み込むだけで再学習せずに submission.csv を作れること(C#アナロジー: 学習=ビルド、推論=デプロイ済みバイナリの実行)。再現性 — seed 固定の効く範囲と効かない範囲、同じ入力から同じ提出が2回作れることをテストで担保する。クラウド推論のコスト設計 — 学習者の要求である『既存のLLMサービスを使うより圧倒的に安価であるライン』を数字で引けるようにする: 1リクエストあたりの計算量からスループット(件/秒)を見積もる、バッチサイズとレイテンシ/スループットのトレードオフ、GPUインスタンス時間単価 vs CPUインスタンス時間単価で損益分岐する QPS を計算する、モデル蒸留/小型モデル選択・max_length削減・量子化/混合精度・特徴抽出結果のキャッシュという打ち手のカタログ、精度をどれだけ落とすとコストがどれだけ下がるかのトレードオフ表、常時稼働 vs バッチ推論 vs サーバレスの選択。演習ではこれを『モデル仕様(パラメータ数・系列長・バッチサイズ)とインスタンス単価を入力に、スループット・レイテンシ・1000件あたりコストを返す見積り関数』と『複数構成の中から精度制約を満たす最小コスト構成を選ぶ関数』として実装し、pytest で検証する(外部APIやクラウド接続は一切不要、純粋な計算とロジック)。【オフライン制約の実装方針】全データは seed 固定の合成データ、または unit01〜unit09 で使った同梱データの再利用。artifacts の保存/読込は joblib/pickle でユニット内の一時ディレクトリ(tmp_path)に対して行う。torch は ex04 の一部で使い得るが、ブレンド/スタッキング/シード平均/コスト見積りは全て numpy + sklearn で完結する。CPUで数十秒以内に完走。",
+      "title": "キャップストーン: アンサンブルと推論パイプラインのコスト設計",
+      "summary": "10日間の全てを1本に束ねる最終ユニット。物語の終着点は『スクレイパーが日次で吐く数万〜数十万件の商品データに、自動でカテゴリを付け、名寄せし、価格を予測して配信する仕組みを、上司に予算を通せる形で設計する』こと。コース目標そのもの(リークのないCV設計 → ベースライン → 改善サイクル → 提出ファイル生成 + クラウド推論のコスト設計)をエンドツーエンドで実行する。前半はスコアを詰める技術: OOFブレンド — unit02 で作れるようになった OOF 予測を横に並べた行列 (n_train, n_models) を作り(テーブルのGBDT・TF-IDF線形・Transformer・画像モデルという異種モデルの組み合わせ)、重みをCVで最適化する(単純平均 → 重み付き平均を制約付き探索や scipy.optimize で決める → 順位平均 rank averaging が指標によっては強い理由)、『重みを test の結果を見て決めてはいけない』という原則。スタッキング — OOF を特徴量としてメタモデル(多くは弱い線形モデル)を学習する、メタモデルの学習も交差検証の中で行わないとリークすること、スタッキングがブレンドに勝つ条件と過学習しやすさ。シード平均 — 学習の乱数だけを変えた複数モデルの平均が『ばらつきぶんの誤差』を消す仕組み、費用対効果。相関の低いモデルを混ぜるほど効くこと(予測同士の相関行列を見る = テキストモデルと画像モデルを混ぜると効く理由)。後半は実務に載せる技術: 学習と推論の分離 — 学習スクリプトが出力すべき成果物(モデル本体、fit 済みの前処理器/ベクトライザ/エンコーダ、特徴量定義、学習時の列順、閾値、メタデータとしての seed とライブラリバージョン)を artifacts として保存し、推論スクリプトはそれを読み込むだけで再学習せずに出力を作れること(C#アナロジー: 学習=ビルド、推論=デプロイ済みバイナリの実行)。再現性 — seed 固定の効く範囲と効かない範囲、同じ入力から同じ出力が2回作れることをテストで担保する。本番監視 — unit01 の品質チェックを推論パイプラインに常設し、入力の欠損率・カテゴリ分布・予測分布の急変(データドリフト / レイアウト変更 / モデル劣化)を検知して警告する。【コスト設計 — このユニットの目玉】学習者の要求『既存のLLMサービスを使うより圧倒的に安価であるライン』を、自分で数字を出して引けるようにする。日次で数万〜数十万件を分類・抽出する規模では、(A) LLM API に1件ずつ投げる従量課金と、(B) 小型モデルを一度ファインチューニングして自前でバッチ推論する方式とで、コストが桁で開く。演習ではこれを学習者自身に計算させる: (A) は 件数 × (入力トークン数 + 出力トークン数) × 100万トークンあたり単価、(B) は インスタンス時間単価 ÷ スループット(件/秒) × 件数 + 学習1回の償却、という形で見積り関数を実装し、件数を横軸にした損益分岐点を求める。あわせてスループットを上げる手段をトレードオフのカタログとして扱う: バッチサイズを上げる(スループット↑・レイテンシ↑・メモリ↑)、torch.no_grad / inference_mode で勾配計算を切る、動的パディングで無駄な pad トークンの計算を削る(unit07 で実装済み — 実際に総トークン数が何%減るか計算する)、系列長の上限を設定して長い説明文を切る(精度↓・コスト↓)、小型モデル選択と蒸留、GPUインスタンス vs CPUインスタンスの損益分岐 QPS、常時稼働 vs バッチ推論 vs サーバレスの選択、埋め込みのキャッシュ(同じ商品説明を再収集したら再計算しない)。演習は『モデル仕様(パラメータ数・系列長・バッチサイズ)とインスタンス単価と件数を入力に、スループット・レイテンシ・1000件あたりコスト・月額を返す見積り関数』と『精度制約を満たす構成のうち最小コストのものを選ぶ関数』として実装し、pytest で検証する(外部APIやクラウド接続は一切不要、純粋な計算とロジック)。【オフライン制約の実装方針】全データは seed 固定の合成データ、または unit01〜unit09 で使った同梱データの再利用。artifacts の保存/読込は joblib でユニット内の一時ディレクトリ(pytest の tmp_path)に対して行う。torch は ex04 の一部で使い得るが、ブレンド/スタッキング/シード平均/コスト見積りは全て numpy + sklearn で完結する。CPUで数十秒以内に完走。",
       "concepts": [
         "oof-blending-stacking",
         "seed-averaging",
