@@ -1,6 +1,6 @@
 # Kaggleスプリント: 10日で一人前の入り口 (kaggle-sprint)
 
-夏季休暇10日間・1日6〜8時間のカンヅメで、Kaggle のテーブル・NLP・画像コンペを「自分の手で最後まで回せる」状態に到達するコース。
+夏季休暇10日間・1日6〜8時間のカンヅメで、Kaggle のテーブル・NLP・画像コンペを「自分の手で最後まで回せる」状態に到達するコース。全11ユニット構成で、**Day1〜10 が休暇中のカンヅメ、Day11(文章要約)は休暇明けの追加ユニット**。
 
 ## コース目標
 
@@ -31,8 +31,10 @@ AtCoder 茶色は「典型問題の型を知っていて、時間内に自力で
 - 画像を NumPy 配列として自在に扱い、古典特徴のベースラインから転移学習まで橋渡しできる
 - 複数モデルの OOF をブレンド/スタックし、学習と推論を分離した再現性のあるパイプラインを組める
 - 推論構成(モデルサイズ・バッチ・CPU/GPU・混合精度)を変えたときのコストとレイテンシを見積もり、根拠をもって選べる
+- 表記ゆれのあるレコード群を名寄せし、「同じ実体か」を根拠つきで判定できる
+- 文章を抽出型・生成型の両方で要約でき、抽出型 / 自前小型モデル / LLM API の三択をコストと事実性で選び分けられる
 
-## 10日間の日割り表
+## 日割り表(Day1〜10 = 休暇中、Day11 = 休暇明け)
 
 | Day | ユニット | この日の終わりに作れるようになるもの | 目安 |
 |---|---|---|---|
@@ -41,13 +43,15 @@ AtCoder 茶色は「典型問題の型を知っていて、時間内に自力で
 | 3 | unit03-gbdt-main-weapon | テーブルの主砲。sklearn estimator API の型、LightGBM + early stopping、特徴量重要度、前処理が要るモデル/要らないモデル | 330分 |
 | 4 | unit04-tabular-feature-engineering | スコアを押し上げる特徴量。カテゴリエンコーディング、リーク安全な OOF target encoding、groupby 集約特徴、日付特徴、Pipeline/ColumnTransformer | 360分 |
 | 5 | unit05-text-classical-nlp | テキスト分類のベースライン。正規化、janome で日本語分かち書き、BoW/TF-IDF/n-gram、線形モデル、分類レポートの読み方 | 360分 |
-| 6 | unit06-embeddings-bridge | 疎から密への橋。SVD(LSA)、サブワード分割の実装、埋め込みルックアップ、mask 付き mean pooling、埋め込みを GBDT に食わせる | 390分 |
+| 6 | unit06-entity-resolution | **名寄せ(エンティティ解決)。古典→深層の橋。** 候補ペア生成(blocking)、編集距離DPの自力実装、Jaccard、TF-IDFコサイン、SVD(LSA)、mask 付き mean pooling、ペア二値分類と連結成分クラスタリング | 390分 |
 | 7 | unit07-transformer-finetune | Transformer のファインチューニング一式。collate/動的パディング、attention mask、warmup+decay スケジュール、学習ループ、過学習の見分けと最良重み復元 | 420分 |
 | 8 | unit08-image-and-pattern-basics | 画像を配列として扱う力。HWC/CHW・BGR・dtype、リサイズと正規化、HOG など古典特徴、データ拡張が効く理由 | 330分 |
 | 9 | unit09-transfer-learning-vision | 転移学習で画像分類。Dataset/DataLoader 自作、ヘッド差し替えと凍結、段階的解凍、混同行列でのクラス別分析、TTA | 390分 |
 | 10 | unit10-capstone-ensemble-and-serving | **キャップストーン。** OOF ブレンド/スタッキング、シード平均、学習と推論の分離と再現性、クラウド推論のコスト設計 | 420分 |
+| — | — | *— ここまでが夏季休暇の10日間 —* | |
+| 11 | unit11-summarization | **文章要約(休暇明け)。** 抽出型(文分割・中心性・MMR)、生成型(encoder-decoder・teacher forcing・デコード戦略)、ROUGE とその限界、ハルシネーション検知、三択の意思決定 | 420分 |
 
-各ユニットは課題4個構成(micro → variant → medium → capstone の難易度勾配)。ただし **micro であってもコンペの部品として意味のあるもの**にしてあり、「文法練習のためだけの課題」は入れていない。合計の目安は約 62 時間 = 10日 × 6〜7時間。
+各ユニットは課題4個構成(micro → variant → medium → capstone の難易度勾配)。ただし **micro であってもコンペの部品として意味のあるもの**にしてあり、「文法練習のためだけの課題」は入れていない。合計の目安は Day1〜10 で約 61.5 時間(10日 × 6〜7時間)、Day11 を加えて約 68.5 時間。
 
 ## 前提と教え方の方針
 
@@ -71,6 +75,15 @@ AtCoder 茶色は「典型問題の型を知っていて、時間内に自力で
 - Day 6: `(batch, seq_len, dim)` の埋め込みに `(batch, seq_len)` のマスクを掛ける mean pooling(`mask[:, :, None]` と `keepdims=True` の分母)
 - Day 7: attention mask を `(batch, seq)` から `(batch, 1, 1, seq)` へブロードキャストする
 - Day 8: 画像の `(H, W, C)` ↔ `(C, H, W)` 変換と、チャネル毎正規化(`axis=(0,1), keepdims=True`)
+- Day 11: teacher forcing の shift right と、pad 位置を `-100` にして損失から除外する `labels` の作り方
+
+### 競技プログラミングの既習知識をそのまま使う場所
+
+アルゴリズムの再教育はしないが、**すでに持っている実装力が直接効く場所**が3つある。ここは「知らないことを学ぶ」のではなく「知っていることが別分野で武器になる」体験になる。
+
+- Day 6: レーベンシュタイン**編集距離を2次元DPで自力実装**する(競プロで書いたことのあるDPそのもの)
+- Day 6: 名寄せ結果のクラスタ化に**Union-Find / BFS による連結成分**を使う
+- Day 11: **ROUGE-L = 最長共通部分列(LCS)**なので、これもDPで自力実装する
 
 ## 進め方(各ユニット共通の3ステップ)
 
@@ -83,7 +96,7 @@ AtCoder 茶色は「典型問題の型を知っていて、時間内に自力で
 
 課題は前から順に(後半ほど難しくなる)。合格ごとに自動でコミットされ、学習履歴が残る。セッション終了時には学習ノートが `notes/` に生成される。
 
-1日1ユニットのペースだが、**Day 7 と Day 10 は重い**(420分)。時間が足りない日は capstone を翌朝に回してよい。逆に Day 3・Day 8 は軽め(330分)なので、そこで巻き返せる。
+1日1ユニットのペースだが、**Day 7 と Day 10 は重い**(420分)。時間が足りない日は capstone を翌朝に回してよい。逆に Day 2・Day 3・Day 8 は軽め(330分)なので、そこで巻き返せる。Day 11 も 420分だが休暇明けなので、週末や数日に分けて進めてよい。
 
 ## 環境とライブラリ
 
@@ -92,7 +105,7 @@ AtCoder 茶色は「典型問題の型を知っていて、時間内に自力で
 - **可視化**: matplotlib / seaborn
 - **NLP**: janome(日本語形態素解析・純Python)、scikit-learn の `TfidfVectorizer` / `TruncatedSVD`
 - **画像**: pillow / scikit-image / opencv-python-headless
-- **深層学習**: torch(CPU版)/ torchvision(Day 7・9・10 で使用)、transformers(Day 7 の解説用・**任意**)
+- **深層学習**: torch / torchvision(Day 7・9・10・11 で使用)、transformers(Day 7・11。**極小モデルを config から構築するので重みのダウンロードは不要**)
 - **テスト**: pytest
 
 > **注意(pandas 3.0 系)** — Copy-on-Write が既定になり、chained assignment(`df[cond]['col'] = x`)が効かない/文字列列の既定 dtype が `object` ではなく `str` になっている。ネット上の Kaggle ノートブックは pandas 1.x / 2.x 前提のものが多いため、Day 1 で差分を表にして先に潰す。
@@ -103,6 +116,16 @@ AtCoder 茶色は「典型問題の型を知っていて、時間内に自力で
 
 **外部ネットワーク・Kaggle API・外部データセットのダウンロード・事前学習済み重みのダウンロードに依存する演習は一つもない。** データはすべて `np.random.default_rng(seed=...)` による合成データか、ユニット内に同梱した小さな固定ファイル。
 
-深層学習のユニット(Day 7・9)も例外ではない。事前学習済みモデルが必要な処理は、**config から構築したランダム初期化の極小モデル**や**seed 固定の疑似埋め込み行列**に差し替え、採点対象は collate・attention mask・学習率スケジュール・学習ループ・凍結・混同行列・TTA といった**ロジック側**にしてある。`lesson.ipynb` では実モデル(Hugging Face の事前学習済み Transformer、torchvision の重み付き ResNet 等)の使い方も解説するが、**ダウンロードを伴うセルはすべてオプション扱い**で、飛ばしても後続セルが極小モデルで動く。
+深層学習のユニット(Day 6・7・9・11)も例外ではない。事前学習済みモデルが必要な処理は、**config から構築したランダム初期化の極小モデル**や**seed 固定の疑似埋め込み行列**に差し替え、採点対象は collate・attention mask・学習率スケジュール・学習ループ・凍結・混同行列・TTA・teacher forcing・デコードループといった**ロジック側**にしてある。`lesson.ipynb` では実モデル(Hugging Face の事前学習済み Transformer、torchvision の重み付き ResNet 等)の使い方も解説するが、**ダウンロードを伴うセルはすべてオプション扱い**で、飛ばしても後続セルが極小モデルで動く。
 
-これにより、全ユニットの演習は CPU のみで数秒〜数十秒で完走する。
+実行時間は実測済み(このコースの検証環境: Python 3.11 / 4コア / GPUなし):
+
+| 処理 | 実測 |
+|---|---|
+| 極小BERT(2層・hidden 32)の前向き計算 | 0.01秒 |
+| `resnet18(weights=None)` の推論(8枚) | 0.18秒 |
+| 極小T5(57Kパラメータ)の学習20ステップ | 0.63秒 |
+| 同・`generate(num_beams=3)` | 0.08秒 |
+| LightGBM(500件・50本) | 0.04秒 |
+
+これにより、全ユニットの演習は CPU のみで数秒〜数十秒で完走する。**実用的な精度や要約文が出るわけではなく、学ぶのは仕組み**である点は各ユニットの lesson で明示する。
