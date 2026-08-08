@@ -10,7 +10,7 @@
 | 1 | unit01-competition-anatomy | ✅ | ✅ | ✅ 両方向 | ✅ 25テスト |
 | 2 | unit02-validation-and-leakage | ✅ | ✅ | ✅ 両方向 | ❌ |
 | 3 | unit03-gbdt-main-weapon | ✅ | ✅ | ✅ 両方向 | ❌ |
-| 4 | unit04-tabular-feature-engineering | ✅(unit02と共有) | ✅ | ⚠️ 未記入側のみ | ❌ |
+| 4 | unit04-tabular-feature-engineering | ✅(unit02と共有) | ✅ | ✅ 両方向 | ❌ |
 | 5 | unit05-text-classical-nlp | ✅ | ❌ | — | ❌ |
 | 6 | unit06-entity-resolution | ✅ | ❌ | — | ❌ |
 | 7 | unit07-transformer-finetune | ✅(unit05と共有) | ❌ | — | ❌ |
@@ -22,18 +22,15 @@
 **「lesson検証 両方向」の意味**: ①未記入状態で全セル実行して例外ゼロ・全チェックポイントが `[NG]`
 ②解答を仮置きして全セル実行して全チェックポイントが `[OK]`。①②の両方を実測済み。
 
-**unit04 の宿題**: 解答記入側(②)が未検証。`ここに書く` セルは 8 / 16 / 24 / 32。
-
 **データはすべて完成・検証済み。** 各 `data/make_data.py` の docstring に
 **実測済みの期待値が正本として記録されている**。教材の数値はすべてこれと一致させる。
 
 ## 2. 次にやること(優先順)
 
-1. unit04 の解答側検証(下記「検証手順」の②だけ)
-2. unit05 → unit06 → unit07 → unit08 → unit09 → unit10 → unit11 の lesson 生成
-3. unit02〜unit11 の演習生成(`exercise-writer`)
-4. 全ユニットに `check_unit.py` + `course-reviewer`
-5. `progress/kaggle-sprint.json` の初期化(`templates/progress.json.md` から。`skills` は
+1. unit05 → unit06 → unit07 → unit08 → unit09 → unit10 → unit11 の lesson 生成
+2. unit02〜unit11 の演習生成(`exercise-writer`)
+3. 全ユニットに `check_unit.py` + `course-reviewer`
+4. `progress/kaggle-sprint.json` の初期化(`templates/progress.json.md` から。`skills` は
    `units[].concepts` を level 0 で展開)
 
 ## 3. ★セッション上限への対処(最重要の教訓)
