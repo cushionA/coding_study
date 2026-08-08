@@ -31,7 +31,11 @@
       ],
       "estimated_minutes": 360,
       "generated": true,
-      "reviewed": false
+      "reviewed": false,
+      "lesson_generated": true,
+      "lesson_verified_both_ways": true,
+      "data_ready": true,
+      "exercises_generated": true
     },
     {
       "dir": "unit02-validation-and-leakage",
@@ -52,7 +56,11 @@
       ],
       "estimated_minutes": 330,
       "generated": false,
-      "reviewed": false
+      "reviewed": false,
+      "lesson_generated": true,
+      "lesson_verified_both_ways": true,
+      "data_ready": true,
+      "exercises_generated": false
     },
     {
       "dir": "unit03-gbdt-main-weapon",
@@ -73,7 +81,11 @@
       ],
       "estimated_minutes": 330,
       "generated": false,
-      "reviewed": false
+      "reviewed": false,
+      "lesson_generated": true,
+      "lesson_verified_both_ways": true,
+      "data_ready": true,
+      "exercises_generated": false
     },
     {
       "dir": "unit04-tabular-feature-engineering",
@@ -94,7 +106,11 @@
       ],
       "estimated_minutes": 360,
       "generated": false,
-      "reviewed": false
+      "reviewed": false,
+      "lesson_generated": true,
+      "lesson_verified_both_ways": false,
+      "data_ready": true,
+      "exercises_generated": false
     },
     {
       "dir": "unit05-text-classical-nlp",
@@ -115,7 +131,11 @@
       ],
       "estimated_minutes": 360,
       "generated": false,
-      "reviewed": false
+      "reviewed": false,
+      "lesson_generated": false,
+      "lesson_verified_both_ways": false,
+      "data_ready": true,
+      "exercises_generated": false
     },
     {
       "dir": "unit06-entity-resolution",
@@ -136,7 +156,11 @@
       ],
       "estimated_minutes": 390,
       "generated": false,
-      "reviewed": false
+      "reviewed": false,
+      "lesson_generated": false,
+      "lesson_verified_both_ways": false,
+      "data_ready": true,
+      "exercises_generated": false
     },
     {
       "dir": "unit07-transformer-finetune",
@@ -157,7 +181,11 @@
       ],
       "estimated_minutes": 420,
       "generated": false,
-      "reviewed": false
+      "reviewed": false,
+      "lesson_generated": false,
+      "lesson_verified_both_ways": false,
+      "data_ready": true,
+      "exercises_generated": false
     },
     {
       "dir": "unit08-image-and-pattern-basics",
@@ -178,7 +206,11 @@
       ],
       "estimated_minutes": 330,
       "generated": false,
-      "reviewed": false
+      "reviewed": false,
+      "lesson_generated": false,
+      "lesson_verified_both_ways": false,
+      "data_ready": true,
+      "exercises_generated": false
     },
     {
       "dir": "unit09-transfer-learning-vision",
@@ -199,7 +231,11 @@
       ],
       "estimated_minutes": 390,
       "generated": false,
-      "reviewed": false
+      "reviewed": false,
+      "lesson_generated": false,
+      "lesson_verified_both_ways": false,
+      "data_ready": true,
+      "exercises_generated": false
     },
     {
       "dir": "unit10-capstone-ensemble-and-serving",
@@ -220,7 +256,11 @@
       ],
       "estimated_minutes": 420,
       "generated": false,
-      "reviewed": false
+      "reviewed": false,
+      "lesson_generated": false,
+      "lesson_verified_both_ways": false,
+      "data_ready": true,
+      "exercises_generated": false
     },
     {
       "dir": "unit11-summarization",
@@ -241,8 +281,13 @@
       ],
       "estimated_minutes": 420,
       "generated": false,
-      "reviewed": false
+      "reviewed": false,
+      "lesson_generated": false,
+      "lesson_verified_both_ways": false,
+      "data_ready": true,
+      "exercises_generated": false
     }
   ],
-  "runtime_policy": "学習者の実行環境は『開発 = ThinkPad(CPU、dGPUは無いか小容量VRAM前提)/ 学習 = クラウドGPUを時間借り / 推論 = CPUで常時運用』。教材のコードはすべて device 非依存に書く — device = torch.device('cuda' if torch.cuda.is_available() else 'cpu') を1箇所だけで定義し、モデルとバッチを .to(device) する形にして、同じノートブック・同じスクリプトがローカルCPUでもクラウドGPUでも無改変で動くようにする。演習の採点は常にCPU・極小データで行うが、lesson では『ローカルの小データで正しさを確認してからGPUへ持っていく』手順を明示的に教える(まず1バッチだけ流して shape と loss が出るか、次に数ステップで loss が下がるか、それが通ってから本番データ・本番エポックでGPUへ)。この確認手順は、GPU時間を無駄に課金しないための実務スキルとして扱う。"
+  "runtime_policy": "学習者の実行環境は『開発 = ThinkPad(CPU、dGPUは無いか小容量VRAM前提)/ 学習 = クラウドGPUを時間借り / 推論 = CPUで常時運用』。教材のコードはすべて device 非依存に書く — device = torch.device('cuda' if torch.cuda.is_available() else 'cpu') を1箇所だけで定義し、モデルとバッチを .to(device) する形にして、同じノートブック・同じスクリプトがローカルCPUでもクラウドGPUでも無改変で動くようにする。演習の採点は常にCPU・極小データで行うが、lesson では『ローカルの小データで正しさを確認してからGPUへ持っていく』手順を明示的に教える(まず1バッチだけ流して shape と loss が出るか、次に数ステップで loss が下がるか、それが通ってから本番データ・本番エポックでGPUへ)。この確認手順は、GPU時間を無駄に課金しないための実務スキルとして扱う。",
+  "generation_status_doc": "courses/kaggle-sprint/GENERATION_STATUS.md"
 }
