@@ -1,7 +1,7 @@
 # kaggle-sprint 生成状況と再開手順
 
 このコースは**生成途中**。次のセッションはこのファイルを最初に読めば続きから再開できる。
-最終更新: 2026-08-08(unit04検証・unit09転移学習検証を反映)
+最終更新: 2026-08-08(unit05 lesson 完成まで反映)
 
 ## 1. 現在の状態
 
@@ -11,7 +11,7 @@
 | 2 | unit02-validation-and-leakage | ✅ | ✅ | ✅ 両方向 | ❌ |
 | 3 | unit03-gbdt-main-weapon | ✅ | ✅ | ✅ 両方向 | ❌ |
 | 4 | unit04-tabular-feature-engineering | ✅(unit02と共有) | ✅ | ✅ 両方向 | ❌ |
-| 5 | unit05-text-classical-nlp | ✅ | ❌ | — | ❌ |
+| 5 | unit05-text-classical-nlp | ✅ | ✅ | ✅ 両方向 | ❌ |
 | 6 | unit06-entity-resolution | ✅ | ❌ | — | ❌ |
 | 7 | unit07-transformer-finetune | ✅(unit05と共有) | ❌ | — | ❌ |
 | 8 | unit08-image-and-pattern-basics | ✅ | ❌ | — | ❌ |
@@ -27,7 +27,7 @@
 
 ## 2. 次にやること(優先順)
 
-1. unit05 → unit06 → unit07 → unit08 → unit09 → unit10 → unit11 の lesson 生成
+1. unit06 → unit07 → unit08 → unit09 → unit10 → unit11 の lesson 生成
 2. unit02〜unit11 の演習生成(`exercise-writer`)
 3. 全ユニットに `check_unit.py` + `course-reviewer`
 4. `progress/kaggle-sprint.json` の初期化(`templates/progress.json.md` から。`skills` は
@@ -35,18 +35,34 @@
 
 ## 3. ★セッション上限への対処(最重要の教訓)
 
-lesson-writer を3回起動して**3回とも同じ場所で落ちた**。落ちた理由は
-「**エージェントが notebook を書く前に、期待値を自分で再測定するのに予算を使い切る**」こと。
-3体とも「全ての数値が再現できた。これから notebook を書く」と言った直後に停止した。
+lesson-writer は**5回起動して4回落ちた**。落ちる場所は毎回同じで、
+「**notebook を書く前に、期待値を得るための探索的なコード実行を繰り返して予算を使い切る**」。
+落ちた4体はいずれも「数値が再現できた。これから notebook を書く」と言った直後に停止した。
 
-**対策: エージェントに再測定させない。** プロンプトに次を明記する:
+**効かなかった対策**: プロンプトに「測り直すな」と書くこと。
+チェックポイントの期待値を作るには実際にコードを走らせるしかないので、
+この指示は実行不可能な要求であり、エージェントは結局測った。
 
-> `data/make_data.py` の docstring に記録された数値は**すでに実測・検証済みの正本**である。
-> **自分で測り直さないこと。** その数値をそのままリテラルで使って notebook を書き、
-> **最後の1回の全セル実行でだけ**一致を確認せよ。測り直しは予算の無駄であり、
-> 過去に3体のエージェントがこれで停止した。
+**効いた対策(unit05 でこれに変えて成功した)**: 期待値を**事前に知る必要をなくす**。
+`gen_lesson.py` の中で「期待値の計算」と「notebook の生成」を同時にやらせる:
 
-あわせて **1セッションで起動するエージェントは1〜2体まで**にする。3体並列は必ず落ちた。
+```python
+# gen_lesson.py の中
+expected_vocab = int(X_tfidf.shape[1])          # ここで計算して
+nbf.v4.new_code_cell(                            # そのままリテラルとして埋め込む
+    f'check("B-1 語彙数", vocab_size, {expected_vocab}, hint="...")')
+```
+
+こうするとスクリプトを1回動かすだけで済み、対話中の探索実行がゼロになる。
+あわせて作業順序も強制する:
+
+> **フェーズA(コード実行を一切しない)**: `gen_lesson.py` を最後まで書き切る。
+> **フェーズB(1回だけ実行)**: 実行して notebook を作り、nbclient で検証。
+> **フェーズC**: 落ちた箇所だけ直す。実行は最大3回まで。
+
+**1セッションで起動するエージェントは1体まで**にする(2体でも落ちた実績あり)。
+読ませるファイルも4つに絞る(テンプレート / unit01 の lesson / course.json / CLAUDE.md)。
+必要な数値は make_data.py を読ませるのではなく、**プロンプトに表として直接貼る**。
 
 ## 4. lesson 生成の依頼テンプレート
 
