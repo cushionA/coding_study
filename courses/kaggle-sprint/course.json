@@ -132,8 +132,8 @@
       "estimated_minutes": 360,
       "generated": false,
       "reviewed": false,
-      "lesson_generated": false,
-      "lesson_verified_both_ways": false,
+      "lesson_generated": true,
+      "lesson_verified_both_ways": true,
       "data_ready": true,
       "exercises_generated": false
     },
