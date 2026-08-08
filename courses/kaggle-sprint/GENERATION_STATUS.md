@@ -1,7 +1,7 @@
 # kaggle-sprint 生成状況と再開手順
 
 このコースは**生成途中**。次のセッションはこのファイルを最初に読めば続きから再開できる。
-最終更新: 2026-08-08
+最終更新: 2026-08-08(unit04検証・unit09転移学習検証を反映)
 
 ## 1. 現在の状態
 
@@ -10,7 +10,7 @@
 | 1 | unit01-competition-anatomy | ✅ | ✅ | ✅ 両方向 | ✅ 25テスト |
 | 2 | unit02-validation-and-leakage | ✅ | ✅ | ✅ 両方向 | ❌ |
 | 3 | unit03-gbdt-main-weapon | ✅ | ✅ | ✅ 両方向 | ❌ |
-| 4 | unit04-tabular-feature-engineering | ✅(unit02と共有) | ✅ | ⚠️ 未記入側のみ | ❌ |
+| 4 | unit04-tabular-feature-engineering | ✅(unit02と共有) | ✅ | ✅ 両方向 | ❌ |
 | 5 | unit05-text-classical-nlp | ✅ | ❌ | — | ❌ |
 | 6 | unit06-entity-resolution | ✅ | ❌ | — | ❌ |
 | 7 | unit07-transformer-finetune | ✅(unit05と共有) | ❌ | — | ❌ |
@@ -22,18 +22,15 @@
 **「lesson検証 両方向」の意味**: ①未記入状態で全セル実行して例外ゼロ・全チェックポイントが `[NG]`
 ②解答を仮置きして全セル実行して全チェックポイントが `[OK]`。①②の両方を実測済み。
 
-**unit04 の宿題**: 解答記入側(②)が未検証。`ここに書く` セルは 8 / 16 / 24 / 32。
-
 **データはすべて完成・検証済み。** 各 `data/make_data.py` の docstring に
 **実測済みの期待値が正本として記録されている**。教材の数値はすべてこれと一致させる。
 
 ## 2. 次にやること(優先順)
 
-1. unit04 の解答側検証(下記「検証手順」の②だけ)
-2. unit05 → unit06 → unit07 → unit08 → unit09 → unit10 → unit11 の lesson 生成
-3. unit02〜unit11 の演習生成(`exercise-writer`)
-4. 全ユニットに `check_unit.py` + `course-reviewer`
-5. `progress/kaggle-sprint.json` の初期化(`templates/progress.json.md` から。`skills` は
+1. unit05 → unit06 → unit07 → unit08 → unit09 → unit10 → unit11 の lesson 生成
+2. unit02〜unit11 の演習生成(`exercise-writer`)
+3. 全ユニットに `check_unit.py` + `course-reviewer`
+4. `progress/kaggle-sprint.json` の初期化(`templates/progress.json.md` から。`skills` は
    `units[].concepts` を level 0 で展開)
 
 ## 3. ★セッション上限への対処(最重要の教訓)
@@ -155,10 +152,35 @@ torch 2.13 / transformers 5.14。
 
 ## 8. 未解決の宿題
 
-- **unit09 の転移学習が HOG を超えることは実測できていない。** 事前学習済み重みが
-  この環境からダウンロードできないため。lesson では原理と手順を教え、演習は
-  ランダム初期化でロジックを採点する設計。この制約は README にも明記済み。
-  参考実測値: HOG + LinearSVC = 0.7840、色ヒストグラムのみ = 0.3533、
-  スクラッチCNN(3層・30epoch) = 0.5731(小データではスクラッチが古典に負ける、
-  という転移学習の動機そのものなので、この数字はそのまま教材に使える)。
-- unit04 の解答側検証。
+なし。unit04 の解答側検証も unit09 の転移学習検証も完了した。
+
+### unit09 の転移学習について(解決済み・訂正あり)
+
+**塞がれているホスト**: `download.pytorch.org` と `huggingface.co` の両方が
+組織のエグレスポリシーで 403。事前学習済み重みはこの環境では取得できない
+(`/root/.ccr/README.md` の指示に従い迂回はしていない)。学習者の環境では通るはず。
+
+そこで「事前学習」を自前で作って検証した。再現スクリプトは
+`unit08-image-and-pattern-basics/data/verify_transfer.py`(約13分)。
+
+    手法                                        accuracy
+    色ヒストグラムのみ + LinearSVC               0.3533
+    HOG + LinearSVC                             0.7840
+    スクラッチCNN(作り込み不足)                0.5731
+    スクラッチCNN(BN + 拡張 + cosine, 30ep)    0.9038
+    転移学習(全層ファインチューニング)          0.9451
+    転移学習(backbone凍結 + 線形ヘッド)         0.9538
+
+**⚠️ 過去の記述の訂正**: このファイルの初版に「小データではスクラッチ CNN が
+HOG に勝てない(0.5731)、これが転移学習の動機」と書いたが、**これは誤り**だった。
+0.5731 は単に学習の作り込み(BatchNorm・データ拡張・学習率スケジュール)が
+足りなかっただけで、ちゃんと作り込めば 0.9038 まで上がり HOG を大きく超える。
+**unit09 の lesson を書くときはこの訂正後の表を使うこと。**
+
+訂正後に得られた教訓は3つで、いずれも実測に裏付けられている:
+1. **学習の作り込みが効く** — 同条件で 0.5731 → 0.9038。
+   「CNN が古典特徴に負けた」と結論する前にレシピを疑う。
+2. **転移学習は効く** — 作り込んだスクラッチ 0.9038 に対して +0.050。
+   初期状態の重みだけが違う条件での比較なので原因は明快。
+3. **小データでは凍結 > 全層ファインチューニング** — 0.9538 > 0.9451。
+   まず凍結して線形ヘッドだけ学習し、足りなければ段階的に解凍する、という手順の根拠。
