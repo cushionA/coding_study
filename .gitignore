@@ -2,3 +2,4 @@
 .pytest_cache/
 .ipynb_checkpoints/
 node_modules/
+output/
