@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-04",
+  "updated": "2026-08-08",
   "legend": {
     "0": {
       "label": "未着手",
@@ -283,43 +283,110 @@
       "context": "BeautifulSoupで解析する",
       "level_label": "未着手"
     },
+    "blocking-candidate-generation": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "名寄せ / エンティティ解決(古典→深層の橋)"
+        }
+      ],
+      "context": "名寄せ / エンティティ解決(古典→深層の橋)",
+      "level_label": "未着手"
+    },
+    "categorical-encoding": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "テーブルの特徴量エンジニアリング"
+        }
+      ],
+      "context": "テーブルの特徴量エンジニアリング",
+      "level_label": "未着手"
+    },
+    "classical-image-features": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "画像とパターン認識の基礎"
+        }
+      ],
+      "context": "画像とパターン認識の基礎",
+      "level_label": "未着手"
+    },
     "classification-workflow": {
       "level": 0,
-      "updated": "2026-07-03",
+      "updated": "2026-08-08",
       "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "テキストの正規化とTF-IDFベースライン"
+        },
         {
           "course": "ml-intro",
           "level": 0,
           "unit": "分類と評価"
         }
       ],
-      "context": "分類と評価",
+      "context": "テキストの正規化とTF-IDFベースライン",
+      "level_label": "未着手"
+    },
+    "competition-anatomy": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "コンペの解剖と最初の提出"
+        }
+      ],
+      "context": "コンペの解剖と最初の提出",
       "level_label": "未着手"
     },
     "confusion-matrix-metrics": {
       "level": 0,
-      "updated": "2026-07-03",
+      "updated": "2026-08-08",
       "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "転移学習で画像分類"
+        },
         {
           "course": "ml-intro",
           "level": 0,
           "unit": "分類と評価"
         }
       ],
-      "context": "分類と評価",
+      "context": "転移学習で画像分類",
       "level_label": "未着手"
     },
     "cross-validation": {
       "level": 0,
-      "updated": "2026-07-03",
+      "updated": "2026-08-08",
       "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "検証設計とリーク"
+        },
         {
           "course": "ml-intro",
           "level": 0,
           "unit": "分類と評価"
         }
       ],
-      "context": "分類と評価",
+      "context": "検証設計とリーク",
       "level_label": "未着手"
     },
     "css-selectors": {
@@ -384,10 +451,28 @@
       "context": "堅牢化とCSV出力",
       "level_label": "未着手"
     },
+    "data-augmentation": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "画像とパターン認識の基礎"
+        }
+      ],
+      "context": "画像とパターン認識の基礎",
+      "level_label": "未着手"
+    },
     "data-cleaning": {
       "level": 0,
-      "updated": "2026-07-03",
+      "updated": "2026-08-08",
       "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "テキストの正規化とTF-IDFベースライン"
+        },
         {
           "course": "web-scraping-ts",
           "level": 0,
@@ -399,7 +484,33 @@
           "unit": "堅牢化とCSV出力"
         }
       ],
-      "context": "堅牢化とCSV出力",
+      "context": "テキストの正規化とTF-IDFベースライン",
+      "level_label": "未着手"
+    },
+    "datetime-features": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "テーブルの特徴量エンジニアリング"
+        }
+      ],
+      "context": "テーブルの特徴量エンジニアリング",
+      "level_label": "未着手"
+    },
+    "decoding-strategies": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "文章要約: 抽出型と生成型"
+        }
+      ],
+      "context": "文章要約: 抽出型と生成型",
       "level_label": "未着手"
     },
     "defensive-access": {
@@ -418,6 +529,19 @@
         }
       ],
       "context": "セレクタと表・リストの抽出",
+      "level_label": "未着手"
+    },
+    "early-stopping": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "勾配ブースティング木を主砲にする"
+        }
+      ],
+      "context": "勾配ブースティング木を主砲にする",
       "level_label": "未着手"
     },
     "end-to-end-pipeline": {
@@ -440,15 +564,33 @@
     },
     "end-to-end-workflow": {
       "level": 0,
-      "updated": "2026-07-03",
+      "updated": "2026-08-08",
       "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "キャップストーン: アンサンブルと推論パイプラインのコスト設計"
+        },
         {
           "course": "ml-intro",
           "level": 0,
           "unit": "総合ミニプロジェクト"
         }
       ],
-      "context": "総合ミニプロジェクト",
+      "context": "キャップストーン: アンサンブルと推論パイプラインのコスト設計",
+      "level_label": "未着手"
+    },
+    "entity-resolution-pairs": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "名寄せ / エンティティ解決(古典→深層の橋)"
+        }
+      ],
+      "context": "名寄せ / エンティティ解決(古典→深層の橋)",
       "level_label": "未着手"
     },
     "error-handling-retry": {
@@ -467,6 +609,32 @@
         }
       ],
       "context": "堅牢化とCSV出力",
+      "level_label": "未着手"
+    },
+    "extractive-summarization": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "文章要約: 抽出型と生成型"
+        }
+      ],
+      "context": "文章要約: 抽出型と生成型",
+      "level_label": "未着手"
+    },
+    "feature-importance": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "勾配ブースティング木を主砲にする"
+        }
+      ],
+      "context": "勾配ブースティング木を主砲にする",
       "level_label": "未着手"
     },
     "fetch-async-await": {
@@ -495,6 +663,32 @@
       "context": "BeautifulSoupで解析する",
       "level_label": "未着手"
     },
+    "freeze-vs-finetune": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "転移学習で画像分類"
+        }
+      ],
+      "context": "転移学習で画像分類",
+      "level_label": "未着手"
+    },
+    "gbdt-lightgbm": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "勾配ブースティング木を主砲にする"
+        }
+      ],
+      "context": "勾配ブースティング木を主砲にする",
+      "level_label": "未着手"
+    },
     "http-request-response": {
       "level": 0,
       "updated": "2026-07-03",
@@ -506,6 +700,84 @@
         }
       ],
       "context": "HTTP通信とスクレイピングのマナー",
+      "level_label": "未着手"
+    },
+    "image-array-representation": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "画像とパターン認識の基礎"
+        }
+      ],
+      "context": "画像とパターン認識の基礎",
+      "level_label": "未着手"
+    },
+    "image-duplicate-detection": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "画像とパターン認識の基礎"
+        }
+      ],
+      "context": "画像とパターン認識の基礎",
+      "level_label": "未着手"
+    },
+    "image-preprocessing-resize-normalize": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "画像とパターン認識の基礎"
+        }
+      ],
+      "context": "画像とパターン認識の基礎",
+      "level_label": "未着手"
+    },
+    "inference-cost-design": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "キャップストーン: アンサンブルと推論パイプラインのコスト設計"
+        }
+      ],
+      "context": "キャップストーン: アンサンブルと推論パイプラインのコスト設計",
+      "level_label": "未着手"
+    },
+    "janome-tokenize": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "テキストの正規化とTF-IDFベースライン"
+        }
+      ],
+      "context": "テキストの正規化とTF-IDFベースライン",
+      "level_label": "未着手"
+    },
+    "lr-schedule-warmup": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "Transformerのファインチューニング"
+        }
+      ],
+      "context": "Transformerのファインチューニング",
       "level_label": "未着手"
     },
     "multi-page-crawl": {
@@ -526,6 +798,32 @@
       "context": "キャップストーン: エンドツーエンドのスクレイパー",
       "level_label": "未着手"
     },
+    "oof-blending-stacking": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "キャップストーン: アンサンブルと推論パイプラインのコスト設計"
+        }
+      ],
+      "context": "キャップストーン: アンサンブルと推論パイプラインのコスト設計",
+      "level_label": "未着手"
+    },
+    "oof-prediction": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "検証設計とリーク"
+        }
+      ],
+      "context": "検証設計とリーク",
+      "level_label": "未着手"
+    },
     "output-validation": {
       "level": 0,
       "updated": "2026-07-03",
@@ -542,6 +840,32 @@
         }
       ],
       "context": "堅牢化とCSV出力",
+      "level_label": "未着手"
+    },
+    "overfit-diagnosis": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "Transformerのファインチューニング"
+        }
+      ],
+      "context": "Transformerのファインチューニング",
+      "level_label": "未着手"
+    },
+    "padding-and-collate": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "Transformerのファインチューニング"
+        }
+      ],
+      "context": "Transformerのファインチューニング",
       "level_label": "未着手"
     },
     "pagination-follow": {
@@ -564,67 +888,92 @@
     },
     "pandas-dataframe": {
       "level": 0,
-      "updated": "2026-07-03",
+      "updated": "2026-08-08",
       "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "コンペの解剖と最初の提出"
+        },
         {
           "course": "ml-intro",
           "level": 0,
           "unit": "pandasによるデータ操作"
         }
       ],
-      "context": "pandasによるデータ操作",
+      "context": "コンペの解剖と最初の提出",
       "level_label": "未着手"
     },
     "pandas-groupby": {
       "level": 0,
-      "updated": "2026-07-03",
+      "updated": "2026-08-08",
       "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "テーブルの特徴量エンジニアリング"
+        },
         {
           "course": "ml-intro",
           "level": 0,
           "unit": "pandasによるデータ操作"
         }
       ],
-      "context": "pandasによるデータ操作",
+      "context": "テーブルの特徴量エンジニアリング",
       "level_label": "未着手"
     },
     "pandas-missing": {
       "level": 0,
-      "updated": "2026-07-03",
+      "updated": "2026-08-08",
       "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "コンペの解剖と最初の提出"
+        },
         {
           "course": "ml-intro",
           "level": 0,
           "unit": "pandasによるデータ操作"
         }
       ],
-      "context": "pandasによるデータ操作",
+      "context": "コンペの解剖と最初の提出",
       "level_label": "未着手"
     },
     "pandas-select-filter": {
       "level": 0,
-      "updated": "2026-07-03",
+      "updated": "2026-08-08",
       "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "コンペの解剖と最初の提出"
+        },
         {
           "course": "ml-intro",
           "level": 0,
           "unit": "pandasによるデータ操作"
         }
       ],
-      "context": "pandasによるデータ操作",
+      "context": "コンペの解剖と最初の提出",
       "level_label": "未着手"
     },
     "preprocessing-impute-scale": {
       "level": 0,
-      "updated": "2026-07-03",
+      "updated": "2026-08-08",
       "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "勾配ブースティング木を主砲にする"
+        },
         {
           "course": "ml-intro",
           "level": 0,
           "unit": "総合ミニプロジェクト"
         }
       ],
-      "context": "総合ミニプロジェクト",
+      "context": "勾配ブースティング木を主砲にする",
       "level_label": "未着手"
     },
     "python-dict-ops": {
@@ -712,15 +1061,20 @@
     },
     "regression-metrics": {
       "level": 0,
-      "updated": "2026-07-03",
+      "updated": "2026-08-08",
       "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "検証設計とリーク"
+        },
         {
           "course": "ml-intro",
           "level": 0,
           "unit": "はじめての回帰モデル"
         }
       ],
-      "context": "はじめての回帰モデル",
+      "context": "検証設計とリーク",
       "level_label": "未着手"
     },
     "requests-api": {
@@ -785,6 +1139,19 @@
       "context": "fetch通信とスクレイピングのマナー",
       "level_label": "未着手"
     },
+    "seed-averaging": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "キャップストーン: アンサンブルと推論パイプラインのコスト設計"
+        }
+      ],
+      "context": "キャップストーン: アンサンブルと推論パイプラインのコスト設計",
+      "level_label": "未着手"
+    },
     "select-multiple": {
       "level": 0,
       "updated": "2026-07-03",
@@ -811,30 +1178,131 @@
       "context": "セレクタと表・リストの抽出",
       "level_label": "未着手"
     },
+    "sentence-centrality": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "文章要約: 抽出型と生成型"
+        }
+      ],
+      "context": "文章要約: 抽出型と生成型",
+      "level_label": "未着手"
+    },
+    "sentence-embedding-pooling": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "名寄せ / エンティティ解決(古典→深層の橋)"
+        }
+      ],
+      "context": "名寄せ / エンティティ解決(古典→深層の橋)",
+      "level_label": "未着手"
+    },
+    "seq2seq-encoder-decoder": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "文章要約: 抽出型と生成型"
+        }
+      ],
+      "context": "文章要約: 抽出型と生成型",
+      "level_label": "未着手"
+    },
     "sklearn-estimator-api": {
       "level": 0,
-      "updated": "2026-07-03",
+      "updated": "2026-08-08",
       "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "勾配ブースティング木を主砲にする"
+        },
         {
           "course": "ml-intro",
           "level": 0,
           "unit": "はじめての回帰モデル"
         }
       ],
-      "context": "はじめての回帰モデル",
+      "context": "勾配ブースティング木を主砲にする",
       "level_label": "未着手"
     },
     "sklearn-pipeline": {
       "level": 0,
-      "updated": "2026-07-03",
+      "updated": "2026-08-08",
       "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "テーブルの特徴量エンジニアリング"
+        },
         {
           "course": "ml-intro",
           "level": 0,
           "unit": "総合ミニプロジェクト"
         }
       ],
-      "context": "総合ミニプロジェクト",
+      "context": "テーブルの特徴量エンジニアリング",
+      "level_label": "未着手"
+    },
+    "string-similarity": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "名寄せ / エンティティ解決(古典→深層の橋)"
+        }
+      ],
+      "context": "名寄せ / エンティティ解決(古典→深層の橋)",
+      "level_label": "未着手"
+    },
+    "submission-format": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "コンペの解剖と最初の提出"
+        }
+      ],
+      "context": "コンペの解剖と最初の提出",
+      "level_label": "未着手"
+    },
+    "subword-tokenization": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "Transformerのファインチューニング"
+        }
+      ],
+      "context": "Transformerのファインチューニング",
+      "level_label": "未着手"
+    },
+    "summarization-evaluation": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "文章要約: 抽出型と生成型"
+        }
+      ],
+      "context": "文章要約: 抽出型と生成型",
       "level_label": "未着手"
     },
     "table-extraction": {
@@ -855,17 +1323,152 @@
       "context": "セレクタと表・リストの抽出",
       "level_label": "未着手"
     },
+    "target-encoding-oof": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "テーブルの特徴量エンジニアリング"
+        }
+      ],
+      "context": "テーブルの特徴量エンジニアリング",
+      "level_label": "未着手"
+    },
+    "target-leakage": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "検証設計とリーク"
+        }
+      ],
+      "context": "検証設計とリーク",
+      "level_label": "未着手"
+    },
+    "test-time-augmentation": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "転移学習で画像分類"
+        }
+      ],
+      "context": "転移学習で画像分類",
+      "level_label": "未着手"
+    },
+    "text-normalization": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "テキストの正規化とTF-IDFベースライン"
+        }
+      ],
+      "context": "テキストの正規化とTF-IDFベースライン",
+      "level_label": "未着手"
+    },
+    "tfidf-cosine-similarity": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "名寄せ / エンティティ解決(古典→深層の橋)"
+        }
+      ],
+      "context": "名寄せ / エンティティ解決(古典→深層の橋)",
+      "level_label": "未着手"
+    },
+    "tfidf-vectorizer": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "テキストの正規化とTF-IDFベースライン"
+        }
+      ],
+      "context": "テキストの正規化とTF-IDFベースライン",
+      "level_label": "未着手"
+    },
+    "torch-dataset-dataloader": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "転移学習で画像分類"
+        }
+      ],
+      "context": "転移学習で画像分類",
+      "level_label": "未着手"
+    },
+    "torchvision-transfer-learning": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "転移学習で画像分類"
+        }
+      ],
+      "context": "転移学習で画像分類",
+      "level_label": "未着手"
+    },
+    "train-inference-separation": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "キャップストーン: アンサンブルと推論パイプラインのコスト設計"
+        }
+      ],
+      "context": "キャップストーン: アンサンブルと推論パイプラインのコスト設計",
+      "level_label": "未着手"
+    },
     "train-test-split": {
       "level": 0,
-      "updated": "2026-07-03",
+      "updated": "2026-08-08",
       "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "検証設計とリーク"
+        },
         {
           "course": "ml-intro",
           "level": 0,
           "unit": "はじめての回帰モデル"
         }
       ],
-      "context": "はじめての回帰モデル",
+      "context": "検証設計とリーク",
+      "level_label": "未着手"
+    },
+    "transformer-finetune-loop": {
+      "level": 0,
+      "updated": "2026-08-08",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "Transformerのファインチューニング"
+        }
+      ],
+      "context": "Transformerのファインチューニング",
       "level_label": "未着手"
     },
     "type-coercion": {

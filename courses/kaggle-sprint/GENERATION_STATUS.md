@@ -1,202 +1,68 @@
-# kaggle-sprint 生成状況と再開手順
+# kaggle-sprint 生成状況
 
-このコースは**生成途中**。次のセッションはこのファイルを最初に読めば続きから再開できる。
-最終更新: 2026-08-08(unit05 lesson 完成まで反映)
+最終更新: 2026-08-09
 
-## 1. 現在の状態
+## 現在の状態
 
-| Day | ユニット | データ | lesson | lesson検証 | 演習 |
-|---|---|---|---|---|---|
-| 1 | unit01-competition-anatomy | ✅ | ✅ | ✅ 両方向 | ✅ 25テスト |
-| 2 | unit02-validation-and-leakage | ✅ | ✅ | ✅ 両方向 | ❌ |
-| 3 | unit03-gbdt-main-weapon | ✅ | ✅ | ✅ 両方向 | ❌ |
-| 4 | unit04-tabular-feature-engineering | ✅(unit02と共有) | ✅ | ✅ 両方向 | ❌ |
-| 5 | unit05-text-classical-nlp | ✅ | ✅ | ✅ 両方向 | ❌ |
-| 6 | unit06-entity-resolution | ✅ | ❌ | — | ❌ |
-| 7 | unit07-transformer-finetune | ✅(unit05と共有) | ❌ | — | ❌ |
-| 8 | unit08-image-and-pattern-basics | ✅ | ❌ | — | ❌ |
-| 9 | unit09-transfer-learning-vision | ✅(unit08と共有) | ❌ | — | ❌ |
-| 10 | unit10-capstone-ensemble-and-serving | ✅(横断) | ❌ | — | ❌ |
-| 11 | unit11-summarization | ✅ | ❌ | — | ❌ |
+unit02〜unit11 の残り教材生成は完了した。
 
-**「lesson検証 両方向」の意味**: ①未記入状態で全セル実行して例外ゼロ・全チェックポイントが `[NG]`
-②解答を仮置きして全セル実行して全チェックポイントが `[OK]`。①②の両方を実測済み。
+| Day | ユニット | データ | lesson | 演習4本 | `check_unit` | 独立レビュー |
+|---:|---|---|---|---|---|---|
+| 1 | unit01-competition-anatomy | ✅ | ✅ | ✅ | ✅ | 既存フラグを維持 |
+| 2 | unit02-validation-and-leakage | ✅ | ✅ 両方向 | ✅ | ✅ | ✅ |
+| 3 | unit03-gbdt-main-weapon | ✅ | ✅ 両方向 | ✅ | ✅ | ✅ |
+| 4 | unit04-tabular-feature-engineering | ✅ | ✅ 両方向 | ✅ | ✅ | ✅ |
+| 5 | unit05-text-classical-nlp | ✅ | ✅ 両方向 | ✅ | ✅ | ✅ |
+| 6 | unit06-entity-resolution | ✅ | ✅ 両方向 | ✅ | ✅ | ✅ |
+| 7 | unit07-transformer-finetune | ✅ | ✅ 両方向 | ✅ | ✅ | ✅ |
+| 8 | unit08-image-and-pattern-basics | ✅ | ✅ 両方向 | ✅ | ✅ | ✅ |
+| 9 | unit09-transfer-learning-vision | ✅ | ✅ 両方向 | ✅ | ✅ | ✅ |
+| 10 | unit10-capstone-ensemble-and-serving | ✅ | ✅ 両方向 | ✅ | ✅ | ✅ |
+| 11 | unit11-summarization | ✅ | ✅ 両方向 | ✅ | ✅ | ✅ |
 
-**データはすべて完成・検証済み。** 各 `data/make_data.py` の docstring に
-**実測済みの期待値が正本として記録されている**。教材の数値はすべてこれと一致させる。
+「lesson 両方向」は次を意味する。
 
-## 2. 次にやること(優先順)
+1. 未記入状態: 全セルが例外なく完走し、チェックポイントはすべて `[NG]`。
+2. 解答注入状態: 全セルが例外なく完走し、チェックポイントはすべて `[OK]`。
+3. 保存時は `outputs=[]`、`execution_count=None` で解答出力を残さない。
 
-1. unit06 → unit07 → unit08 → unit09 → unit10 → unit11 の lesson 生成
-2. unit02〜unit11 の演習生成(`exercise-writer`)
-3. 全ユニットに `check_unit.py` + `course-reviewer`
-4. `progress/kaggle-sprint.json` の初期化(`templates/progress.json.md` から。`skills` は
-   `units[].concepts` を level 0 で展開)
+## 演習検証
 
-## 3. ★セッション上限への対処(最重要の教訓)
+各ユニットを独立プロセスで検証した。異なるunitの同名テストを1つのpytestプロセスへ混ぜない。
 
-lesson-writer は**5回起動して4回落ちた**。落ちる場所は毎回同じで、
-「**notebook を書く前に、期待値を得るための探索的なコード実行を繰り返して予算を使い切る**」。
-落ちた4体はいずれも「数値が再現できた。これから notebook を書く」と言った直後に停止した。
+- `python .claude/scripts/check_unit.py courses/kaggle-sprint <unit>`: unit01〜unit11すべて `ok: true`
+- スケルトン: collection/import errorなし、未実装箇所に対応するテストがFAIL
+- `USE_SOLUTIONS=1`: 全テストPASS
+- testsには日本語の仕様コメント、hintsにはtier1〜tier3を用意
 
-**効かなかった対策**: プロンプトに「測り直すな」と書くこと。
-チェックポイントの期待値を作るには実際にコードを走らせるしかないので、
-この指示は実行不可能な要求であり、エージェントは結局測った。
+## 主なレビュー修正
 
-**効いた対策(unit05 でこれに変えて成功した)**: 期待値を**事前に知る必要をなくす**。
-`gen_lesson.py` の中で「期待値の計算」と「notebook の生成」を同時にやらせる:
+- lessonから学習中の `.solutions/` 直接参照を除去
+- unit04へ `groupby().shift()` の時系列lag実演を追加
+- unit06へペア特徴→分類器→F1閾値→Union-Findの一連処理を追加
+- unit07へ実BERTのfine-tuningと、validation lossと同時点のbest state復元を追加
+- unit08へdHashと「split後、train画像だけaugmentation」の境界を追加
+- unit09へ実PyTorch Dataset/DataLoader→ResNet18→1 step学習→段階解凍を追加
+- unit10へartifact再現推論、数値/カテゴリ/予測drift、throughput/p95/1000件費を追加
+- unit11へdevice非依存の極小T5 batch準備・teacher forcing学習・generateを追加
+- unit06〜unit11のcode cellを、見出しに対応する番号付き `STEP` / `GOAL` へ統一
 
-```python
-# gen_lesson.py の中
-expected_vocab = int(X_tfidf.shape[1])          # ここで計算して
-nbf.v4.new_code_cell(                            # そのままリテラルとして埋め込む
-    f'check("B-1 語彙数", vocab_size, {expected_vocab}, hint="...")')
-```
+## 所要時間について
 
-こうするとスクリプトを1回動かすだけで済み、対話中の探索実行がゼロになる。
-あわせて作業順序も強制する:
+このコースは作成時の `course.json` どおり、1unit 330〜420分の長時間スプリントとして設計されている。汎用テンプレートの45〜60分unitより大きいが、表示だけ短くせず実量に合わせた見積りを維持した。
 
-> **フェーズA(コード実行を一切しない)**: `gen_lesson.py` を最後まで書き切る。
-> **フェーズB(1回だけ実行)**: 実行して notebook を作り、nbclient で検証。
-> **フェーズC**: 落ちた箇所だけ直す。実行は最大3回まで。
+## 実行環境
 
-**1セッションで起動するエージェントは1体まで**にする(2体でも落ちた実績あり)。
-読ませるファイルも4つに絞る(テンプレート / unit01 の lesson / course.json / CLAUDE.md)。
-必要な数値は make_data.py を読ませるのではなく、**プロンプトに表として直接貼る**。
+検証用仮想環境はユーザーの指定どおり削除せず維持する。
 
-## 4. lesson 生成の依頼テンプレート
+`C:\Users\Public\Documents\Wondershare\CreatorTemp\coding_study_kaggle_env`
 
-`lesson-writer`(opus)に渡す。`{N}` `{DIR}` を埋める。
+主要確認バージョン:
 
-```
-courses/kaggle-sprint/{DIR}/lesson.ipynb を生成してください。このファイル1つだけです。
+- torch 2.13.0+cpu
+- torchvision 0.28.0+cpu
+- transformers 5.14.1
+- tokenizers 0.22.2
+- lightgbm 4.7.0
 
-## 必ず先に読むもの
-1. .claude/skills/create-course/templates/lesson.ipynb.md — 構造と品質規約の正本。厳密に従う。
-2. courses/kaggle-sprint/unit01-competition-anatomy/lesson.ipynb — 書式の見本(承認済み・検証済み)。
-   トーン・密度・セル構成・check() ヘルパー・データパスのフォールバック方式を必ず揃える。
-3. 直前のユニットの lesson.ipynb — 用語と変数名を揃える。説明済みのことは繰り返さない。
-4. courses/kaggle-sprint/course.json の units[{N}] の summary(詳細な仕様書)、learner_profile、runtime_policy
-5. <該当データの make_data.py> の docstring — 実測値が正本
-6. CLAUDE.md、courses/kaggle-sprint/README.md
-
-## ★数値の扱い(厳守)
-make_data.py の docstring の数値は実測・検証済みの正本です。**自分で測り直さないこと。**
-そのままリテラルで使って notebook を書き、最後の全セル実行でだけ一致を確認してください。
-測り直しは予算の無駄です(過去に3体のエージェントがこれで停止しました)。
-
-## 技術的制約
-- 完全オフライン。ネットワーク・事前学習済み重みのダウンロード禁止。
-- check() ヘルパーは unit01 の lesson.ipynb から同じものを持ってくる。
-- データパスは Path("data") → 無ければ Path("courses/kaggle-sprint/{DIR}/data") にフォールバック。
-  (別ユニットのデータを使う場合は相対パスを調整。両経路を実測確認すること)
-- 全セル合計 3分以内。重い計算は一度だけ実行して変数に保持し使い回す。
-- ⑦未記入でも notebook 全体が例外で止まらないこと(最優先)。
-- チェックポイントの期待値は実測値をリテラルで。乱数は random_state 固定で決定的に。
-
-## 検証(必須)
-1. nbformat で生成(JSONを手書きしない)。
-2. 素の状態で nbclient 全セル実行 → 例外ゼロ、③⑤が動く、⑧が全て [NG]。
-3. ⑦に解答を仮置きして全セル実行 → 全チェックポイントが [OK]。
-4. 出力セルをクリアして保存(outputs=[], execution_count=None)。一時ファイル・output/ は削除。
-
-完了したら、セル数・両方の検証結果・チェックポイント一覧・実行時間を日本語で報告してください。
-```
-
-## 5. 検証手順(orchestrator が自分で回す)
-
-```bash
-# ① 未記入で例外ゼロ・全NG
-cd courses/kaggle-sprint/<UNIT> && python - <<'PY'
-import nbformat as nbf
-from nbclient import NotebookClient
-nb = nbf.read("lesson.ipynb", as_version=4)
-NotebookClient(nb, timeout=600, kernel_name="python3", allow_errors=True).execute()
-errs = [o for c in nb.cells if c.cell_type=='code' for o in c.get('outputs',[])
-        if o.get('output_type')=='error']
-ok = ng = 0
-for c in nb.cells:
-    for l in "".join(o.get('text','') for o in c.get('outputs',[])).splitlines():
-        ok += l.strip().startswith('[OK]'); ng += l.strip().startswith('[NG]')
-print(f"例外={len(errs)} [OK]={ok} [NG]={ng}")
-PY
-```
-
-② は同じスクリプトで、`ここに書く` セルの source を自分で書いた解答に差し替えてから実行し、
-`[OK]` が全件・`[NG]` が 0 件になることを確認する。**エージェントの報告を鵜呑みにしない。**
-`ここに書く` セルの位置は次で取れる:
-
-```python
-[i for i, c in enumerate(nb.cells) if c.cell_type=='code' and 'ここに書く' in c.source]
-```
-
-演習側は `python .claude/scripts/check_unit.py courses/kaggle-sprint <UNIT>` が
-`"ok": true` を返すこと、スケルトンで pytest が失敗し `USE_SOLUTIONS=1` で通ることを実測する。
-
-## 6. 環境の再構築
-
-コンテナは使い捨てなので、新しいセッションでは入れ直しが要る。
-
-```bash
-pip install --break-system-packages numpy pandas scikit-learn scipy matplotlib seaborn \
-    ipykernel nbformat nbclient jupyter_client pytest \
-    lightgbm xgboost pillow scikit-image opencv-python-headless janome \
-    torch torchvision transformers tokenizers
-```
-
-**`download.pytorch.org` はプロキシに拒否される(403)。** torch は PyPI から入れる
-(CUDA版が入るが CPU で問題なく動く)。
-
-実測済みの環境: Python 3.11 / GPUなし / 4コア / pandas 3.0.5 / lightgbm 4.7 /
-torch 2.13 / transformers 5.14。
-
-## 7. 踏んだ落とし穴(教材にも反映済み)
-
-- **pandas 3.0 では文字列列の dtype が `object` ではなく `str`。** `df[c].dtype == object` による
-  カテゴリ列判定は**外れる**。`pd.api.types.is_numeric_dtype()` の否定を使う。
-- **LightGBM 4.x の `fit()` に `early_stopping_rounds` 引数は無い。**
-  `callbacks=[lgb.early_stopping(50)]` を使う。
-- **`TimeSeriesSplit` は先頭ブロックをどの検証にも含めない**(1661行中1380行しか検証されない)。
-  OOF 配列を `np.zeros` で初期化したまま全行採点すると出鱈目な値になる(実測 RMSLE 3.83)。
-  `np.full(n, np.nan)` で初期化して `~np.isnan(oof)` で採点する。
-- **半角カタカナの濁点は基底文字 + `ﾞ` の2文字**。`ジ → ｼ` にすると NFKC で `シ` に戻り、
-  「正規化で統合される」という前提が壊れる。
-- **合成データは簡単になりすぎる。** 必ず実測して難易度を確認すること。
-  画像分類は初版が HOG で 97.8% 出てしまい、背景の散らかり・遮蔽を足して 78.4% に調整した。
-  ただし**回転を ±69度 まで振ると、回転した bottle が book と同じ横長矩形になり
-  クラスの区別そのものが壊れる**(CNN が HOG に負けた)。±25度 に留めること。
-
-## 8. 未解決の宿題
-
-なし。unit04 の解答側検証も unit09 の転移学習検証も完了した。
-
-### unit09 の転移学習について(解決済み・訂正あり)
-
-**塞がれているホスト**: `download.pytorch.org` と `huggingface.co` の両方が
-組織のエグレスポリシーで 403。事前学習済み重みはこの環境では取得できない
-(`/root/.ccr/README.md` の指示に従い迂回はしていない)。学習者の環境では通るはず。
-
-そこで「事前学習」を自前で作って検証した。再現スクリプトは
-`unit08-image-and-pattern-basics/data/verify_transfer.py`(約13分)。
-
-    手法                                        accuracy
-    色ヒストグラムのみ + LinearSVC               0.3533
-    HOG + LinearSVC                             0.7840
-    スクラッチCNN(作り込み不足)                0.5731
-    スクラッチCNN(BN + 拡張 + cosine, 30ep)    0.9038
-    転移学習(全層ファインチューニング)          0.9451
-    転移学習(backbone凍結 + 線形ヘッド)         0.9538
-
-**⚠️ 過去の記述の訂正**: このファイルの初版に「小データではスクラッチ CNN が
-HOG に勝てない(0.5731)、これが転移学習の動機」と書いたが、**これは誤り**だった。
-0.5731 は単に学習の作り込み(BatchNorm・データ拡張・学習率スケジュール)が
-足りなかっただけで、ちゃんと作り込めば 0.9038 まで上がり HOG を大きく超える。
-**unit09 の lesson を書くときはこの訂正後の表を使うこと。**
-
-訂正後に得られた教訓は3つで、いずれも実測に裏付けられている:
-1. **学習の作り込みが効く** — 同条件で 0.5731 → 0.9038。
-   「CNN が古典特徴に負けた」と結論する前にレシピを疑う。
-2. **転移学習は効く** — 作り込んだスクラッチ 0.9038 に対して +0.050。
-   初期状態の重みだけが違う条件での比較なので原因は明快。
-3. **小データでは凍結 > 全層ファインチューニング** — 0.9538 > 0.9451。
-   まず凍結して線形ヘッドだけ学習し、足りなければ段階的に解凍する、という手順の根拠。
+ネットワークや事前学習済み重みのダウンロードなしで教材とテストが完走する。
