@@ -8,6 +8,7 @@
 - `ex01_profile_and_sanity_check` に合格した(attempts=2, tier=1)。
 - `ex02_align_and_clean` に合格した(attempts=3, tier=1)。
 - `ex03_holdout_score` に合格し、学習用と検証用を分けて中央値ベースラインを採点できた(attempts=4, tier=1)。
+- `ex04_capstone` に合格し、掃除・検証・方式選択・全trainでの再計算・提出検査を一本につなげた(attempts=6, tier=2)。
 
 ## 新しく学んだ概念
 
@@ -90,6 +91,11 @@
 - `(train_part, valid_part)` の契約と、実際に返すスライスの順序が逆になった。戻り値の仕様と呼び出し側の変数名を対応させる。
 - `pred.loc = ...` と書き、インデクサの `loc` プロパティ自体へ代入しようとした。`map()` が返す予測Seriesを `pred` として受け取ればよい。
 - `fillna()` の戻り値を受け取らないと元のSeriesは変わらないことと、RMSLEには文字列列を含むDataFrameではなく正解・予測の数値Seriesを渡すことを確認した。
+- `iterrows()` は `(index, Series)` を返し、indexが不要なら必要列を選んだ `itertuples(index=False, name=None)` も使える。
+- `ndarray.fill()` は既存配列を変更して `None` を返す一方、`np.full()` は指定値で埋めた新しい配列を返す。
+- 予測配列 `pred` と、正解との比較から得る1個の評価値 `score` を区別する。testには正解列がないため、方式比較はvalidで行う。
+- 型注釈とコメントが `np.ndarray` を約束するなら、テストが型を確認していなくても、その契約を守って返す。
+- ex04の元コメントには、提出列・負値検査対象・全体中央値予測・再計算の意味が明記されていない箇所があり、実装中に仕様を具体化した。
 
 ## 質問と答えの要約(セッション中のQ&A)
 
@@ -100,6 +106,7 @@
 
 ## 次回の開始地点 / 次の復習予定
 
-- 次は `unit01-competition-anatomy/ex04_capstone.py` から再開する。
+- 次は unit01 のマイルストーン確認とFeynmanチェックから再開する。通過後は `unit02-validation-and-leakage` へ進む。
 - ex01では列ラベルとSeriesの区別、ex02では集合差・`list.sort()`の戻り値・段階的クリーニングログを復習する。
 - `ex03_holdout_score` の復習予定は 2026-08-11、2026-08-13、2026-08-17、2026-08-24。
+- `ex04_capstone` の復習予定は 2026-08-11、2026-08-13、2026-08-17、2026-08-24。

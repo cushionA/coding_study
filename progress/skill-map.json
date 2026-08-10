@@ -301,6 +301,47 @@
       "context": "HTMLの構造とTypeScriptの足場",
       "level_label": "ヒントなしで書けた"
     },
+    "data-cleaning": {
+      "level": 2,
+      "updated": "2026-08-10",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 2,
+          "unit": "テキストの正規化とTF-IDFベースライン"
+        },
+        {
+          "course": "web-scraping-ts",
+          "level": 0,
+          "unit": "堅牢化とCSV出力"
+        },
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "堅牢化とCSV出力"
+        }
+      ],
+      "context": "テキストの正規化とTF-IDFベースライン",
+      "level_label": "ガイド付きで書けた"
+    },
+    "end-to-end-workflow": {
+      "level": 2,
+      "updated": "2026-08-10",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 2,
+          "unit": "キャップストーン: アンサンブルと推論パイプラインのコスト設計"
+        },
+        {
+          "course": "ml-intro",
+          "level": 0,
+          "unit": "総合ミニプロジェクト"
+        }
+      ],
+      "context": "キャップストーン: アンサンブルと推論パイプラインのコスト設計",
+      "level_label": "ガイド付きで書けた"
+    },
     "html-dom-tree": {
       "level": 2,
       "updated": "2026-08-01",
@@ -567,29 +608,6 @@
       "context": "画像とパターン認識の基礎",
       "level_label": "未着手"
     },
-    "data-cleaning": {
-      "level": 0,
-      "updated": "2026-08-08",
-      "sources": [
-        {
-          "course": "kaggle-sprint",
-          "level": 0,
-          "unit": "テキストの正規化とTF-IDFベースライン"
-        },
-        {
-          "course": "web-scraping-ts",
-          "level": 0,
-          "unit": "堅牢化とCSV出力"
-        },
-        {
-          "course": "web-scraping",
-          "level": 0,
-          "unit": "堅牢化とCSV出力"
-        }
-      ],
-      "context": "テキストの正規化とTF-IDFベースライン",
-      "level_label": "未着手"
-    },
     "datetime-features": {
       "level": 0,
       "updated": "2026-08-08",
@@ -663,24 +681,6 @@
         }
       ],
       "context": "キャップストーン: エンドツーエンドのスクレイパー",
-      "level_label": "未着手"
-    },
-    "end-to-end-workflow": {
-      "level": 0,
-      "updated": "2026-08-08",
-      "sources": [
-        {
-          "course": "kaggle-sprint",
-          "level": 0,
-          "unit": "キャップストーン: アンサンブルと推論パイプラインのコスト設計"
-        },
-        {
-          "course": "ml-intro",
-          "level": 0,
-          "unit": "総合ミニプロジェクト"
-        }
-      ],
-      "context": "キャップストーン: アンサンブルと推論パイプラインのコスト設計",
       "level_label": "未着手"
     },
     "entity-resolution-pairs": {
