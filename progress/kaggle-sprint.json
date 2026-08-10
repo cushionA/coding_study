@@ -1,7 +1,7 @@
 {
   "course": "kaggle-sprint",
   "started": "2026-08-08",
-  "current": {"unit": "unit01-competition-anatomy", "phase": "exercise", "exercise": "ex03_holdout_score"},
+  "current": {"unit": "unit01-competition-anatomy", "phase": "exercise", "exercise": "ex04_capstone"},
   "lessons": {
     "unit01-competition-anatomy": {"completed": "2026-08-10"}
   },
@@ -15,6 +15,11 @@
       "completed": "2026-08-10",
       "attempts": 3,
       "tier": 1
+    },
+    "unit01-competition-anatomy/ex03_holdout_score": {
+      "completed": "2026-08-10",
+      "attempts": 4,
+      "tier": 1
     }
   },
   "skills": {
@@ -23,11 +28,11 @@
     "pandas-select-filter": {"level": 3, "updated": "2026-08-10", "evidence": "unit01/ex02 passed (attempts=3, tier=1)"},
     "pandas-missing": {"level": 3, "updated": "2026-08-10", "evidence": "unit01/ex01 and ex02 passed (tier=1)"},
     "submission-format": {"level": 2, "updated": "2026-08-10", "evidence": "unit01 lesson checkpoints A-D passed"},
-    "train-test-split": {"level": 0, "updated": "2026-08-08", "evidence": "course initialized"},
+    "train-test-split": {"level": 2, "updated": "2026-08-10", "evidence": "unit01/ex03 passed (attempts=4, tier=1)"},
     "cross-validation": {"level": 0, "updated": "2026-08-08", "evidence": "course initialized"},
     "oof-prediction": {"level": 0, "updated": "2026-08-08", "evidence": "course initialized"},
     "target-leakage": {"level": 0, "updated": "2026-08-08", "evidence": "course initialized"},
-    "regression-metrics": {"level": 0, "updated": "2026-08-08", "evidence": "course initialized"},
+    "regression-metrics": {"level": 2, "updated": "2026-08-10", "evidence": "unit01/ex03 RMSLE baseline scoring passed (attempts=4, tier=1)"},
     "sklearn-estimator-api": {"level": 0, "updated": "2026-08-08", "evidence": "course initialized"},
     "gbdt-lightgbm": {"level": 0, "updated": "2026-08-08", "evidence": "course initialized"},
     "early-stopping": {"level": 0, "updated": "2026-08-08", "evidence": "course initialized"},
@@ -74,7 +79,12 @@
     "decoding-strategies": {"level": 0, "updated": "2026-08-08", "evidence": "course initialized"},
     "summarization-evaluation": {"level": 0, "updated": "2026-08-08", "evidence": "course initialized"}
   },
-  "review_queue": [],
+  "review_queue": [
+    {"source": "unit01-competition-anatomy/ex03_holdout_score", "due": "2026-08-11", "done": null, "variant_file": null},
+    {"source": "unit01-competition-anatomy/ex03_holdout_score", "due": "2026-08-13", "done": null, "variant_file": null},
+    {"source": "unit01-competition-anatomy/ex03_holdout_score", "due": "2026-08-17", "done": null, "variant_file": null},
+    {"source": "unit01-competition-anatomy/ex03_holdout_score", "due": "2026-08-24", "done": null, "variant_file": null}
+  ],
   "milestones": {
     "unit01-competition-anatomy": {"checked": [], "feynman_passed": false, "completed_at": null},
     "unit02-validation-and-leakage": {"checked": [], "feynman_passed": false, "completed_at": null},

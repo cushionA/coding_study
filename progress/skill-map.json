@@ -319,6 +319,24 @@
       "context": "HTMLの構造とTypeScriptの足場",
       "level_label": "ガイド付きで書けた"
     },
+    "regression-metrics": {
+      "level": 2,
+      "updated": "2026-08-10",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 2,
+          "unit": "検証設計とリーク"
+        },
+        {
+          "course": "ml-intro",
+          "level": 0,
+          "unit": "はじめての回帰モデル"
+        }
+      ],
+      "context": "検証設計とリーク",
+      "level_label": "ガイド付きで書けた"
+    },
     "scraping-pipeline-overview": {
       "level": 2,
       "updated": "2026-08-01",
@@ -348,6 +366,24 @@
         }
       ],
       "context": "コンペの解剖と最初の提出",
+      "level_label": "ガイド付きで書けた"
+    },
+    "train-test-split": {
+      "level": 2,
+      "updated": "2026-08-10",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 2,
+          "unit": "検証設計とリーク"
+        },
+        {
+          "course": "ml-intro",
+          "level": 0,
+          "unit": "はじめての回帰モデル"
+        }
+      ],
+      "context": "検証設計とリーク",
       "level_label": "ガイド付きで書けた"
     },
     "beautifulsoup-parse": {
@@ -1072,24 +1108,6 @@
       "context": "セレクタと表・リストの抽出",
       "level_label": "未着手"
     },
-    "regression-metrics": {
-      "level": 0,
-      "updated": "2026-08-08",
-      "sources": [
-        {
-          "course": "kaggle-sprint",
-          "level": 0,
-          "unit": "検証設計とリーク"
-        },
-        {
-          "course": "ml-intro",
-          "level": 0,
-          "unit": "はじめての回帰モデル"
-        }
-      ],
-      "context": "検証設計とリーク",
-      "level_label": "未着手"
-    },
     "requests-api": {
       "level": 0,
       "updated": "2026-07-03",
@@ -1438,24 +1456,6 @@
         }
       ],
       "context": "キャップストーン: アンサンブルと推論パイプラインのコスト設計",
-      "level_label": "未着手"
-    },
-    "train-test-split": {
-      "level": 0,
-      "updated": "2026-08-08",
-      "sources": [
-        {
-          "course": "kaggle-sprint",
-          "level": 0,
-          "unit": "検証設計とリーク"
-        },
-        {
-          "course": "ml-intro",
-          "level": 0,
-          "unit": "はじめての回帰モデル"
-        }
-      ],
-      "context": "検証設計とリーク",
       "level_label": "未着手"
     },
     "transformer-finetune-loop": {

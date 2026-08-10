@@ -7,6 +7,7 @@
 - lesson.ipynb のチェックポイント A〜D をすべて通過した。
 - `ex01_profile_and_sanity_check` に合格した(attempts=2, tier=1)。
 - `ex02_align_and_clean` に合格した(attempts=3, tier=1)。
+- `ex03_holdout_score` に合格し、学習用と検証用を分けて中央値ベースラインを採点できた(attempts=4, tier=1)。
 
 ## 新しく学んだ概念
 
@@ -85,6 +86,10 @@
 - pandasの短いメソッドチェーンは、列取得・辞書検索・欠損処理が1行に圧縮され、処理の境界が見えにくかった。
 - 列名ラベルと、列データであるSeriesを混同しやすかった。
 - `and`と`&`、`loc`の単独ラベルとリスト指定など、Python/pandasが返り値の次元を暗黙に変える規則があやふやだった。
+- ホールドアウト分割で `df[...]` を行の位置指定に使い、数値を列名として検索する `KeyError` になった。位置で行を切るときは `.iloc` を使う。
+- `(train_part, valid_part)` の契約と、実際に返すスライスの順序が逆になった。戻り値の仕様と呼び出し側の変数名を対応させる。
+- `pred.loc = ...` と書き、インデクサの `loc` プロパティ自体へ代入しようとした。`map()` が返す予測Seriesを `pred` として受け取ればよい。
+- `fillna()` の戻り値を受け取らないと元のSeriesは変わらないことと、RMSLEには文字列列を含むDataFrameではなく正解・予測の数値Seriesを渡すことを確認した。
 
 ## 質問と答えの要約(セッション中のQ&A)
 
@@ -95,6 +100,6 @@
 
 ## 次回の開始地点 / 次の復習予定
 
-- 次は `unit01-competition-anatomy/ex03_holdout_score.py` から再開する。
+- 次は `unit01-competition-anatomy/ex04_capstone.py` から再開する。
 - ex01では列ラベルとSeriesの区別、ex02では集合差・`list.sort()`の戻り値・段階的クリーニングログを復習する。
-- 現在、復習キューに登録済みの課題はない。
+- `ex03_holdout_score` の復習予定は 2026-08-11、2026-08-13、2026-08-17、2026-08-24。
