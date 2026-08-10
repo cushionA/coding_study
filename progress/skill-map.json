@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-08",
+  "updated": "2026-08-10",
   "legend": {
     "0": {
       "label": "未着手",
@@ -89,6 +89,19 @@
       "context": "cheerioで解析する",
       "level_label": "ヒントなしで書けた"
     },
+    "competition-anatomy": {
+      "level": 3,
+      "updated": "2026-08-10",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 3,
+          "unit": "コンペの解剖と最初の提出"
+        }
+      ],
+      "context": "コンペの解剖と最初の提出",
+      "level_label": "ヒントなしで書けた"
+    },
     "csharp-language": {
       "level": 3,
       "updated": "2026-07-04",
@@ -162,6 +175,60 @@
         }
       ],
       "context": "オブジェクト指向(クラス・継承・インターフェース・カプセル化)",
+      "level_label": "ヒントなしで書けた"
+    },
+    "pandas-dataframe": {
+      "level": 3,
+      "updated": "2026-08-10",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 3,
+          "unit": "コンペの解剖と最初の提出"
+        },
+        {
+          "course": "ml-intro",
+          "level": 0,
+          "unit": "pandasによるデータ操作"
+        }
+      ],
+      "context": "コンペの解剖と最初の提出",
+      "level_label": "ヒントなしで書けた"
+    },
+    "pandas-missing": {
+      "level": 3,
+      "updated": "2026-08-10",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 3,
+          "unit": "コンペの解剖と最初の提出"
+        },
+        {
+          "course": "ml-intro",
+          "level": 0,
+          "unit": "pandasによるデータ操作"
+        }
+      ],
+      "context": "コンペの解剖と最初の提出",
+      "level_label": "ヒントなしで書けた"
+    },
+    "pandas-select-filter": {
+      "level": 3,
+      "updated": "2026-08-10",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 3,
+          "unit": "コンペの解剖と最初の提出"
+        },
+        {
+          "course": "ml-intro",
+          "level": 0,
+          "unit": "pandasによるデータ操作"
+        }
+      ],
+      "context": "コンペの解剖と最初の提出",
       "level_label": "ヒントなしで書けた"
     },
     "selector-query": {
@@ -270,6 +337,19 @@
       "context": "HTMLの構造とTypeScriptの足場",
       "level_label": "ガイド付きで書けた"
     },
+    "submission-format": {
+      "level": 2,
+      "updated": "2026-08-10",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 2,
+          "unit": "コンペの解剖と最初の提出"
+        }
+      ],
+      "context": "コンペの解剖と最初の提出",
+      "level_label": "ガイド付きで書けた"
+    },
     "beautifulsoup-parse": {
       "level": 0,
       "updated": "2026-07-03",
@@ -338,19 +418,6 @@
         }
       ],
       "context": "テキストの正規化とTF-IDFベースライン",
-      "level_label": "未着手"
-    },
-    "competition-anatomy": {
-      "level": 0,
-      "updated": "2026-08-08",
-      "sources": [
-        {
-          "course": "kaggle-sprint",
-          "level": 0,
-          "unit": "コンペの解剖と最初の提出"
-        }
-      ],
-      "context": "コンペの解剖と最初の提出",
       "level_label": "未着手"
     },
     "confusion-matrix-metrics": {
@@ -886,24 +953,6 @@
       "context": "キャップストーン: エンドツーエンドのスクレイパー",
       "level_label": "未着手"
     },
-    "pandas-dataframe": {
-      "level": 0,
-      "updated": "2026-08-08",
-      "sources": [
-        {
-          "course": "kaggle-sprint",
-          "level": 0,
-          "unit": "コンペの解剖と最初の提出"
-        },
-        {
-          "course": "ml-intro",
-          "level": 0,
-          "unit": "pandasによるデータ操作"
-        }
-      ],
-      "context": "コンペの解剖と最初の提出",
-      "level_label": "未着手"
-    },
     "pandas-groupby": {
       "level": 0,
       "updated": "2026-08-08",
@@ -920,42 +969,6 @@
         }
       ],
       "context": "テーブルの特徴量エンジニアリング",
-      "level_label": "未着手"
-    },
-    "pandas-missing": {
-      "level": 0,
-      "updated": "2026-08-08",
-      "sources": [
-        {
-          "course": "kaggle-sprint",
-          "level": 0,
-          "unit": "コンペの解剖と最初の提出"
-        },
-        {
-          "course": "ml-intro",
-          "level": 0,
-          "unit": "pandasによるデータ操作"
-        }
-      ],
-      "context": "コンペの解剖と最初の提出",
-      "level_label": "未着手"
-    },
-    "pandas-select-filter": {
-      "level": 0,
-      "updated": "2026-08-08",
-      "sources": [
-        {
-          "course": "kaggle-sprint",
-          "level": 0,
-          "unit": "コンペの解剖と最初の提出"
-        },
-        {
-          "course": "ml-intro",
-          "level": 0,
-          "unit": "pandasによるデータ操作"
-        }
-      ],
-      "context": "コンペの解剖と最初の提出",
       "level_label": "未着手"
     },
     "preprocessing-impute-scale": {
@@ -1264,19 +1277,6 @@
         }
       ],
       "context": "名寄せ / エンティティ解決(古典→深層の橋)",
-      "level_label": "未着手"
-    },
-    "submission-format": {
-      "level": 0,
-      "updated": "2026-08-08",
-      "sources": [
-        {
-          "course": "kaggle-sprint",
-          "level": 0,
-          "unit": "コンペの解剖と最初の提出"
-        }
-      ],
-      "context": "コンペの解剖と最初の提出",
       "level_label": "未着手"
     },
     "subword-tokenization": {

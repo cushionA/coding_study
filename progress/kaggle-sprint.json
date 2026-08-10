@@ -1,16 +1,27 @@
 {
   "course": "kaggle-sprint",
   "started": "2026-08-08",
-  "current": {"unit": "unit01-competition-anatomy", "phase": "exercise", "exercise": "ex01_profile_and_sanity_check"},
+  "current": {"unit": "unit01-competition-anatomy", "phase": "exercise", "exercise": "ex03_holdout_score"},
   "lessons": {
     "unit01-competition-anatomy": {"completed": "2026-08-10"}
   },
-  "exercises": {},
+  "exercises": {
+    "unit01-competition-anatomy/ex01_profile_and_sanity_check": {
+      "completed": "2026-08-10",
+      "attempts": 2,
+      "tier": 1
+    },
+    "unit01-competition-anatomy/ex02_align_and_clean": {
+      "completed": "2026-08-10",
+      "attempts": 3,
+      "tier": 1
+    }
+  },
   "skills": {
-    "competition-anatomy": {"level": 2, "updated": "2026-08-10", "evidence": "unit01 lesson checkpoints A-D passed"},
-    "pandas-dataframe": {"level": 2, "updated": "2026-08-10", "evidence": "unit01 lesson checkpoints A-D passed"},
-    "pandas-select-filter": {"level": 2, "updated": "2026-08-10", "evidence": "unit01 lesson checkpoints A-D passed"},
-    "pandas-missing": {"level": 2, "updated": "2026-08-10", "evidence": "unit01 lesson checkpoints A-D passed"},
+    "competition-anatomy": {"level": 3, "updated": "2026-08-10", "evidence": "unit01/ex02 passed (attempts=3, tier=1)"},
+    "pandas-dataframe": {"level": 3, "updated": "2026-08-10", "evidence": "unit01/ex01 passed (attempts=2, tier=1)"},
+    "pandas-select-filter": {"level": 3, "updated": "2026-08-10", "evidence": "unit01/ex02 passed (attempts=3, tier=1)"},
+    "pandas-missing": {"level": 3, "updated": "2026-08-10", "evidence": "unit01/ex01 and ex02 passed (tier=1)"},
     "submission-format": {"level": 2, "updated": "2026-08-10", "evidence": "unit01 lesson checkpoints A-D passed"},
     "train-test-split": {"level": 0, "updated": "2026-08-08", "evidence": "course initialized"},
     "cross-validation": {"level": 0, "updated": "2026-08-08", "evidence": "course initialized"},
