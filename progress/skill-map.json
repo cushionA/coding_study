@@ -24,6 +24,60 @@
   },
   "note": "スキルレベルの唯一の定義はこの legend。概念スラッグはコース固有なので create-course は意味で対応付けて既習度を反映する。",
   "concepts": {
+    "competition-anatomy": {
+      "level": 4,
+      "updated": "2026-08-11",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 4,
+          "unit": "コンペの解剖と最初の提出"
+        }
+      ],
+      "context": "コンペの解剖と最初の提出",
+      "level_label": "自分の言葉で説明できた"
+    },
+    "data-cleaning": {
+      "level": 4,
+      "updated": "2026-08-11",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 4,
+          "unit": "テキストの正規化とTF-IDFベースライン"
+        },
+        {
+          "course": "web-scraping-ts",
+          "level": 0,
+          "unit": "堅牢化とCSV出力"
+        },
+        {
+          "course": "web-scraping",
+          "level": 0,
+          "unit": "堅牢化とCSV出力"
+        }
+      ],
+      "context": "テキストの正規化とTF-IDFベースライン",
+      "level_label": "自分の言葉で説明できた"
+    },
+    "end-to-end-workflow": {
+      "level": 4,
+      "updated": "2026-08-11",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 4,
+          "unit": "キャップストーン: アンサンブルと推論パイプラインのコスト設計"
+        },
+        {
+          "course": "ml-intro",
+          "level": 0,
+          "unit": "総合ミニプロジェクト"
+        }
+      ],
+      "context": "キャップストーン: アンサンブルと推論パイプラインのコスト設計",
+      "level_label": "自分の言葉で説明できた"
+    },
     "imperative-basics": {
       "level": 4,
       "updated": "2026-07-04",
@@ -63,6 +117,109 @@
       "context": "NumPy配列の基本",
       "level_label": "自分の言葉で説明できた"
     },
+    "pandas-dataframe": {
+      "level": 4,
+      "updated": "2026-08-11",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 4,
+          "unit": "コンペの解剖と最初の提出"
+        },
+        {
+          "course": "ml-intro",
+          "level": 0,
+          "unit": "pandasによるデータ操作"
+        }
+      ],
+      "context": "コンペの解剖と最初の提出",
+      "level_label": "自分の言葉で説明できた"
+    },
+    "pandas-missing": {
+      "level": 4,
+      "updated": "2026-08-11",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 4,
+          "unit": "コンペの解剖と最初の提出"
+        },
+        {
+          "course": "ml-intro",
+          "level": 0,
+          "unit": "pandasによるデータ操作"
+        }
+      ],
+      "context": "コンペの解剖と最初の提出",
+      "level_label": "自分の言葉で説明できた"
+    },
+    "pandas-select-filter": {
+      "level": 4,
+      "updated": "2026-08-11",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 4,
+          "unit": "コンペの解剖と最初の提出"
+        },
+        {
+          "course": "ml-intro",
+          "level": 0,
+          "unit": "pandasによるデータ操作"
+        }
+      ],
+      "context": "コンペの解剖と最初の提出",
+      "level_label": "自分の言葉で説明できた"
+    },
+    "regression-metrics": {
+      "level": 4,
+      "updated": "2026-08-11",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 4,
+          "unit": "検証設計とリーク"
+        },
+        {
+          "course": "ml-intro",
+          "level": 0,
+          "unit": "はじめての回帰モデル"
+        }
+      ],
+      "context": "検証設計とリーク",
+      "level_label": "自分の言葉で説明できた"
+    },
+    "submission-format": {
+      "level": 4,
+      "updated": "2026-08-11",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 4,
+          "unit": "コンペの解剖と最初の提出"
+        }
+      ],
+      "context": "コンペの解剖と最初の提出",
+      "level_label": "自分の言葉で説明できた"
+    },
+    "train-test-split": {
+      "level": 4,
+      "updated": "2026-08-11",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 4,
+          "unit": "検証設計とリーク"
+        },
+        {
+          "course": "ml-intro",
+          "level": 0,
+          "unit": "はじめての回帰モデル"
+        }
+      ],
+      "context": "検証設計とリーク",
+      "level_label": "自分の言葉で説明できた"
+    },
     "algorithms-atcoder-brown": {
       "level": 3,
       "updated": "2026-07-04",
@@ -87,19 +244,6 @@
         }
       ],
       "context": "cheerioで解析する",
-      "level_label": "ヒントなしで書けた"
-    },
-    "competition-anatomy": {
-      "level": 3,
-      "updated": "2026-08-10",
-      "sources": [
-        {
-          "course": "kaggle-sprint",
-          "level": 3,
-          "unit": "コンペの解剖と最初の提出"
-        }
-      ],
-      "context": "コンペの解剖と最初の提出",
       "level_label": "ヒントなしで書けた"
     },
     "csharp-language": {
@@ -177,60 +321,6 @@
       "context": "オブジェクト指向(クラス・継承・インターフェース・カプセル化)",
       "level_label": "ヒントなしで書けた"
     },
-    "pandas-dataframe": {
-      "level": 3,
-      "updated": "2026-08-10",
-      "sources": [
-        {
-          "course": "kaggle-sprint",
-          "level": 3,
-          "unit": "コンペの解剖と最初の提出"
-        },
-        {
-          "course": "ml-intro",
-          "level": 0,
-          "unit": "pandasによるデータ操作"
-        }
-      ],
-      "context": "コンペの解剖と最初の提出",
-      "level_label": "ヒントなしで書けた"
-    },
-    "pandas-missing": {
-      "level": 3,
-      "updated": "2026-08-10",
-      "sources": [
-        {
-          "course": "kaggle-sprint",
-          "level": 3,
-          "unit": "コンペの解剖と最初の提出"
-        },
-        {
-          "course": "ml-intro",
-          "level": 0,
-          "unit": "pandasによるデータ操作"
-        }
-      ],
-      "context": "コンペの解剖と最初の提出",
-      "level_label": "ヒントなしで書けた"
-    },
-    "pandas-select-filter": {
-      "level": 3,
-      "updated": "2026-08-10",
-      "sources": [
-        {
-          "course": "kaggle-sprint",
-          "level": 3,
-          "unit": "コンペの解剖と最初の提出"
-        },
-        {
-          "course": "ml-intro",
-          "level": 0,
-          "unit": "pandasによるデータ操作"
-        }
-      ],
-      "context": "コンペの解剖と最初の提出",
-      "level_label": "ヒントなしで書けた"
-    },
     "selector-query": {
       "level": 3,
       "updated": "2026-08-04",
@@ -301,47 +391,6 @@
       "context": "HTMLの構造とTypeScriptの足場",
       "level_label": "ヒントなしで書けた"
     },
-    "data-cleaning": {
-      "level": 2,
-      "updated": "2026-08-10",
-      "sources": [
-        {
-          "course": "kaggle-sprint",
-          "level": 2,
-          "unit": "テキストの正規化とTF-IDFベースライン"
-        },
-        {
-          "course": "web-scraping-ts",
-          "level": 0,
-          "unit": "堅牢化とCSV出力"
-        },
-        {
-          "course": "web-scraping",
-          "level": 0,
-          "unit": "堅牢化とCSV出力"
-        }
-      ],
-      "context": "テキストの正規化とTF-IDFベースライン",
-      "level_label": "ガイド付きで書けた"
-    },
-    "end-to-end-workflow": {
-      "level": 2,
-      "updated": "2026-08-10",
-      "sources": [
-        {
-          "course": "kaggle-sprint",
-          "level": 2,
-          "unit": "キャップストーン: アンサンブルと推論パイプラインのコスト設計"
-        },
-        {
-          "course": "ml-intro",
-          "level": 0,
-          "unit": "総合ミニプロジェクト"
-        }
-      ],
-      "context": "キャップストーン: アンサンブルと推論パイプラインのコスト設計",
-      "level_label": "ガイド付きで書けた"
-    },
     "html-dom-tree": {
       "level": 2,
       "updated": "2026-08-01",
@@ -360,24 +409,6 @@
       "context": "HTMLの構造とTypeScriptの足場",
       "level_label": "ガイド付きで書けた"
     },
-    "regression-metrics": {
-      "level": 2,
-      "updated": "2026-08-10",
-      "sources": [
-        {
-          "course": "kaggle-sprint",
-          "level": 2,
-          "unit": "検証設計とリーク"
-        },
-        {
-          "course": "ml-intro",
-          "level": 0,
-          "unit": "はじめての回帰モデル"
-        }
-      ],
-      "context": "検証設計とリーク",
-      "level_label": "ガイド付きで書けた"
-    },
     "scraping-pipeline-overview": {
       "level": 2,
       "updated": "2026-08-01",
@@ -394,37 +425,6 @@
         }
       ],
       "context": "HTMLの構造とTypeScriptの足場",
-      "level_label": "ガイド付きで書けた"
-    },
-    "submission-format": {
-      "level": 2,
-      "updated": "2026-08-10",
-      "sources": [
-        {
-          "course": "kaggle-sprint",
-          "level": 2,
-          "unit": "コンペの解剖と最初の提出"
-        }
-      ],
-      "context": "コンペの解剖と最初の提出",
-      "level_label": "ガイド付きで書けた"
-    },
-    "train-test-split": {
-      "level": 2,
-      "updated": "2026-08-10",
-      "sources": [
-        {
-          "course": "kaggle-sprint",
-          "level": 2,
-          "unit": "検証設計とリーク"
-        },
-        {
-          "course": "ml-intro",
-          "level": 0,
-          "unit": "はじめての回帰モデル"
-        }
-      ],
-      "context": "検証設計とリーク",
       "level_label": "ガイド付きで書けた"
     },
     "beautifulsoup-parse": {

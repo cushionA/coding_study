@@ -1,7 +1,7 @@
 {
   "course": "kaggle-sprint",
   "started": "2026-08-08",
-  "current": {"unit": "unit01-competition-anatomy", "phase": "exercise", "exercise": "ex04_capstone"},
+  "current": {"unit": "unit02-validation-and-leakage", "phase": "lesson", "exercise": null},
   "lessons": {
     "unit01-competition-anatomy": {"completed": "2026-08-10"}
   },
@@ -28,16 +28,16 @@
     }
   },
   "skills": {
-    "competition-anatomy": {"level": 3, "updated": "2026-08-10", "evidence": "unit01/ex02 passed (attempts=3, tier=1)"},
-    "pandas-dataframe": {"level": 3, "updated": "2026-08-10", "evidence": "unit01/ex01 passed (attempts=2, tier=1)"},
-    "pandas-select-filter": {"level": 3, "updated": "2026-08-10", "evidence": "unit01/ex02 passed (attempts=3, tier=1)"},
-    "pandas-missing": {"level": 3, "updated": "2026-08-10", "evidence": "unit01/ex01 and ex02 passed (tier=1)"},
-    "submission-format": {"level": 2, "updated": "2026-08-10", "evidence": "unit01/ex04 passed (attempts=6, tier=2)"},
-    "train-test-split": {"level": 2, "updated": "2026-08-10", "evidence": "unit01/ex03 passed (attempts=4, tier=1)"},
+    "competition-anatomy": {"level": 4, "updated": "2026-08-11", "evidence": "unit01 Feynman check passed"},
+    "pandas-dataframe": {"level": 4, "updated": "2026-08-11", "evidence": "unit01 Feynman check passed"},
+    "pandas-select-filter": {"level": 4, "updated": "2026-08-11", "evidence": "unit01 Feynman check passed"},
+    "pandas-missing": {"level": 4, "updated": "2026-08-11", "evidence": "unit01 Feynman check passed"},
+    "submission-format": {"level": 4, "updated": "2026-08-11", "evidence": "unit01 Feynman check passed"},
+    "train-test-split": {"level": 4, "updated": "2026-08-11", "evidence": "unit01 Feynman check passed"},
     "cross-validation": {"level": 0, "updated": "2026-08-08", "evidence": "course initialized"},
     "oof-prediction": {"level": 0, "updated": "2026-08-08", "evidence": "course initialized"},
     "target-leakage": {"level": 0, "updated": "2026-08-08", "evidence": "course initialized"},
-    "regression-metrics": {"level": 2, "updated": "2026-08-10", "evidence": "unit01/ex03 RMSLE baseline scoring passed (attempts=4, tier=1)"},
+    "regression-metrics": {"level": 4, "updated": "2026-08-11", "evidence": "unit01 Feynman check passed"},
     "sklearn-estimator-api": {"level": 0, "updated": "2026-08-08", "evidence": "course initialized"},
     "gbdt-lightgbm": {"level": 0, "updated": "2026-08-08", "evidence": "course initialized"},
     "early-stopping": {"level": 0, "updated": "2026-08-08", "evidence": "course initialized"},
@@ -48,7 +48,7 @@
     "pandas-groupby": {"level": 0, "updated": "2026-08-08", "evidence": "course initialized"},
     "datetime-features": {"level": 0, "updated": "2026-08-08", "evidence": "course initialized"},
     "sklearn-pipeline": {"level": 0, "updated": "2026-08-08", "evidence": "course initialized"},
-    "data-cleaning": {"level": 2, "updated": "2026-08-10", "evidence": "unit01/ex04 clean_train passed (attempts=6, tier=2)"},
+    "data-cleaning": {"level": 4, "updated": "2026-08-11", "evidence": "unit01 Feynman check passed"},
     "text-normalization": {"level": 0, "updated": "2026-08-08", "evidence": "course initialized"},
     "janome-tokenize": {"level": 0, "updated": "2026-08-08", "evidence": "course initialized"},
     "tfidf-vectorizer": {"level": 0, "updated": "2026-08-08", "evidence": "course initialized"},
@@ -77,7 +77,7 @@
     "seed-averaging": {"level": 0, "updated": "2026-08-08", "evidence": "course initialized"},
     "train-inference-separation": {"level": 0, "updated": "2026-08-08", "evidence": "course initialized"},
     "inference-cost-design": {"level": 0, "updated": "2026-08-08", "evidence": "course initialized"},
-    "end-to-end-workflow": {"level": 2, "updated": "2026-08-10", "evidence": "unit01/ex04 capstone pipeline passed (attempts=6, tier=2)"},
+    "end-to-end-workflow": {"level": 4, "updated": "2026-08-11", "evidence": "unit01 Feynman check passed"},
     "extractive-summarization": {"level": 0, "updated": "2026-08-08", "evidence": "course initialized"},
     "sentence-centrality": {"level": 0, "updated": "2026-08-08", "evidence": "course initialized"},
     "seq2seq-encoder-decoder": {"level": 0, "updated": "2026-08-08", "evidence": "course initialized"},
@@ -98,9 +98,10 @@
     {"source": "unit01-competition-anatomy/ex04_capstone", "due": "2026-08-13", "done": null, "variant_file": null},
     {"source": "unit01-competition-anatomy/ex04_capstone", "due": "2026-08-17", "done": null, "variant_file": null},
     {"source": "unit01-competition-anatomy/ex04_capstone", "due": "2026-08-24", "done": null, "variant_file": null}
+    ,{"source": "unit01-competition-anatomy", "due": "2026-08-18", "done": null, "variant_file": null}
   ],
   "milestones": {
-    "unit01-competition-anatomy": {"checked": [], "feynman_passed": false, "completed_at": null},
+    "unit01-competition-anatomy": {"checked": ["competition-file-roles", "rmsle-selection", "dataframe-profiling", "train-test-alignment", "fallback-prediction", "submission-validation"], "feynman_passed": true, "completed_at": "2026-08-11"},
     "unit02-validation-and-leakage": {"checked": [], "feynman_passed": false, "completed_at": null},
     "unit03-gbdt-main-weapon": {"checked": [], "feynman_passed": false, "completed_at": null},
     "unit04-tabular-feature-engineering": {"checked": [], "feynman_passed": false, "completed_at": null},
