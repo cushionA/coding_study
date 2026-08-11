@@ -20,6 +20,19 @@ unit06 の `records.csv` には `model_code` 列が無く、型番の正解を�
   - 空白の脱落(単語がくっつく)
   - ブランド欠損(15%)
 
+【★規則が原理的に負ける条件(test 側にだけ入れてある)】
+  実務の実態は「書式1に正規表現を書く → 書式2が現れて継ぎ足す → 書式3が現れる」。
+  そこで **train には書式を2種類、test には3種類目** を置く。
+  規則は書いた書式にしか当たらないが、学習モデルは見たことのある近縁から
+  未知の書式に手が届くかもしれない ---- そこを測るための条件。
+
+  - 型番書式: train は A123-45 と AB-1234 の2種類。**1234-XY は test にしか出ない**。
+  - ブランド: 新ブランド3つは train にも入れる(増えること自体は学習できる)。
+    **セイランド / ミナヅキ の2つは test 専用**で、完全に未知の場合も見る。
+
+  注: 書式を1種類しか train に入れないと、規則も学習モデルも等しく0点になり
+  比較にならない(初版がその失敗をした)。
+
 【この汚れが効く理由】
 「正規表現で型番を拾えばいい」で済むなら学習は要らない。実際 unit06 のタイトルでは
 素朴な正規表現が 88.9% に当たる。そこで **タイプミスと全角化と空白脱落** を入れて、
@@ -45,8 +58,15 @@ import pandas as pd
 SEED = 20260813
 OUT = Path(__file__).resolve().parent
 
-BRANDS = ["アカネ電機", "ソライロ", "ミドリワークス", "KURO", "ハヤブサ",
-          "ノースピーク", "TSUBAKI", "オオゾラ", "ゲンブ", "シラユキ"]
+# ★ブランドを train 用と test 用に分ける。
+#   スクレイピングでは新しいブランドが絶えず現れるので、辞書は原理的に追随できない。
+#   test にしか出ないブランドを置くことで「規則が負ける条件」を再現する。
+BRANDS_TRAIN = ["アカネ電機", "ソライロ", "ミドリワークス", "KURO", "ハヤブサ",
+                "ノースピーク", "TSUBAKI", "オオゾラ", "ゲンブ", "シラユキ"]
+# 新ブランドのうち3つは train にも入れる(新ブランドが増えること自体は学習できる)。
+# 残り2つは test 専用にして、完全に未知のブランドがどうなるかも見る。
+BRANDS_LATER = ["ヤマブキ堂", "コハクワークス", "AOI"]
+BRANDS_TEST_ONLY = ["セイランド", "ミナヅキ"]
 CATEGORIES = ["掃除機", "腕時計", "ノートパソコン", "スニーカー", "デイパック",
               "冷蔵庫", "イヤホン", "洗濯機"]
 COLORS = ["ブラック", "ホワイト", "シルバー", "ネイビー", "レッド", "グリーン"]
@@ -57,13 +77,25 @@ ASCII_TO_FULL = str.maketrans(
     "０１２３４５６７８９ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ－")
 
 
-def make_model_code(rng):
-    return f"{chr(65 + int(rng.integers(0, 26)))}{int(rng.integers(100, 999))}-{int(rng.integers(10, 99))}"
+# ★型番の書式も複数持たせ、一部を test 専用にする。
+#   1本の正規表現で全メーカーの型番を拾うことはできない、という実務の制約を再現する。
+def make_model_code(rng, allow_new_formats):
+    # train には書式0と書式1の2種類を入れ、書式2は test にしか出さない。
+    # 実務の実態が「書式1に正規表現を書く → 書式2が現れて継ぎ足す → 書式3が現れる」
+    # だからで、学習モデルが「見たことのある近縁から未知に手が届くか」を測れる条件にする。
+    # (書式を1種類しか train に入れないと、規則も学習モデルも等しく0点になり比較にならない)
+    f = int(rng.integers(0, 3)) if allow_new_formats else int(rng.integers(0, 2))
+    if f == 0:   # train にもある基本形 A123-45
+        return f"{chr(65+int(rng.integers(0,26)))}{int(rng.integers(100,999))}-{int(rng.integers(10,99))}"
+    if f == 1:   # train にもある AB-1234
+        return f"{chr(65+int(rng.integers(0,26)))}{chr(65+int(rng.integers(0,26)))}-{int(rng.integers(1000,9999))}"
+    return f"{int(rng.integers(1000,9999))}-{chr(65+int(rng.integers(0,26)))}{chr(65+int(rng.integers(0,26)))}"  # test専用 1234-XY
 
 
-def build(rng):
-    brand = "" if rng.random() < 0.15 else BRANDS[int(rng.integers(0, len(BRANDS)))]
-    model = make_model_code(rng)
+def build(rng, is_test):
+    pool = BRANDS_TRAIN + BRANDS_LATER + (BRANDS_TEST_ONLY if is_test else [])
+    brand = "" if rng.random() < 0.15 else pool[int(rng.integers(0, len(pool)))]
+    model = make_model_code(rng, allow_new_formats=is_test)
     color = COLORS[int(rng.integers(0, len(COLORS)))]
     cat = CATEGORIES[int(rng.integers(0, len(CATEGORIES)))]
 
@@ -116,7 +148,8 @@ def main():
     rng = np.random.default_rng(SEED)
     rows = []
     for i in range(4000):
-        title, brand, model, color, sb, sm, sc = build(rng)
+        # 先頭800件が test。test だけ未知ブランド・未知の型番書式が混ざる
+        title, brand, model, color, sb, sm, sc = build(rng, is_test=(i < 800))
         tags = bio_tags(title, [(sb, "BRAND"), (sm, "MODEL"), (sc, "COLOR")])
         rows.append({
             "record_id": f"T{i:05d}",
