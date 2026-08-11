@@ -286,6 +286,31 @@
       "lesson_verified_both_ways": true,
       "data_ready": true,
       "exercises_generated": true
+    },
+    {
+      "dir": "unit12-lightweight-model-ladder",
+      "title": "軽量モデルの段階表 — CPUだけで安く済ませる",
+      "summary": "本番サーバーが CPU のみ(GCP T2D 相当)という制約の下で、既存の軽い道具から順に試し、必要になったときだけ上の段に上がる判断の型を身につける。段0 規則(正規表現・辞書)→ 段2 軽量教師あり分類(ハッシュn-gram+線形)→ 段3 文埋め込み(bi-encoder)→ 段4 クロスエンコーダ(リランカー)→ 段5 系列ラベリング(NER)→ 段6 小型生成モデル(seq2seq)。各段で精度だけでなく **スループットとコストの形** を測り、『この件数・この精度要求なら、どの段で止めるか』を数字で答えられるようにする。教材の核となる実測値は data/MEASUREMENTS.md に正本として記録済み。重要な発見が3つある: (1) 推論95,840件/秒に対し形態素解析667件/秒で **律速はモデルではなく前処理**、(2) bi-encoder は n件のベクトル化で全ペアを評価できるがクロスエンコーダはペア数ぶん推論が要り **コストの形が2,273倍違う**、(3) **対象の性質で答えが3通りに変わる** — 書式が増え続ける型番は学習モデルが勝ち(0.9478 vs 0.4422)、列挙できるブランドは辞書が勝ち(0.9778 vs 0.8847・185倍速い)、完全に新しい書式はどちらも0点。『常に上の段が良い』ではないことを実測で示す。データは unit05(商品テキスト)と unit06(名寄せレコード)を流用し、NER と生成の比較用にのみ unit12 専用データを持つ。【重要な制約】速度は実行マシンに依存するため **チェックポイントの期待値にしない**。lesson の中でその場で測って T2D の時間単価に換算する手順として教え、採点は精度・件数・ロジックなど決定的な値だけで行う。生成LLM はサーバー性能上そもそも載せられないため、『なぜ載らないか』を数字で示す対象として扱い、使い方は教えない。",
+      "concepts": [
+        "lightweight-model-ladder",
+        "hashing-linear-text-classification",
+        "biencoder-vs-crossencoder",
+        "sequence-labeling-ner",
+        "cpu-cost-and-bottleneck"
+      ],
+      "exercises": [
+        "ex01_light_classifier",
+        "ex02_two_stage_matching",
+        "ex03_rule_vs_tagger",
+        "ex04_capstone"
+      ],
+      "estimated_minutes": 390,
+      "data_ready": true,
+      "lesson_generated": true,
+      "lesson_verified_both_ways": true,
+      "exercises_generated": false,
+      "generated": false,
+      "reviewed": false
     }
   ],
   "runtime_policy": "学習者の実行環境は『開発 = ThinkPad(CPU、dGPUは無いか小容量VRAM前提)/ 学習 = クラウドGPUを時間借り / 推論 = CPUで常時運用』。教材のコードはすべて device 非依存に書く — device = torch.device('cuda' if torch.cuda.is_available() else 'cpu') を1箇所だけで定義し、モデルとバッチを .to(device) する形にして、同じノートブック・同じスクリプトがローカルCPUでもクラウドGPUでも無改変で動くようにする。演習の採点は常にCPU・極小データで行うが、lesson では『ローカルの小データで正しさを確認してからGPUへ持っていく』手順を明示的に教える(まず1バッチだけ流して shape と loss が出るか、次に数ステップで loss が下がるか、それが通ってから本番データ・本番エポックでGPUへ)。この確認手順は、GPU時間を無駄に課金しないための実務スキルとして扱う。",
