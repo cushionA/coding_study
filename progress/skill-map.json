@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-10",
+  "updated": "2026-08-11",
   "legend": {
     "0": {
       "label": "未着手",
@@ -440,6 +440,19 @@
       "context": "BeautifulSoupで解析する",
       "level_label": "未着手"
     },
+    "biencoder-vs-crossencoder": {
+      "level": 0,
+      "updated": "2026-08-11",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "軽量モデルの段階表 — CPUだけで安く済ませる"
+        }
+      ],
+      "context": "軽量モデルの段階表 — CPUだけで安く済ませる",
+      "level_label": "未着手"
+    },
     "blocking-candidate-generation": {
       "level": 0,
       "updated": "2026-08-08",
@@ -513,6 +526,19 @@
         }
       ],
       "context": "転移学習で画像分類",
+      "level_label": "未着手"
+    },
+    "cpu-cost-and-bottleneck": {
+      "level": 0,
+      "updated": "2026-08-11",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "軽量モデルの段階表 — CPUだけで安く済ませる"
+        }
+      ],
+      "context": "軽量モデルの段階表 — CPUだけで安く済ませる",
       "level_label": "未着手"
     },
     "cross-validation": {
@@ -792,6 +818,19 @@
       "context": "勾配ブースティング木を主砲にする",
       "level_label": "未着手"
     },
+    "hashing-linear-text-classification": {
+      "level": 0,
+      "updated": "2026-08-11",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "軽量モデルの段階表 — CPUだけで安く済ませる"
+        }
+      ],
+      "context": "軽量モデルの段階表 — CPUだけで安く済ませる",
+      "level_label": "未着手"
+    },
     "http-request-response": {
       "level": 0,
       "updated": "2026-07-03",
@@ -868,6 +907,19 @@
         }
       ],
       "context": "テキストの正規化とTF-IDFベースライン",
+      "level_label": "未着手"
+    },
+    "lightweight-model-ladder": {
+      "level": 0,
+      "updated": "2026-08-11",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "軽量モデルの段階表 — CPUだけで安く済ませる"
+        }
+      ],
+      "context": "軽量モデルの段階表 — CPUだけで安く済ませる",
       "level_label": "未着手"
     },
     "lr-schedule-warmup": {
@@ -1246,6 +1298,19 @@
         }
       ],
       "context": "文章要約: 抽出型と生成型",
+      "level_label": "未着手"
+    },
+    "sequence-labeling-ner": {
+      "level": 0,
+      "updated": "2026-08-11",
+      "sources": [
+        {
+          "course": "kaggle-sprint",
+          "level": 0,
+          "unit": "軽量モデルの段階表 — CPUだけで安く済ませる"
+        }
+      ],
+      "context": "軽量モデルの段階表 — CPUだけで安く済ませる",
       "level_label": "未着手"
     },
     "sklearn-estimator-api": {

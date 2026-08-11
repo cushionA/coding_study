@@ -224,6 +224,14 @@ def call_safely(fn, *args, **kwargs):
     except Exception as e:
         print(f"     ({getattr(fn, '__name__', 'fn')} の中で例外 → {type(e).__name__}: {e})")
         return None
+
+
+def round4(x):
+    """未記入(None)や数値でない値が来ても落ちないように丸める。"""
+    try:
+        return None if x is None else round(float(x), 4)
+    except (TypeError, ValueError):
+        return None
 '''
 
 md, code = nbf.v4.new_markdown_cell, nbf.v4.new_code_cell
@@ -277,7 +285,7 @@ TOKENIZER = Tokenizer()      # 生成が重いので1回だけ作って使い回
 SPACE_RE = re.compile(r"\\s+")
 
 {CHECK}
-print("\\nセットアップ完了。ヘルパー: check / call_safely")'''))
+print("\\nセットアップ完了。ヘルパー: check / call_safely / round4")'''))
 
 # ---------------- 概念1 ----------------
 cells.append(md("""## ① なぜ: 1件あたり 0.1 ミリ秒と 10 ミリ秒は、インスタンス台数の差になる
@@ -398,7 +406,45 @@ for n in (10_000, 100_000):
 print("\\n→ 分類器をどれだけ速くしても、全体はほとんど変わらない。")
 print("  効くのは前処理側 — 分かち書き結果のキャッシュ、並列化、より軽い分割器への変更。")'''))
 
-cells.append(md("""## ⑥ 書いてみる: スループットからコストを見積もる関数
+cells.append(md("""## ⑥ 書いてみる(1): 段2 をひとまとまりの関数にする
+
+上のセルでは ベクトル化 → 学習 → 採点 を STEP に分けて手で並べた。
+**同じことを君の手で1つの関数にまとめてほしい。** 段2 は今後この形で何度も呼ぶことになる。
+
+`light_scores(train_docs, train_labels, test_docs, test_labels)`
+
+| 使うもの | 設定 |
+|---|---|
+| ベクトル化 | `HashingVectorizer` に `n_features=2**18` / `ngram_range=(1, 2)` / `alternate_sign=False` / `norm="l2"` |
+| 分類器 | `SGDClassifier` に `loss="log_loss"` / `alpha=1e-6` / `max_iter=30` / `random_state=0` |
+
+返り値は **`(accuracy, macro_f1, n_features)` の3つ組**。
+
+- `accuracy` と `macro_f1` は `test_docs` / `test_labels` に対する値
+- `n_features` は**ベクトル化した行列の列数**(次元)。`shape` のどちらの要素かに注意
+- `HashingVectorizer` は `fit` が要らない(語彙表を持たないので `transform` だけで動く)
+
+5〜7行で書ける。上の STEP 4・STEP 5 と同じ手順を関数の中に入れるだけだ。"""))
+
+cells.append(code('''def light_scores(train_docs, train_labels, test_docs, test_labels):
+    """(accuracy, macro_f1, n_features) を返す。"""
+    # ここに書く(ヒント: 学習用と評価用の両方を transform する。
+    #           macro-F1 は f1_score の average を指定しないと多クラスでは出せない)
+    return None
+''' if not SOLVED else '''def light_scores(train_docs, train_labels, test_docs, test_labels):
+    """(accuracy, macro_f1, n_features) を返す。"""
+    hv_l = HashingVectorizer(n_features=2**18, ngram_range=(1, 2),
+                             alternate_sign=False, norm="l2")
+    clf_l = SGDClassifier(loss="log_loss", alpha=1e-6, max_iter=30, random_state=0)
+    clf_l.fit(hv_l.transform(train_docs), train_labels)
+    Xt = hv_l.transform(test_docs)
+    p = clf_l.predict(Xt)
+    return (float(accuracy_score(test_labels, p)),
+            float(f1_score(test_labels, p, average="macro")),
+            int(Xt.shape[1]))
+'''))
+
+cells.append(md("""## ⑥ 書いてみる(2): スループットからコストを見積もる関数
 
 測った件/秒を**お金**に変換できて初めて判断材料になる。
 
@@ -426,13 +472,18 @@ cells.append(code('''def estimate_cost(n_items, items_per_sec, hourly_yen):
 '''))
 
 cells.append(code(f'''# ===== チェックポイント A: 段2 の分類とコスト計算 =====
-check("A-1 分類の accuracy", round(float(accuracy_score(yb, pred)), 4), {ACC2},
-      hint="HashingVectorizer(n_features=2**18, ngram_range=(1,2), alternate_sign=False, norm='l2') と "
-           "SGDClassifier(loss='log_loss', alpha=1e-6, max_iter=30, random_state=0) の組み合わせ。")
-check("A-2 分類の macro-F1", round(float(f1_score(yb, pred, average="macro")), 4), {F12},
+# 採点しているのは「君が書いた light_scores / estimate_cost の出力」であって、
+# 上のデモセルの出力ではない。未記入なら全て [NG] になる。
+_a = call_safely(light_scores, Xa, ya, Xb, yb)
+_a_ok = isinstance(_a, (tuple, list)) and len(_a) == 3
+
+check("A-1 light_scores の accuracy", round4(_a[0]) if _a_ok else None, {ACC2},
+      hint="デモセルが出した値と同じになるはず。設定が1つでも違うと値がずれる。"
+           "3つ組(accuracy, macro_f1, n_features)を返せているかもまず確認する。")
+check("A-2 light_scores の macro-F1", round4(_a[1]) if _a_ok else None, {F12},
       hint="average='macro' を忘れると多クラスではエラーか別の値になる。")
-check("A-3 特徴量の次元", Bv.shape[1], {N_FEAT},
-      hint="n_features=2**18 をそのまま指定している。語彙表を作らないので学習前から次元が決まる。")
+check("A-3 light_scores の特徴量の次元", _a[2] if _a_ok else None, {N_FEAT},
+      hint="n_features=2**18 をそのまま指定している。行列の shape は (件数, 次元) なので列数のほう。")
 
 _r = call_safely(estimate_cost, 100000, 500.0, 12.0)
 check("A-4 estimate_cost の返り値は2つ組か", None if _r is None else len(_r), 2,
@@ -885,7 +936,38 @@ print(f"{'段5 系列ラベリング':22s} {eq(nm, te12['model_code'])[~newfmt].
 print(f"\\n速度: 規則 {rule_rate:,.0f} 件/秒 / 系列ラベリング {tag_rate:,.0f} 件/秒"
       f"({rule_rate/tag_rate:,.0f} 倍の差)")'''))
 
-cells.append(md(f"""## ⑥ 書いてみる: 対象の性質から道具を選ぶ関数
+cells.append(md("""## ⑥ 書いてみる(1): 部分集合だけの完全一致率を出す関数
+
+上の表は「既知書式だけ」「新書式だけ」のように、**行の一部だけを取り出して**測っている。
+全体の数字(型番 0.2963)だけを見ていたら、「規則は既知書式なら 0.44 まで出るが新書式では 0 点」
+という肝心の構造は見えない。**マスクで絞ってから測る**のは、原因を切り分けるための基本の道具立てだ。
+
+次のセルで `subset_exact_match(preds, golds, mask)` を書こう。
+
+| 引数 | 意味 |
+|---|---|
+| `preds` | 予測の列 |
+| `golds` | 正解の列(`preds` と同じ長さ) |
+| `mask` | 同じ長さの真偽値の配列。**True の行だけ**で測る |
+
+返り値は、その部分集合での**完全一致の割合**(`float`)。
+`mask` が全て False のときは `0.0` を返す(0 除算にしない)。
+
+既習のブールマスクがそのまま効く。2〜4行で書ける。"""))
+
+cells.append(code('''def subset_exact_match(preds, golds, mask):
+    """mask が True の行だけで、完全一致の割合を返す。"""
+    # ここに書く(ヒント: まず1件ずつ「一致したか」の真偽値の配列を作り、
+    #           それを mask で絞ってから平均を取る)
+    return None
+''' if not SOLVED else '''def subset_exact_match(preds, golds, mask):
+    """mask が True の行だけで、完全一致の割合を返す。"""
+    hit = np.array([p == g for p, g in zip(list(preds), list(golds))])
+    m = np.asarray(mask, dtype=bool)
+    return float(hit[m].mean()) if m.sum() else 0.0
+'''))
+
+cells.append(md(f"""## ⑥ 書いてみる(2): 対象の性質から道具を選ぶ関数
 
 上の表から読み取れることを関数にする。
 
@@ -917,16 +999,20 @@ cells.append(code('''def pick_extractor(is_enumerable, n_known_formats):
 '''))
 
 cells.append(code(f'''# ===== チェックポイント D: 規則 と 学習モデルの使い分け =====
-check("D-1 規則の型番(既知書式)", round(float(eq(rm, te12["model_code"])[~newfmt].mean()), 4), {RM_KNOWN},
-      hint="正規表現は自分が書いた1書式にしか当たらない。")
-check("D-2 タガーの型番(既知書式)", round(float(eq(nm, te12["model_code"])[~newfmt].mean()), 4), {NM_KNOWN},
+# D-1〜D-5 は「君が書いた subset_exact_match で測り直した値」を採点している。
+# 上の表と同じ数字が出れば、マスクで絞って測る手順が自分の手で再現できたということ。
+_em = lambda p, g, m: round4(call_safely(subset_exact_match, p, g, m))
+
+check("D-1 規則の型番(既知書式)", _em(rm, te12["model_code"], ~newfmt), {RM_KNOWN},
+      hint="正規表現は自分が書いた1書式にしか当たらない。~newfmt は「新書式ではない行」のマスク。")
+check("D-2 タガーの型番(既知書式)", _em(nm, te12["model_code"], ~newfmt), {NM_KNOWN},
       hint="train に2書式あるので、タガーは両方を吸収している。")
-check("D-3 規則のブランド(既知)", round(float(eq(rb, te12["brand"])[~unseen].mean()), 4), {RB_KNOWN},
+check("D-3 規則のブランド(既知)", _em(rb, te12["brand"], ~unseen), {RB_KNOWN},
       hint="辞書に載っているブランドは完全一致で拾える。")
-check("D-4 タガーのブランド(既知)", round(float(eq(nb_, te12["brand"])[~unseen].mean()), 4), {NB_KNOWN},
+check("D-4 タガーのブランド(既知)", _em(nb_, te12["brand"], ~unseen), {NB_KNOWN},
       hint="列挙できる対象では、学習モデルは辞書に勝てない。")
-check("D-5 タガーの型番(train に無い書式)", round(float(eq(nm, te12["model_code"])[newfmt].mean()), 4), {NM_NEW},
-      hint="例が無ければ学習モデルも学べない。ここが段5の限界。")
+check("D-5 タガーの型番(train に無い書式)", _em(nm, te12["model_code"], newfmt), {NM_NEW},
+      hint="例が無ければ学習モデルも学べない。ここが段5の限界。マスクを反転させていないか確認する。")
 
 _d = [call_safely(pick_extractor, True, 1), call_safely(pick_extractor, False, 1),
       call_safely(pick_extractor, False, 3)]
