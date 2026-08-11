@@ -90,7 +90,7 @@
     "cpu-cost-and-bottleneck": {"level": 0, "updated": "2026-08-11", "evidence": "unit12 教材生成時に登録(未着手)"}
   },
   "review_queue": [
-    {"source": "unit01-competition-anatomy/ex03_holdout_score", "due": "2026-08-11", "done": null, "variant_file": null},
+    {"source": "unit01-competition-anatomy/ex03_holdout_score", "due": "2026-08-11", "done": "2026-08-11", "variant_file": "reviews/2026-08-11_ex03_unseen_category.py"},
     {"source": "unit01-competition-anatomy/ex03_holdout_score", "due": "2026-08-13", "done": null, "variant_file": null},
     {"source": "unit01-competition-anatomy/ex03_holdout_score", "due": "2026-08-17", "done": null, "variant_file": null},
     {"source": "unit01-competition-anatomy/ex03_holdout_score", "due": "2026-08-24", "done": null, "variant_file": null},
