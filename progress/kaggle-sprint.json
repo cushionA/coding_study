@@ -82,7 +82,12 @@
     "sentence-centrality": {"level": 0, "updated": "2026-08-08", "evidence": "course initialized"},
     "seq2seq-encoder-decoder": {"level": 0, "updated": "2026-08-08", "evidence": "course initialized"},
     "decoding-strategies": {"level": 0, "updated": "2026-08-08", "evidence": "course initialized"},
-    "summarization-evaluation": {"level": 0, "updated": "2026-08-08", "evidence": "course initialized"}
+    "summarization-evaluation": {"level": 0, "updated": "2026-08-08", "evidence": "course initialized"},
+    "lightweight-model-ladder": {"level": 0, "updated": "2026-08-11", "evidence": "unit12 教材生成時に登録(未着手)"},
+    "hashing-linear-text-classification": {"level": 0, "updated": "2026-08-11", "evidence": "unit12 教材生成時に登録(未着手)"},
+    "biencoder-vs-crossencoder": {"level": 0, "updated": "2026-08-11", "evidence": "unit12 教材生成時に登録(未着手)"},
+    "sequence-labeling-ner": {"level": 0, "updated": "2026-08-11", "evidence": "unit12 教材生成時に登録(未着手)"},
+    "cpu-cost-and-bottleneck": {"level": 0, "updated": "2026-08-11", "evidence": "unit12 教材生成時に登録(未着手)"}
   },
   "review_queue": [
     {"source": "unit01-competition-anatomy/ex03_holdout_score", "due": "2026-08-11", "done": null, "variant_file": null},

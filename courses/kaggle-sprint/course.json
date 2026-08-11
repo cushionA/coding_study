@@ -308,8 +308,8 @@
       "data_ready": true,
       "lesson_generated": true,
       "lesson_verified_both_ways": true,
-      "exercises_generated": false,
-      "generated": false,
+      "exercises_generated": true,
+      "generated": true,
       "reviewed": false
     }
   ],
