@@ -9,16 +9,31 @@ import pandas as pd
 # df の列ごとのプロファイル(dtype・欠損数・欠損率・ユニーク数・数値列なら min/max)を返す
 # 戻り値: 列名を index にした DataFrame。列は ['dtype', 'n_missing', 'missing_rate', 'n_unique', 'min', 'max']
 # 数値でない列の min/max は欠損(NaN)にする。
-def profile_columns(df):
+def profile_columns(df: pd.DataFrame) -> pd.DataFrame:
     # TODO: df.columns を1列ずつ見て、列名 -> {"dtype": ..., "n_missing": ..., ...} の対応表を作り、
     #       最後に pd.DataFrame.from_dict(..., orient="index") で表にまとめる(ヒント参照)。
     #       数値列かどうかの判定には pandas の型判定関数が使える。
-    raise NotImplementedError
-
+    res = {}
+    for col in df.columns:
+        series:pd.Series = df[col]
+        isNum = pd.api.types.is_numeric_dtype(series)
+        max = pd.NA if isNum == False else series.max()
+        min = pd.NA if isNum == False  else series.min()
+        res[col] = {"dtype": str(series.dtype) , "n_missing": series.isna().sum()
+                         ,"missing_rate": series.isna().mean(),"n_unique": series.nunique()
+                         ,"max": max,"min":min} 
+    return pd.DataFrame.from_dict(res,orient="index")
 
 # target_col の欠損率を、group_col の値ごとに算出する。
 # lesson では brand x category を固定でやったが、ここでは任意の2列の組で効くようにする。
 # 戻り値: {グループ値: 欠損率(float)} の dict
-def missing_rate_by_group(df, target_col, group_col):
+def missing_rate_by_group(
+    df: pd.DataFrame, target_col: str, group_col: str
+) -> dict[object, float]:
     # TODO: group_col の値ごとにグループ分けし、それぞれのグループ内で target_col の欠損率を出す
-    raise NotImplementedError
+    res = {}
+    for cond in df[group_col].unique():
+        s:pd.DataFrame = df[df[group_col] == cond]
+        res[cond] = s[target_col].isna().mean()
+
+    return res
