@@ -203,3 +203,59 @@ course.json の全ユニットに `reviewed: true` が付いているが、
 スキルレベル: `competition-anatomy` / `pandas-dataframe` / `pandas-select-filter` /
 `pandas-missing` が 3、`submission-format` / `train-test-split` / `regression-metrics` /
 `data-cleaning` / `end-to-end-workflow` が 2。復習キューに8件。
+
+
+---
+
+## 別セッションによる独立検証(2026-08-10)
+
+全12ユニットを独立に再検証した。結果と、**検証時に必ず知っておくべき注意点**を残す。
+
+### 結果
+
+- `check_unit.py`: unit02〜unit11 は `ok: true`。unit01 と unit12 は下記の理由で NG になるが**いずれも正常**。
+- lesson の未記入実行: 全12本とも例外ゼロ。
+- unit10 の作り直しを確認: Day2 のコンペデータを参照し、`RMSLE` / `log1p` / `GroupKFold` /
+  `LGBMRegressor` / `Ridge` の回帰構成になっている。分類の痕跡(`brier_score_loss` 等)は消えている。
+
+### ★注意1: 学習が進むと `check_unit.py` は NG になる(仕様)
+
+unit01 は `スケルトンでテストが通ってしまう: 25 passed` を返すが、これは
+**学習者が演習を解き終えてファイルに解答が入っているため**。`check_unit.py` は
+「スケルトンは未記入」を前提にしているので、学習済みユニットでは必ずこうなる。
+教材の欠陥ではないので、`ex*.py` の中身を見て学習者のコードかどうかを判断すること。
+
+### ★注意2: 「独立レビュー ✅」はバグの不在を保証しない
+
+このファイルの上の表で全ユニットに「独立レビュー ✅」が付いていた時点で、
+**Day1〜5 の private LB 発表が5ユニットすべてで死んでいた**。
+原因は `ANSWER` の参照先が実在しないファイルに変わっていたこと。
+`.exists()` で守られているため例外は出ず、チェックポイント数も変わらないので、
+`check_unit.py` でも lesson 実行検証でも**検出できない**。
+
+同種のバグを見つけるには、次の観点を別途チェックする必要がある:
+
+```python
+# lesson が参照している外部ファイルが実在するかを機械的に確認する
+import nbformat as nbf, glob, re
+from pathlib import Path
+for p in glob.glob("courses/kaggle-sprint/unit*/lesson.ipynb"):
+    src = "\n".join(c.source for c in nbf.read(p, as_version=4).cells if c.cell_type == "code")
+    print(p, sorted(set(re.findall(r'"([\w\-/\.]+\.csv)"', src))))
+```
+
+「例外が出ない」と「意図どおり動く」は別物である。**機能が黙って死ぬ形の劣化**を疑うこと。
+
+### ★注意3: 未記入で合格するチェックポイントがある(意図的)
+
+- unit03 の `A-2 base_ridge が壊れていないか` は `clone()` 忘れを検出する**ガード用**。
+  正しく書けば緑のまま、ミスしたときだけ赤くなる。
+- unit12 の A-1〜A-3 / D-1〜D-5(計8件)は、lesson 自身が計算した結果が参照値と一致するかを見る
+  **環境再現の確認用**。学習者の記入とは無関係。
+  ただし「6つとも [OK] になったら次へ」の枠内に最初から緑があるため、
+  学習者が戸惑う可能性がある。文言の分離を検討する余地あり。
+
+### 残作業
+
+- **unit12 の演習4本**(`ex*.py` / `tests/` / `hints/` / `.solutions/`)が未生成。
+  `course.json` も `generated: false` / `exercises_generated: false` のまま。
