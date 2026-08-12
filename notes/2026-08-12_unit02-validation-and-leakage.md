@@ -21,6 +21,10 @@
 - `fit_predict_mean("condition", tr_idx, va_idx)` は、`tr_idx` の行だけで condition ごとの平均 log price を作り、`va_idx` の行へ予測を返す。戻り値の `pred` の長さは `len(va_idx)` と一致する。
 - `oof_cond[va_idx] = pred` は、検証行の予測を元の行番号の位置へ書き戻す処理。各foldで別の位置を埋め、最後には全行の予測配列になる。
 - `oof_cond[va_idx]` はブールマスクではなく、整数インデックス配列によるファンシーインデックス。左側がNumPy配列なら、指定側は `np.array([2, 5])` でも Python リスト `[2, 5]` でもよい。通常のPythonリストは複数位置指定を受け付けない。
+- `g = train.groupby("product_key")["price"]` は、商品ごとにpriceを集計できるGroupByオブジェクト。`g.std()` と `g.mean()` はそれぞれ「商品ごとの標準偏差」「商品ごとの平均」をインデックス=`product_key`のSeriesとして返す。
+- `(g.std() / g.mean()).dropna()` は、同じ `product_key` 同士を対応づけて「商品ごとの標準偏差 ÷ 平均 = 変動係数」を計算し、1件しかない商品の標準偏差などから生じるNaNを除く。複雑な式は中間変数に分けて `print()` すると追いやすい。
+- `cv_within.median()` は、商品ごとの変動係数Seriesをさらに1値へ集約し、「同一商品内の価格ばらつきの典型値」を得る。商品IDはここで失われる。商品数が偶数なら中央2値の平均になるため、中央値は特定の商品値でないこともある。
+- `float(cv_within.median())` はNumPy/pandasの数値型をPythonの`float`へ変える型変換であり、丸めではない。`round(..., 4)` が小数第4位までに丸める。
 
 ## つまずいた箇所と原因
 
@@ -44,6 +48,10 @@
   A: それぞれ学習・検証に使う行番号の配列。両者はそのfoldで重複せず、対象行全体を分担する。
 - Q: `oof_cond[va_idx] = pred` はマスクか？
   A: マスクではなく、行番号を直接指定するファンシーインデックス。`va_idx` と `pred` の同じ順番の要素が対応する。
+- Q: `(g.std() / g.mean()).dropna()` は何を作る？
+  A: `product_key`ごとのprice変動係数を持つSeries。0に近いほど、同じ商品の複数サイトでの価格がそろっている。
+- Q: `round(float(cv_within.median()), 4)` は何をしている？
+  A: 商品ごとの変動係数の中央値を1値へ集約し、Python floatへ変換してから小数第4位まで丸めている。
 
 ## 次回の開始地点 / 復習予定
 
