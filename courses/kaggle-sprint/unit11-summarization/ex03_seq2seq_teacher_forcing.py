@@ -4,7 +4,9 @@ import torch
 from transformers import T5Config, T5ForConditionalGeneration
 
 
-def build_tiny_t5(vocab_size=64, device=None):
+def build_tiny_t5(
+    vocab_size: int = 64, device: str | torch.device | None = None
+) -> T5ForConditionalGeneration:
     """ダウンロード不要の極小encoder-decoderを指定deviceへ作る。"""
     device = device or torch.device("cuda" if torch.cuda.is_available() else "cpu")
     config = T5Config(
@@ -24,7 +26,12 @@ def build_tiny_t5(vocab_size=64, device=None):
     raise NotImplementedError
 
 
-def prepare_batch(input_ids, labels, pad_id=0, device=None):
+def prepare_batch(
+    input_ids: torch.Tensor | list[list[int]],
+    labels: torch.Tensor | list[list[int]],
+    pad_id: int = 0,
+    device: str | torch.device | None = None,
+) -> dict[str, torch.Tensor]:
     """attention maskを作り、labelのpadをloss無視値へ変える。"""
     device = device or torch.device("cuda" if torch.cuda.is_available() else "cpu")
     input_tensor = torch.as_tensor(input_ids, dtype=torch.long, device=device)
@@ -33,7 +40,12 @@ def prepare_batch(input_ids, labels, pad_id=0, device=None):
     raise NotImplementedError
 
 
-def train_tiny_t5(model, batch, steps=3, learning_rate=0.01):
+def train_tiny_t5(
+    model: T5ForConditionalGeneration,
+    batch: dict[str, torch.Tensor],
+    steps: int = 3,
+    learning_rate: float = 0.01,
+) -> list[float]:
     """labels付きforwardでteacher forcing学習し、loss履歴を返す。"""
     optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
     losses = []
@@ -46,7 +58,13 @@ def train_tiny_t5(model, batch, steps=3, learning_rate=0.01):
 
 
 @torch.inference_mode()
-def generate_with_t5(model, input_ids, attention_mask, max_new_tokens=4, num_beams=1):
+def generate_with_t5(
+    model: T5ForConditionalGeneration,
+    input_ids: torch.Tensor,
+    attention_mask: torch.Tensor,
+    max_new_tokens: int = 4,
+    num_beams: int = 1,
+) -> torch.Tensor:
     """同じdevice上でT5の自己回帰生成を行う。"""
     model.eval()
     # TODO: 入力・長さ上限・beam幅をgenerateへ渡す

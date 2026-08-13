@@ -1,12 +1,18 @@
 """ex04: ペア特徴→分類器→閾値→連結成分の entity resolution 一連処理。"""
 
 from difflib import SequenceMatcher
+from collections.abc import Sequence
 
 import numpy as np
 from sklearn.linear_model import LogisticRegression
 
 
-def build_pair_features(names, prices, embeddings, pairs):
+def build_pair_features(
+    names: Sequence[str],
+    prices: np.ndarray,
+    embeddings: np.ndarray,
+    pairs: Sequence[tuple[int, int]],
+) -> np.ndarray:
     """各候補ペアから名前類似度・価格差・cosine 類似度を作る。"""
     embeddings = np.asarray(embeddings, dtype=float)
     rows = []
@@ -19,13 +25,17 @@ def build_pair_features(names, prices, embeddings, pairs):
     return np.asarray(rows, dtype=float)
 
 
-def fit_pair_classifier(features, labels, random_state=42):
+def fit_pair_classifier(
+    features: np.ndarray, labels: np.ndarray, random_state: int = 42
+) -> LogisticRegression:
     """ペアが同一 entity かを推定する分類器を学習する。"""
     # TODO: 再現可能な LogisticRegression を fit して返す
     raise NotImplementedError
 
 
-def select_f1_threshold(y_true, scores, thresholds):
+def select_f1_threshold(
+    y_true: np.ndarray, scores: np.ndarray, thresholds: Sequence[float]
+) -> tuple[float, float]:
     """候補 threshold ごとの F1 を測り、最大の threshold と値を返す。"""
     y_true = np.asarray(y_true, dtype=int)
     scores = np.asarray(scores, dtype=float)
@@ -40,11 +50,13 @@ def select_f1_threshold(y_true, scores, thresholds):
     return best_threshold, best_f1
 
 
-def connected_components(n_items, matched_pairs):
+def connected_components(
+    n_items: int, matched_pairs: Sequence[tuple[int, int]]
+) -> list[int]:
     """同一と判定されたペアを推移的な group ID へまとめる。"""
     parent = list(range(n_items))
 
-    def find(item):
+    def find(item: int) -> int:
         while parent[item] != item:
             parent[item] = parent[parent[item]]
             item = parent[item]

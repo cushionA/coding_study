@@ -6,7 +6,9 @@ import torch
 from transformers import BertConfig, BertForSequenceClassification
 
 
-def build_tiny_bert(vocab_size, num_labels, max_length=32):
+def build_tiny_bert(
+    vocab_size: int, num_labels: int, max_length: int = 32
+) -> BertForSequenceClassification:
     """ダウンロードなしで学習できる極小 BERT 分類器を返す。"""
     config = BertConfig(
         vocab_size=vocab_size,
@@ -23,7 +25,13 @@ def build_tiny_bert(vocab_size, num_labels, max_length=32):
     raise NotImplementedError
 
 
-def fine_tune(model, train_batch, validation_batch, steps=8, learning_rate=0.05):
+def fine_tune(
+    model: BertForSequenceClassification,
+    train_batch: dict[str, torch.Tensor],
+    validation_batch: dict[str, torch.Tensor],
+    steps: int = 8,
+    learning_rate: float = 0.05,
+) -> dict[str, object]:
     """更新後の validation loss と同じ時点の最良重みを保存・復元する。"""
     optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
     history = []
@@ -54,7 +62,11 @@ def fine_tune(model, train_batch, validation_batch, steps=8, learning_rate=0.05)
 
 
 @torch.inference_mode()
-def predict(model, input_ids, attention_mask):
+def predict(
+    model: BertForSequenceClassification,
+    input_ids: torch.Tensor,
+    attention_mask: torch.Tensor,
+) -> torch.Tensor:
     """推論モードでクラス ID を返す。"""
     model.eval()
     # TODO: logits を計算し、クラス方向の最大位置を返す

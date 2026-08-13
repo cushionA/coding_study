@@ -2,10 +2,19 @@
 
 import numpy as np
 import torch
+from collections.abc import Sequence
+from torch import nn
+from torch.optim import Optimizer
+from torch.utils.data import DataLoader
 from sklearn.metrics import confusion_matrix
 
 
-def train_one_epoch(model, dataloader, optimizer, device="cpu"):
+def train_one_epoch(
+    model: nn.Module,
+    dataloader: DataLoader,
+    optimizer: Optimizer,
+    device: str = "cpu",
+) -> float:
     """1 epoch 学習してサンプル平均 loss を返す。"""
     model.train()
     total_loss = 0.0
@@ -23,7 +32,9 @@ def train_one_epoch(model, dataloader, optimizer, device="cpu"):
 
 
 @torch.inference_mode()
-def predict_probabilities(model, dataloader, device="cpu"):
+def predict_probabilities(
+    model: nn.Module, dataloader: DataLoader, device: str = "cpu"
+) -> tuple[torch.Tensor, torch.Tensor]:
     """全バッチの softmax 確率と正解ラベルを返す。"""
     model.eval()
     probabilities = []
@@ -36,13 +47,17 @@ def predict_probabilities(model, dataloader, device="cpu"):
     return torch.cat(probabilities), torch.cat(labels)
 
 
-def make_confusion(y_true, y_pred, labels):
+def make_confusion(
+    y_true: np.ndarray, y_pred: np.ndarray, labels: Sequence[int]
+) -> np.ndarray:
     """labels 順の混同行列を返す。"""
     # TODO: sklearn の confusion_matrix へ labels を明示する
     raise NotImplementedError
 
 
-def per_class_metrics(matrix, labels):
+def per_class_metrics(
+    matrix: np.ndarray, labels: Sequence[int]
+) -> dict[int, dict[str, float]]:
     """混同行列からクラス別 precision/recall を返す。"""
     matrix = np.asarray(matrix, dtype=float)
     result = {}
@@ -53,7 +68,9 @@ def per_class_metrics(matrix, labels):
     return result
 
 
-def misclassified_ids(sample_ids, y_true, y_pred):
+def misclassified_ids(
+    sample_ids: Sequence[str], y_true: np.ndarray, y_pred: np.ndarray
+) -> list[str]:
     """誤分類された sample ID を返す。"""
     # TODO: true と pred が異なる位置の ID を選ぶ
     raise NotImplementedError
