@@ -1,0 +1,24 @@
+// このユニットの学習用スキーマ。実際に `npx prisma generate` /
+// `npx prisma migrate dev` を通した検証済みの構成そのもの。
+//
+// 注意(Prisma 7の破壊的変更): datasource ブロックに url を書くと
+// P1012 エラーになる。接続先は prisma.config.ts 側で指定する。
+generator client {
+  provider = "prisma-client"
+  output   = "./generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Book {
+  id        Int      @id @default(autoincrement())
+  title     String
+  author    String
+  isbn      String?  @unique
+  rating    Float?
+  createdAt DateTime @default(now())
+
+  @@index([author])
+}

@@ -1,0 +1,57 @@
+// このユニットの学習用スキーマ。実際に `npx prisma generate` /
+// `npx prisma migrate dev` を通した検証済みの構成そのもの(unit03と同じ手順)。
+//
+// 注意(Prisma 7の破壊的変更): datasource ブロックに url を書くと
+// P1012 エラーになる。接続先は prisma.config.ts 側で指定する。
+generator client {
+  provider = "prisma-client"
+  output   = "./generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+// 1冊の本。unit03のBookに、取り込み元(IngestRun)への1対多の
+// 「多」側としての外部キーを追加した。
+model Book {
+  id          Int      @id @default(autoincrement())
+  title       String
+  author      String
+  isbn        String?  @unique
+  rating      Float?
+  createdAt   DateTime @default(now())
+
+  // Book(多) が Tag(多) を持つ … の逆で、ここでは
+  // 「1冊の本に複数のタグが付く / 1つのタグは1冊にしか属さない」という
+  // 1対多(Book 1 ― Tag 多)を表す。Tag側にBookへの外部キーを持たせる。
+  tags        Tag[]
+
+  // 「1回の取り込み(IngestRun)が複数の本を生む」という
+  // 1対多(IngestRun 1 ― Book 多)の「多」側。ingestRunId は
+  // 単発でBookを作る分には不要なので null 許容にしてある。
+  ingestRunId Int?
+  ingestRun   IngestRun? @relation(fields: [ingestRunId], references: [id])
+
+  @@index([author])
+  @@index([ingestRunId])
+}
+
+// 1件のタグ(例: "sci-fi" "bestseller")。1つのタグ行は必ず1冊の本に属する。
+model Tag {
+  id     Int    @id @default(autoincrement())
+  label  String
+  bookId Int
+  book   Book   @relation(fields: [bookId], references: [id])
+
+  @@index([bookId])
+}
+
+// 「外部データをまとめて取り込んだ1回分」を表す記録。
+// 複数のBookをまとめて作る $transaction の題材として使う。
+model IngestRun {
+  id        Int      @id @default(autoincrement())
+  source    String
+  createdAt DateTime @default(now())
+  books     Book[]
+}

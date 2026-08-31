@@ -3,3 +3,10 @@
 .ipynb_checkpoints/
 node_modules/
 output/
+.env
+.env.*
+*.db
+*.db-journal
+dist/
+*-key.json
+service-account*.json
