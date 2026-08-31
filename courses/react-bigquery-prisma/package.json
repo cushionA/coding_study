@@ -1,0 +1,41 @@
+{
+  "name": "react-bigquery-prisma",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "dev": "vite",
+    "mock-api": "tsx tools/mock-api-server.ts"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "express": "^5.2.0",
+    "zod": "^4.5.0",
+    "dotenv": "^17.4.0",
+    "cors": "^2.8.5",
+    "@prisma/client": "7.10.0",
+    "@prisma/adapter-better-sqlite3": "7.10.0",
+    "better-sqlite3": "^13.0.0",
+    "@google-cloud/bigquery": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/express": "^5.0.0",
+    "@types/cors": "^2.8.0",
+    "@types/better-sqlite3": "^7.6.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "tsx": "^4.23.0",
+    "typescript": "7.0.2",
+    "prisma": "7.10.0",
+    "vite": "^8.2.0",
+    "@vitejs/plugin-react": "^6.1.0",
+    "vitest": "^4.1.0",
+    "jsdom": "^30.0.0",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/jest-dom": "^7.0.0",
+    "supertest": "^7.0.0",
+    "@types/supertest": "^6.0.0"
+  }
+}

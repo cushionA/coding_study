@@ -1,0 +1,282 @@
+{
+  "name": "react-bigquery-prisma",
+  "title": "React × Prisma × BigQuery 実務投入 (TypeScript)",
+  "language": "typescript",
+  "format": {
+    "lesson": "script+vite-preview",
+    "grading": "vitest",
+    "reason": "バックエンド系(Express/Prisma/BigQuery/外部API)は npx tsx の実行スクリプトが数秒で回り check() でブロック単位の即時判定ができる。React はブラウザに描画されたものを見ないと学習にならないため lesson だけ Vite 開発サーバのプレビューに翻訳し(構造は「なぜ→解説→見る→予測→変える→書く→チェック」のまま)、採点は全ユニット vitest に統一する。React のテストファイルは先頭の docblock `/** @vitest-environment jsdom */` で jsdom に切り替え、@testing-library/react で描画・振る舞いを検証する(vitest.config.ts は1つで済む)。"
+  },
+  "test_command": "npx vitest run {unit}/tests",
+  "goal": "外部APIから取得したデータをPrisma経由でアプリDB(SQLite)に保存しつつ、BigQueryにも分析用データとして書き込み、Reactからバックエンド API 経由でフェッチして一覧表示・検索できる最小Webアプリを、一人で構築し、各層の役割分担とセキュリティ境界を自分の言葉で説明できる",
+  "learner_profile": "C# を主戦力とする実務者(AtCoder茶色・OOP/クラス/インターフェース理解あり)。TypeScript の型注釈・文字列操作・配列メソッド(map/filter/find = LINQ の Select/Where/First)・オブジェクト/Record<K,V> は別コース web-scraping-ts で level3(ヒントなしで書けた)に到達済み → 本コースでは復習程度に圧縮する。一方 async/await・fetch・HTTPレスポンスの型・エラー処理/リトライは同コースの未着手範囲(level0)なので本コースで初出として丁寧に扱う。React / Prisma / BigQuery / Express / 環境変数によるシークレット管理はすべてゼロ知識前提。C#アナロジーを強く効かせる(Prisma = EF Core の Code First + DbContext、React の state = INotifyPropertyChanged による宣言的バインディング、Express のミドルウェア = ASP.NET Core のパイプライン、zod = 実行時の DataAnnotations 検証)。",
+  "created": "2026-08-31",
+  "runtime": {
+    "node": "v22.22.2",
+    "npm": "10.9.7",
+    "dependencies": {
+      "react": "19.2.8",
+      "react-dom": "19.2.8",
+      "express": "5.2.1",
+      "zod": "4.5.4",
+      "dotenv": "17.4.2",
+      "cors": "2.8.6",
+      "@prisma/client": "7.10.0",
+      "@prisma/adapter-better-sqlite3": "7.10.0",
+      "better-sqlite3": "13.0.3",
+      "@google-cloud/bigquery": "9.0.3"
+    },
+    "devDependencies": {
+      "typescript": "7.0.2",
+      "tsx": "4.23.13",
+      "vite": "8.2.2",
+      "@vitejs/plugin-react": "6.1.1",
+      "vitest": "4.1.11",
+      "jsdom": "30.0.1",
+      "@testing-library/react": "16.3.3",
+      "@testing-library/jest-dom": "7.0.1",
+      "prisma": "7.10.0",
+      "supertest": "latest",
+      "@types/node": "latest",
+      "@types/express": "latest",
+      "@types/supertest": "latest"
+    },
+    "notes": [
+      "prisma / @prisma/client は 8.0.0-rc ではなく安定版 7.10.0 を採用する(npm の dist-tag latest は 8.0.0-rc.12 だが rc のため。7系の dist-tag は prev)。",
+      "Prisma 7 系は ESM 既定・prisma.config.ts 必須・SQL プロバイダにドライバアダプタ必須という破壊的変更が入っている。schema.prisma の generator は provider = \"prisma-client\"(旧 prisma-client-js ではない)+ output 明示、SQLite は @prisma/adapter-better-sqlite3 を PrismaClient に渡す構成で統一する。この足場は unit03 の lesson で丁寧に説明する。",
+      "外部APIは実ネットワークを使わない。courses/react-bigquery-prisma/tools/mock-api-server.ts が data/external_api/*.json を http://localhost:4010 で配信する(localhost なので外部通信ゼロ)。fetch を「本物として」体験できる。",
+      "BigQuery は unit05 以降で実GCPプロジェクトに接続する体験を lesson の任意ステップとして用意するが、演習の採点は必ず注入した fake クライアント(BigQueryLike インターフェース)に対して行う。GCP 未取得でも全課題が合格できること。"
+    ]
+  },
+  "units": [
+    {
+      "dir": "unit01-stack-and-async",
+      "title": "スタックの全体像と非同期TypeScript",
+      "summary": "このコースで作るものの地図を最初に描く: React(ブラウザ)⇄ 自前バックエンドAPI(Express/Node)⇄ アプリDB(Prisma+SQLite)と分析DB(BigQuery)の3層構成。なぜブラウザから直接 BigQuery や DB を叩かないのか(サービスアカウント鍵をバンドルに含めた時点で全世界に公開されるのと同じ)を、境界線を引く形で最初に叩き込む。技術的な足場としては、既習の TypeScript 構文(型注釈・map/filter/find = LINQ・Record<K,V>)は5分の復習に圧縮したうえで、未習の非同期処理を初出として丁寧に扱う: Promise とは何か(C# の Task<T> とほぼ同じ)、async/await(C# と同一構文なのでアナロジーが最強に効く)、await の付け忘れで Promise オブジェクトがそのまま流れる典型バグ、Promise.all による並行実行(Task.WhenAll)、try/catch と非同期の関係。そのうえで Node 標準 fetch を使い、Response モデル(response.ok / status / await response.json() / headers)と、json() が返す any をどう型に落とすかを学ぶ。シークレット管理は dotenv による .env 読み込み・process.env の型が string|undefined であること・.gitignore・鍵ファイルをリポジトリに置かない運用まで。演習は tools/mock-api-server.ts(localhost:4010)か、注入した fake fetch に対して行い外部通信は一切しない。",
+      "concepts": [
+        "three-tier-architecture",
+        "fetch-async-await",
+        "response-model",
+        "env-secret-boundary"
+      ],
+      "milestones": [
+        "React / Express / Prisma+SQLite / BigQuery の4者が何を担当し、どの矢印が許され、どの矢印が禁止かを図に描いて説明できる",
+        "Promise と async/await を C# の Task<T>/await と対応づけて説明でき、await 付け忘れバグを自力で見つけられる",
+        "fetch の戻り値 Response から ok / status を判定し、await response.json() の結果を自分で定義した型に落とし込める",
+        "秘密情報を .env + process.env で読み、string|undefined を安全に扱い、なぜフロントエンドに置いてはいけないかを説明できる"
+      ],
+      "exercises": [
+        "ex01_promise_basics",
+        "ex02_typed_fetch",
+        "ex03_env_config",
+        "ex04_capstone"
+      ],
+      "estimated_minutes": 55,
+      "generated": false,
+      "reviewed": false
+    },
+    {
+      "dir": "unit02-external-api-client",
+      "title": "外部APIクライアントを作る",
+      "summary": "「外部APIから取得したデータを保存する」の入口を、実務で通用する形に固める回。素朴に fetch して as で型を付けると何が起きるか(TypeScript の型はコンパイル時にしか存在せず、実行時の JSON が約束を破っても誰も止めない)を体感させたうえで、実行時スキーマ検証を zod で導入する: z.object でスキーマを書き、safeParse で成否を分岐し、z.infer<typeof S> で TS の型を自動導出する(C# の DataAnnotations + TryValidateObject に近いが、型がスキーマから生えてくる点が新しい)。次に外部APIの生 JSON(スネークケース・入れ子・null 混在)をアプリ内のドメインモデル(Book 型)へ正規化するマッピング層を書き、境界の外側の形と内側の形を分ける設計を学ぶ。最後に失敗の分類(ネットワーク断=例外 / 4xx=こちらのバグなので即中止 / 5xx・429=相手都合なのでリトライ可)と、指数バックオフ+ジッタ、AbortSignal.timeout によるタイムアウトを実装する。全モジュールは fetch を引数で受け取る形(依存性注入)にして、テストでは fake fetch を差し込み外部通信ゼロで採点する。フィクスチャ: data/external_api/books_page1.json ほか、data/fakeFetch.ts(200/404/500/429/遅延を返すダミー)。",
+      "concepts": [
+        "api-client-module",
+        "runtime-validation-zod",
+        "dto-to-domain-mapping",
+        "error-handling-retry"
+      ],
+      "milestones": [
+        "「TSの型は実行時に消える」ことを説明でき、外部から来た JSON を zod の safeParse で検証してから使える",
+        "外部APIのレスポンス形(DTO)とアプリ内のドメインモデルを分け、変換関数を書ける",
+        "HTTPステータスから「リトライすべき失敗」と「即座に諦めるべき失敗」を切り分けられる",
+        "指数バックオフ+ジッタのリトライと AbortSignal によるタイムアウトを async 関数として実装できる",
+        "fetch を注入可能にして、ネットワークなしでAPIクライアントをテストできる"
+      ],
+      "exercises": [
+        "ex01_parse_response",
+        "ex02_zod_schema",
+        "ex03_retry_timeout",
+        "ex04_capstone"
+      ],
+      "estimated_minutes": 55,
+      "generated": false,
+      "reviewed": false
+    },
+    {
+      "dir": "unit03-prisma-schema-migrate",
+      "title": "Prismaのスキーマとマイグレーション",
+      "summary": "ここでこのコースの最重要の「なぜ」を扱う: Prisma はアプリのトランザクショナルDB(OLTP)のための ORM であり、BigQuery は分析用の列指向ウェアハウス(OLAP)で、そもそも解く問題が違う。Prisma 公式は BigQuery をサポートしておらず(2026年8月時点で @prisma/adapter-bigquery 等は npm に存在しない)、BigQuery は公式クライアント @google-cloud/bigquery で直接叩く — この役割分担を README と lesson の冒頭で明示的に説明する。学習用DBは SQLite(file:./data/app.db)を使うが、本番では同じ schema.prisma のまま provider を postgresql に差し替えるだけ、という Prisma の利点も併せて示す。技術内容: schema.prisma の datasource / generator / model ブロック、フィールド型(String/Int/Float/Boolean/DateTime)と ? による null 許容、@id @default(autoincrement()/uuid()/now()) @unique @@index @@unique、Prisma 7 の新しい generator provider = \"prisma-client\" と output 指定、SQL プロバイダに必須になったドライバアダプタ(@prisma/adapter-better-sqlite3)、prisma.config.ts、PrismaClient のインスタンス化とシングルトン運用(接続を使い回す理由)。マイグレーションは prisma migrate dev で SQL を生成して適用する流れ、migrations/ ディレクトリが履歴そのものであること、破壊的変更時の挙動、本番での migrate deploy との違いを EF Core の Code First Migrations とのアナロジーで説明する。演習はローカルの一時 SQLite ファイルに対して行い、生成された型(Prisma.BookCreateInput 等)を読む練習まで含める。",
+      "concepts": [
+        "oltp-vs-olap-roles",
+        "prisma-schema-model",
+        "prisma-migrate",
+        "prisma-client-setup"
+      ],
+      "milestones": [
+        "PrismaがアプリDB担当・BigQueryが分析担当である理由と、なぜPrisma経由でBigQueryを扱わないかを自分の言葉で説明できる",
+        "要件(欲しい一覧画面・検索条件)から model を起こし、@id / @unique / @@index / null 許容を適切に付けられる",
+        "prisma migrate dev でマイグレーションを作成・適用し、migrations/ の中身が何かを説明できる",
+        "Prisma 7 のドライバアダプタ構成で PrismaClient を生成し、シングルトンとして共有できる",
+        "SQLite→Postgres の差し替えが schema.prisma の1行で済むことと、その限界を説明できる"
+      ],
+      "exercises": [
+        "ex01_read_schema",
+        "ex02_write_model",
+        "ex03_migrate_flow",
+        "ex04_capstone"
+      ],
+      "estimated_minutes": 55,
+      "generated": false,
+      "reviewed": false
+    },
+    {
+      "dir": "unit04-prisma-crud",
+      "title": "Prismaで型安全にCRUDする",
+      "summary": "生成された Prisma Client で実際にデータを読み書きする回。prisma.book.create / findMany / findUnique / update / delete の基本形と、引数・戻り値がスキーマから完全に型付けされている体験(存在しないフィールド名を書いた瞬間に赤線が出る)を最初に味わわせる。C# の EF Core / LINQ to Entities と対応づけつつ、Prisma は式ツリーではなくオブジェクトリテラルでクエリを書く点(where: { title: { contains: q } }、orderBy、take/skip、select/include)を丁寧に説明する。一覧画面と検索機能に直結する部分として、部分一致検索・並び替え・ページング(take/skip と cursor の違い)・件数取得(count)を扱う。取り込みの要である冪等性では upsert(where/update/create)を使い、外部APIを再実行しても重複行が増えない設計を作る — これは unit08 の二重書き込みで効いてくる。さらに1対多リレーション(Book と Tag / IngestRun)の定義と include によるネスト取得、ネスト create、そして $transaction による複数書き込みの原子性(EF Core の SaveChanges 1回にまとめる感覚)まで。演習は一時 SQLite に対して実行し、テストごとにDBを作り直す(外部通信ゼロ)。",
+      "concepts": [
+        "prisma-crud",
+        "prisma-query-filter-sort",
+        "prisma-upsert-idempotency",
+        "prisma-relations-include",
+        "prisma-transaction"
+      ],
+      "milestones": [
+        "create / findMany / findUnique / update / delete を型安全に書き分けられる",
+        "where の contains・orderBy・take/skip・count を組み合わせて「検索付き一覧」に必要なクエリを書ける",
+        "upsert を使い、同じ外部データを何度取り込んでも重複しない冪等な保存関数を書ける",
+        "1対多リレーションを定義し、include でネストしたデータを1クエリで取得できる",
+        "$transaction で複数の書き込みをまとめ、途中失敗時に中途半端な状態を残さない書き方ができる"
+      ],
+      "exercises": [
+        "ex01_create_read",
+        "ex02_filter_search",
+        "ex03_upsert_relations",
+        "ex04_capstone"
+      ],
+      "estimated_minutes": 60,
+      "generated": false,
+      "reviewed": false
+    },
+    {
+      "dir": "unit05-bigquery-client",
+      "title": "BigQueryに分析用データを書き・読む",
+      "summary": "分析側の担当。README の前提セクションで、GCPアカウント未取得の学習者向けに実プロジェクトのセットアップを手順化する: ①GCPプロジェクト作成 ②BigQuery API 有効化 ③データセット(例 app_analytics, ロケーション asia-northeast1)作成 ④サービスアカウント作成と BigQuery Data Editor / Job User ロール付与 ⑤JSON鍵の発行とローカル保存(リポジトリ外・.gitignore) ⑥環境変数 GOOGLE_APPLICATION_CREDENTIALS と GCP_PROJECT_ID の設定 ⑦接続スモークテスト。技術内容: new BigQuery({projectId}) の認証の仕組み(ADC = Application Default Credentials)、データセット/テーブル/スキーマ(STRING・INT64・FLOAT64・BOOL・TIMESTAMP・DATE と TS 型の対応、NULLABLE/REQUIRED/REPEATED)、テーブル作成とパーティション/クラスタリングの初歩、query({query, params}) によるパラメータ化クエリ(文字列連結でSQLを組み立てない理由)、GoogleSQL 方言の勘所(バッククォートでの `project.dataset.table` 修飾、標準SQLとの差、SAFE_CAST、日付関数)、table.insert() によるストリーミング挿入とバッチ、PartialFailureError で「一部の行だけ失敗する」という RDB では起きない挙動、そして課金モデル(スキャンしたバイト数で課金 → SELECT * が高価、LIMIT では安くならない、dryRun でコスト見積り)。演習は BigQueryLike インターフェースを定義して fake 実装を注入する形で採点するため、GCP 未取得でも全課題が通る。lesson には実プロジェクトに1回だけ繋いで確かめる任意スクリプトを用意する。",
+      "concepts": [
+        "bigquery-setup-auth",
+        "bigquery-dataset-table",
+        "bigquery-parameterized-query",
+        "bigquery-insert-rows",
+        "bigquery-cost-and-dryrun"
+      ],
+      "milestones": [
+        "GCPプロジェクト作成からサービスアカウント鍵・GOOGLE_APPLICATION_CREDENTIALS 設定までを自分で最後まで通せる(または手順を説明できる)",
+        "分析したい問い(日別取り込み件数・著者別集計)からテーブルスキーマを設計し、型を BigQuery の型に対応づけられる",
+        "params を使ったパラメータ化クエリを書き、文字列連結でSQLを組み立ててはいけない理由を説明できる",
+        "table.insert() で行を投入し、PartialFailureError による部分失敗を検知してログに残せる",
+        "BigQueryの課金がスキャン量ベースであることを理解し、dryRun で見積もってからクエリを実行できる"
+      ],
+      "exercises": [
+        "ex01_build_schema",
+        "ex02_param_query",
+        "ex03_insert_rows",
+        "ex04_capstone"
+      ],
+      "estimated_minutes": 60,
+      "generated": false,
+      "reviewed": false
+    },
+    {
+      "dir": "unit06-express-api",
+      "title": "バックエンドAPIを立てる(Express)",
+      "summary": "React と2つのデータストアの間に立つ自前バックエンドを作る回。まず「なぜ間に1枚挟むのか」を3点で腹落ちさせる: ①サービスアカウント鍵や DB 接続情報をブラウザに絶対に渡さないため(Vite は VITE_ プレフィックスの環境変数をバンドルに焼き込むので、鍵をそこに書いた時点で公開される — この落とし穴を実演する) ②ブラウザから直接BigQueryを叩けたら誰でも任意のSQLを実行できてしまうため ③複数ストアをまたぐ整形・集約をサーバ側に置くため。技術内容: Express 5 の app.get/post、ルーティングと req.params / req.query / req.body、express.json() ミドルウェア、ステータスコードの設計(200/201/400/404/500)、zod によるクエリ・ボディの入口検証と 400 応答、集中エラーハンドリングミドルウェア(Express 5 は async ハンドラで投げた例外を自動的に next(err) へ回す)、cors による開発時のオリジン許可、そして route → service → repository の層分離(repository が Prisma と BigQuery を隠し、service がユースケースを組み、route は HTTP との変換だけ)。C# アナロジーは ASP.NET Core のミドルウェアパイプライン+Controller/Service/Repository。テストは supertest で app を直接叩き、repository は fake を注入するのでDBもGCPも不要。",
+      "concepts": [
+        "express-routing",
+        "request-validation-boundary",
+        "error-middleware",
+        "api-layering",
+        "backend-secret-boundary"
+      ],
+      "milestones": [
+        "GET /api/books?q=... のようなエンドポイントを定義し、クエリパラメータを受けてJSONを返せる",
+        "入口で zod 検証を行い、不正なリクエストに 400 と理由を返せる",
+        "集中エラーハンドラを置き、想定外の例外でもスタックトレースを漏らさず 500 を返せる",
+        "route / service / repository を分離し、repository を差し替えてHTTPレベルのテストが書ける",
+        "なぜ鍵をフロントに置けないか(Vite の VITE_ プレフィックスの罠を含む)を実演つきで説明できる"
+      ],
+      "exercises": [
+        "ex01_first_route",
+        "ex02_validate_query",
+        "ex03_error_layering",
+        "ex04_capstone"
+      ],
+      "estimated_minutes": 60,
+      "generated": false,
+      "reviewed": false
+    },
+    {
+      "dir": "unit07-react-ui",
+      "title": "Reactで一覧画面を作る",
+      "summary": "ゼロ知識前提で React を立ち上げる回。lesson は Vite 開発サーバ(npm run dev)でブラウザに描画を見ながら進め、採点は vitest + jsdom + @testing-library/react で「描画された結果」と「ユーザー操作後の振る舞い」を検証する。最初に命令的UI(C# の WinForms/WPF でコントロールを掴んで値を書き換える)と宣言的UI(state を書き換えると React が差分を描き直す)の発想の違いを対比して、パラダイム転換をはっきり言語化する。技術内容: 関数コンポーネントと JSX(HTMLではなく式であること、className / htmlFor、{} での式埋め込み)、props と TypeScript による型付け(C# のコンストラクタ引数 + readonly プロパティ)、useState と再レンダリングの仕組み(state は書き換えるのではなく新しい値で置き換える。配列は push せず [...prev, x])、onClick / onChange などのイベントハンドラと合成イベント、配列の map による一覧描画と key の意味(なぜ index を key にすると壊れるか)、条件描画(&& と三項演算子)、そして useEffect による API 取得: 依存配列の意味、クリーンアップ関数と AbortController によるキャンセル、React 19 の StrictMode で開発時に effect が2回走ること、ローディング / エラー / 空 / 成功の4状態を型で表現する設計。API は unit06 で作ったバックエンド(または fake fetch)から取得し、外部通信はしない。",
+      "format": {
+        "lesson": "vite-preview",
+        "grading": "vitest+jsdom+testing-library",
+        "reason": "Reactは描画結果を目で見ないと学習にならないため lesson はブラウザプレビュー。採点はDOMを再現できる jsdom 環境で @testing-library/react の render/screen/userEvent により描画と振る舞いを自動検証する"
+      },
+      "concepts": [
+        "react-component-props",
+        "react-state-events",
+        "react-list-conditional-render",
+        "react-effect-fetch",
+        "react-loading-error-state"
+      ],
+      "milestones": [
+        "props で受け取った値を表示する関数コンポーネントを、型付きで自分で書ける",
+        "useState とイベントハンドラで、ユーザー操作に応じて画面が変わるコンポーネントを書ける",
+        "配列を map で一覧描画し、key に何を渡すべきか(なぜ index ではだめか)を説明できる",
+        "useEffect でAPIからデータを取得し、ローディング / エラー / 空 / 成功の4状態を出し分けられる",
+        "命令的UIと宣言的UIの違いを、C#のUIフレームワークと対比して説明できる"
+      ],
+      "exercises": [
+        "ex01_props_component",
+        "ex02_state_events",
+        "ex03_list_render",
+        "ex04_capstone"
+      ],
+      "estimated_minutes": 60,
+      "generated": false,
+      "reviewed": false
+    },
+    {
+      "dir": "unit08-capstone-end-to-end",
+      "title": "キャップストーン: 取り込みから検索UIまで一気通貫",
+      "summary": "コース全体を1本のアプリに束ねる最終ユニット。①検索UI: 制御コンポーネント(input の value を state が持つ)で検索語を管理し、デバウンス(入力のたびに叩かない)を自前の useEffect + setTimeout クリーンアップで実装、検索語を API のクエリパラメータへ渡して結果を再描画する。②取り込みジョブ: unit02 のAPIクライアントで外部データを取得し、Prisma に upsert で冪等に保存(トランザクショナルの正)、同じデータを BigQuery に分析行として insert(分析の副本)する二重書き込みを書く。ここで実務の核心 — 2つのストアにまたがるので原子性は保証できない、だから「Prismaを正とし、BigQueryへの書き込みは失敗しても取り込み自体は成功扱いにしてログと再送キューに回す」「取り込みバッチIDを両方に持たせて突合できるようにする」という現実的な整合方針を設計として言語化させる。③検索エンドポイント: Prisma の部分一致検索(一覧本体)と BigQuery の集計(著者別件数などのサマリ)を1つのレスポンスに束ね、片方が落ちても一覧は返す degrade 設計にする。④結線: 環境変数・起動手順(API サーバ + Vite dev + 取り込みジョブ)を README にまとめ、動作確認シナリオを自分で通す。採点は fake fetch / 一時SQLite / fake BigQuery クライアントで完結し、実GCPは任意の手動確認に留める。",
+      "format": {
+        "lesson": "script+vite-preview",
+        "grading": "vitest+jsdom+testing-library",
+        "reason": "取り込みジョブと検索エンドポイントは実行スクリプト、検索UIはブラウザプレビュー。採点は両方を vitest に統一し、React部分のテストのみ jsdom docblock を付ける"
+      },
+      "concepts": [
+        "react-controlled-search",
+        "dual-write-ingest",
+        "search-endpoint-integration",
+        "end-to-end-app-wiring"
+      ],
+      "milestones": [
+        "制御コンポーネント+デバウンスで検索入力を作り、無駄なリクエストを抑えられる",
+        "外部API → Prisma(正)→ BigQuery(分析副本)の二重書き込みを冪等に実装できる",
+        "2ストア間で原子性が取れないことを踏まえた整合方針(正の決定・部分失敗の扱い・突合キー)を説明できる",
+        "Prisma検索とBigQuery集計を1レスポンスに束ね、片方の障害でも一覧を返す degrade 設計にできる",
+        "取り込み→保存→API→UI検索の全経路を、環境変数と起動手順込みで一人で立ち上げて説明できる"
+      ],
+      "exercises": [
+        "ex01_search_input",
+        "ex02_ingest_dual_write",
+        "ex03_search_endpoint",
+        "ex04_capstone"
+      ],
+      "estimated_minutes": 60,
+      "generated": false,
+      "reviewed": false
+    }
+  ]
+}
