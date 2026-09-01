@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>unit08 プレビュー — 検索UI + degrade を手で触る</title>
+    <style>
+      /* 見やすさのための最小限のスタイル。学習内容には関係ありません */
+      body { font-family: system-ui, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+             margin: 0; padding: 24px; background: #f7f7f9; color: #222; line-height: 1.7; }
+      main { max-width: 760px; margin: 0 auto; }
+      section { background: #fff; border: 1px solid #e0e0e6; border-radius: 8px;
+                padding: 16px 20px; margin-bottom: 20px; }
+      h1 { font-size: 20px; } h2 { font-size: 16px; margin-top: 0; color: #35507a; }
+      ul { padding-left: 20px; } li { margin: 2px 0; }
+      input[type="text"] { padding: 6px 8px; font-size: 14px; border: 1px solid #bbb;
+                           border-radius: 4px; width: 240px; }
+      .badge { background: #eef3ff; border: 1px solid #c3d4ff; border-radius: 10px;
+               padding: 1px 8px; font-size: 12px; margin-left: 6px; }
+      .warn { background: #fff6e5; border: 1px solid #ffd591; border-radius: 4px;
+              padding: 6px 10px; font-size: 13px; }
+      .error { color: #a12; } .muted { color: #777; font-size: 13px; }
+      .log { background: #101418; color: #b8e0a0; font-family: ui-monospace, Consolas, monospace;
+             font-size: 12px; padding: 8px 10px; border-radius: 6px; max-height: 160px; overflow: auto; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/main.tsx"></script>
+  </body>
+</html>

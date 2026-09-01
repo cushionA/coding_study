@@ -1,0 +1,195 @@
+{
+  "course": "react-bigquery-prisma",
+  "started": "2026-08-31",
+  "current": {
+    "unit": "unit01-stack-and-async",
+    "phase": "lesson",
+    "exercise": null
+  },
+  "lessons": {},
+  "exercises": {},
+  "skills": {
+    "three-tier-architecture": {
+      "level": 0,
+      "updated": "2026-08-31",
+      "evidence": ""
+    },
+    "fetch-async-await": {
+      "level": 0,
+      "updated": "2026-08-31",
+      "evidence": ""
+    },
+    "response-model": {
+      "level": 0,
+      "updated": "2026-08-31",
+      "evidence": ""
+    },
+    "env-secret-boundary": {
+      "level": 0,
+      "updated": "2026-08-31",
+      "evidence": ""
+    },
+    "api-client-module": {
+      "level": 0,
+      "updated": "2026-08-31",
+      "evidence": ""
+    },
+    "runtime-validation-zod": {
+      "level": 0,
+      "updated": "2026-08-31",
+      "evidence": ""
+    },
+    "dto-to-domain-mapping": {
+      "level": 0,
+      "updated": "2026-08-31",
+      "evidence": ""
+    },
+    "error-handling-retry": {
+      "level": 0,
+      "updated": "2026-08-31",
+      "evidence": ""
+    },
+    "oltp-vs-olap-roles": {
+      "level": 0,
+      "updated": "2026-08-31",
+      "evidence": ""
+    },
+    "prisma-schema-model": {
+      "level": 0,
+      "updated": "2026-08-31",
+      "evidence": ""
+    },
+    "prisma-migrate": {
+      "level": 0,
+      "updated": "2026-08-31",
+      "evidence": ""
+    },
+    "prisma-client-setup": {
+      "level": 0,
+      "updated": "2026-08-31",
+      "evidence": ""
+    },
+    "prisma-crud": {
+      "level": 0,
+      "updated": "2026-08-31",
+      "evidence": ""
+    },
+    "prisma-query-filter-sort": {
+      "level": 0,
+      "updated": "2026-08-31",
+      "evidence": ""
+    },
+    "prisma-upsert-idempotency": {
+      "level": 0,
+      "updated": "2026-08-31",
+      "evidence": ""
+    },
+    "prisma-relations-include": {
+      "level": 0,
+      "updated": "2026-08-31",
+      "evidence": ""
+    },
+    "prisma-transaction": {
+      "level": 0,
+      "updated": "2026-08-31",
+      "evidence": ""
+    },
+    "bigquery-setup-auth": {
+      "level": 0,
+      "updated": "2026-08-31",
+      "evidence": ""
+    },
+    "bigquery-dataset-table": {
+      "level": 0,
+      "updated": "2026-08-31",
+      "evidence": ""
+    },
+    "bigquery-parameterized-query": {
+      "level": 0,
+      "updated": "2026-08-31",
+      "evidence": ""
+    },
+    "bigquery-insert-rows": {
+      "level": 0,
+      "updated": "2026-08-31",
+      "evidence": ""
+    },
+    "bigquery-cost-and-dryrun": {
+      "level": 0,
+      "updated": "2026-08-31",
+      "evidence": ""
+    },
+    "express-routing": {
+      "level": 0,
+      "updated": "2026-08-31",
+      "evidence": ""
+    },
+    "request-validation-boundary": {
+      "level": 0,
+      "updated": "2026-08-31",
+      "evidence": ""
+    },
+    "error-middleware": {
+      "level": 0,
+      "updated": "2026-08-31",
+      "evidence": ""
+    },
+    "api-layering": {
+      "level": 0,
+      "updated": "2026-08-31",
+      "evidence": ""
+    },
+    "backend-secret-boundary": {
+      "level": 0,
+      "updated": "2026-08-31",
+      "evidence": ""
+    },
+    "react-component-props": {
+      "level": 0,
+      "updated": "2026-08-31",
+      "evidence": ""
+    },
+    "react-state-events": {
+      "level": 0,
+      "updated": "2026-08-31",
+      "evidence": ""
+    },
+    "react-list-conditional-render": {
+      "level": 0,
+      "updated": "2026-08-31",
+      "evidence": ""
+    },
+    "react-effect-fetch": {
+      "level": 0,
+      "updated": "2026-08-31",
+      "evidence": ""
+    },
+    "react-loading-error-state": {
+      "level": 0,
+      "updated": "2026-08-31",
+      "evidence": ""
+    },
+    "react-controlled-search": {
+      "level": 0,
+      "updated": "2026-08-31",
+      "evidence": ""
+    },
+    "dual-write-ingest": {
+      "level": 0,
+      "updated": "2026-08-31",
+      "evidence": ""
+    },
+    "search-endpoint-integration": {
+      "level": 0,
+      "updated": "2026-08-31",
+      "evidence": ""
+    },
+    "end-to-end-app-wiring": {
+      "level": 0,
+      "updated": "2026-08-31",
+      "evidence": ""
+    }
+  },
+  "review_queue": [],
+  "milestones": {}
+}

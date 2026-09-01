@@ -275,7 +275,7 @@
         "ex04_capstone"
       ],
       "estimated_minutes": 60,
-      "generated": false,
+      "generated": true,
       "reviewed": false
     }
   ]
