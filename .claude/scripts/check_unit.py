@@ -51,12 +51,20 @@ def main():
     fmt = {}
     cj = course / "course.json"
     if cj.exists():
-        fmt = json.loads(cj.read_text(encoding="utf-8")).get("format", {})
+        course_json = json.loads(cj.read_text(encoding="utf-8"))
+        fmt = dict(course_json.get("format", {}))
+        for u in course_json.get("units", []):
+            if u.get("dir") == unit:
+                fmt.update(u.get("format", {}))
+                break
     grading = fmt.get("grading", "pytest")
     lesson_kind = fmt.get("lesson", "jupyter")
 
     ext = "py" if grading == "pytest" else "ts"
     comment = "#" if ext == "py" else "//"
+    # React系(vitest+jsdom+testing-library)はコンポーネントを .tsx で書くため、
+    # skeleton/lesson の拡張子探索は .ts と .tsx の両方を対象にする。
+    skeleton_exts = [ext, "tsx"] if ext == "ts" and "testing-library" in grading else [ext]
 
     if not (unit_dir / "README.md").exists():
         problems.append(f"必須ファイルなし: {unit_dir / 'README.md'}")
@@ -64,16 +72,23 @@ def main():
         if not (unit_dir / "lesson.ipynb").exists():
             problems.append(f"必須ファイルなし: {unit_dir / 'lesson.ipynb'}")
     else:
-        lesson_files = sorted((unit_dir / "lesson").glob(f"*.{ext}")) if (unit_dir / "lesson").exists() else []
+        lesson_files = []
+        if (unit_dir / "lesson").exists():
+            for e in skeleton_exts:
+                lesson_files += sorted((unit_dir / "lesson").glob(f"*.{e}"))
         if not lesson_files:
             problems.append(f"lessonスクリプトなし: {unit_dir}/lesson/*.{ext}")
 
-    skeletons = sorted(unit_dir.glob(f"ex*.{ext}"))
+    skeletons = []
+    for e in skeleton_exts:
+        skeletons += sorted(unit_dir.glob(f"ex*.{e}"))
+    skeletons = sorted(skeletons)
     if not skeletons:
         problems.append(f"スケルトンなし: {unit_dir}/ex*.{ext}")
     for sk in skeletons:
         num = sk.name.split("_")[0]
-        test_name = f"test_{num}.py" if grading == "pytest" else f"{num}.test.ts"
+        sk_ext = sk.suffix.lstrip(".")
+        test_name = f"test_{num}.py" if grading == "pytest" else f"{num}.test.{sk_ext}"
         if not (unit_dir / "tests" / test_name).exists():
             problems.append(f"テストなし: tests/{test_name}")
         if not (unit_dir / "hints" / f"{num}.md").exists():
